@@ -1,1 +1,2 @@
 # la32r_soc_ciciec_semifinal
+这个文件我做到了第圈5步骤，即我做到了尚未修改_i,_o,_oe的实例化内容（例如axi_wrap_ram)
