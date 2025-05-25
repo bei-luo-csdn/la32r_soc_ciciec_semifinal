@@ -1,0 +1,5 @@
+{
+   "verilog.languageServer.enabled": true,
+    "verilog.languageServer.path": "C:/Users/14010/.vscode/extensions/chipsalliance.verible-0.0.3997/bin/verible-verilog-ls.exe",  // 替换为你的路径
+    "verilog.linting.veribleLinter.enabled": false  // 禁用 Linter（如果不需要）
+}

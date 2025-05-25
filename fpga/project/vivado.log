@@ -1,0 +1,516 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Thu May 15 21:47:48 2025
+# Process ID: 17072
+# Current directory: E:/la32r_soc_ciciec/fpga/project
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent29580 E:\la32r_soc_ciciec\fpga\project\Loongson_Soc.xpr
+# Log file: E:/la32r_soc_ciciec/fpga/project/vivado.log
+# Journal file: E:/la32r_soc_ciciec/fpga/project\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/la32r_soc_ciciec/fpga/project/Loongson_Soc.xpr
+CRITICAL WARNING: [Project 1-863] The design checkpoint file E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll.dcp was generated for a block design or an IP or BD by an out of context synthesis run and should not directly be used as a source in a Vivado flow to refer to an IP source.  As of 2017.1, the DCP from OOC runs will not contain XDC timing constraints because these are expected to be referred to by the IP .xci or .xcix file source. DCP files prior to 2017.1 will contain incorrect constraints because they were generated with default OOC clock period which will not likely match your top level clock constraints when used in the full design context. 
+ 
+Scanning sources...
+Finished scanning sources
+CRITICAL WARNING: [Project 1-863] The design checkpoint file E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll.dcp was generated for a block design or an IP or BD by an out of context synthesis run and should not directly be used as a source in a Vivado flow to refer to an IP source.  As of 2017.1, the DCP from OOC runs will not contain XDC timing constraints because these are expected to be referred to by the IP .xci or .xcix file source. DCP files prior to 2017.1 will contain incorrect constraints because they were generated with default OOC clock period which will not likely match your top level clock constraints when used in the full design context. 
+ 
+CRITICAL WARNING: [Project 1-863] The design checkpoint file E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll.dcp was generated for a block design or an IP or BD by an out of context synthesis run and should not directly be used as a source in a Vivado flow to refer to an IP source.  As of 2017.1, the DCP from OOC runs will not contain XDC timing constraints because these are expected to be referred to by the IP .xci or .xcix file source. DCP files prior to 2017.1 will contain incorrect constraints because they were generated with default OOC clock period which will not likely match your top level clock constraints when used in the full design context. 
+ 
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2019.2/data/ip'.
+open_project: Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 900.895 ; gain = 222.383
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+WARNING: [HDL 9-3756] overwriting previous definition of module 'clk_pll' [E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll_stub.v:15]
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'clk_pll' found in library 'xil_defaultlib'
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'clk_pll()' found in library 'xil_defaultlib'
+Duplicate found at line 14 of file E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll_sim_netlist.v
+	(Active) Duplicate found at line 15 of file E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll_stub.v
+[Thu May 15 21:48:26 2025] Launched synth_1...
+Run output will be captured here: E:/la32r_soc_ciciec/fpga/project/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+WARNING: [HDL 9-3756] overwriting previous definition of module 'clk_pll' [E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll_stub.v:15]
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'clk_pll' found in library 'xil_defaultlib'
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'clk_pll()' found in library 'xil_defaultlib'
+Duplicate found at line 14 of file E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll_sim_netlist.v
+	(Active) Duplicate found at line 15 of file E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll_stub.v
+[Thu May 15 21:48:59 2025] Launched synth_1...
+Run output will be captured here: E:/la32r_soc_ciciec/fpga/project/synth_1/runme.log
+export_ip_user_files -of_objects  [get_files E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll_sim_netlist.v] -no_script -reset -force -quiet
+remove_files  E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll_sim_netlist.v
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+WARNING: [filemgmt 20-1318] Duplicate Design Unit 'clk_pll' found in library 'xil_defaultlib'
+[Thu May 15 21:51:20 2025] Launched synth_1...
+Run output will be captured here: E:/la32r_soc_ciciec/fpga/project/synth_1/runme.log
+launch_runs impl_1 -jobs 10
+[Thu May 15 21:53:46 2025] Launched impl_1...
+Run output will be captured here: E:/la32r_soc_ciciec/fpga/project/Loongson_Soc.runs/impl_1/runme.log
+reset_run impl_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. PID not specified
+
+launch_runs impl_1 -jobs 10
+[Thu May 15 21:53:56 2025] Launched impl_1...
+Run output will be captured here: E:/la32r_soc_ciciec/fpga/project/Loongson_Soc.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Device 21-403] Loading part xc7a200tfbg676-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.144 . Memory (MB): peak = 1399.559 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1286 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2019.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2158.363 ; gain = 0.000
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2158.363 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2158.363 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 200 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 66 instances
+  RAM128X1D => RAM128X1D (MUXF7(x2), RAMD64E(x4)): 8 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 92 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 34 instances
+
+open_run: Time (s): cpu = 00:00:16 ; elapsed = 00:00:15 . Memory (MB): peak = 2386.883 ; gain = 1283.195
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/la32r_soc_ciciec/fpga/project/Loongson_Soc.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2019.2/data/xsim/xsim.ini' copied to run dir:'E:/la32r_soc_ciciec/fpga/project/Loongson_Soc.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_top' in fileset 'sim_1'...
+WARNING: [SIM-utils-52] IP component XML file does not exist: 'e:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll.xml'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/la32r_soc_ciciec/fpga/project/Loongson_Soc.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_top_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AxiCrossbar_1x4
+INFO: [VRFC 10-311] analyzing module Axi4WriteOnlyDecoder
+INFO: [VRFC 10-311] analyzing module Axi4ReadOnlyDecoder
+INFO: [VRFC 10-311] analyzing module Axi4WriteOnlyErrorSlave
+INFO: [VRFC 10-311] analyzing module Axi4ReadOnlyErrorSlave
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Axi_CDC
+INFO: [VRFC 10-311] analyzing module StreamFifoCC_4
+INFO: [VRFC 10-311] analyzing module StreamFifoCC_3
+INFO: [VRFC 10-311] analyzing module StreamFifoCC_2
+INFO: [VRFC 10-311] analyzing module StreamFifoCC_1
+INFO: [VRFC 10-311] analyzing module StreamFifoCC
+INFO: [VRFC 10-311] analyzing module BufferCC_1
+INFO: [VRFC 10-311] analyzing module BufferCC
+INFO: [VRFC 10-311] analyzing module BufferCC_6
+INFO: [VRFC 10-311] analyzing module BufferCC_5
+INFO: [VRFC 10-311] analyzing module BufferCC_4
+INFO: [VRFC 10-311] analyzing module BufferCC_8
+INFO: [VRFC 10-311] analyzing module BufferCC_7
+INFO: [VRFC 10-311] analyzing module BufferCC_11
+INFO: [VRFC 10-311] analyzing module BufferCC_10
+INFO: [VRFC 10-311] analyzing module BufferCC_9
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/addr_trans.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module addr_trans
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/alu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module alu
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/APB_UART/apb_mux2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apb_mux2
+INFO: [VRFC 10-311] analyzing module arb_2_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/APB_UART/axi2apb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axi2apb_bridge
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/axi2sram_sp_ext.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axi2sram_sp_ext
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/axi_bridge.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axi_bridge
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/APB_UART/axi_uart_controller.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axi_uart_controller
+INFO: [VRFC 10-2458] undeclared symbol nand_dma_ack_i, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/APB_UART/axi_uart_controller.v:179]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/ram_wrap/axi_wrap_ram_sp_ext.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axi_wrap_ram_sp_ext
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/btb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module btb
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/ram_wrap/cache_sram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_bank_sram
+INFO: [VRFC 10-311] analyzing module tagv_sram
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll_stub.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clk_pll
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module confreg
+WARNING: [VRFC 10-3676] redeclaration of ansi port 's_wready' is not allowed [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:112]
+WARNING: [VRFC 10-3676] redeclaration of ansi port 's_rdata' is not allowed [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:173]
+WARNING: [VRFC 10-3676] redeclaration of ansi port 's_rvalid' is not allowed [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:174]
+WARNING: [VRFC 10-3676] redeclaration of ansi port 's_bvalid' is not allowed [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:208]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/csr.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module csr
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/dcache.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dcache
+INFO: [VRFC 10-311] analyzing module lfsr
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/confreg/digitaltube_controller.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module digitaltube_controller
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/div.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module div
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/exe_stage.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module exe_stage
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/icache.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module icache
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/id_stage.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module id_stage
+WARNING: [VRFC 10-3380] identifier 'inst_csr_rstat_en' is used before its declaration [E:/la32r_soc_ciciec/rtl/ip/open-la500/id_stage.v:316]
+WARNING: [VRFC 10-3380] identifier 'inst_st_en' is used before its declaration [E:/la32r_soc_ciciec/rtl/ip/open-la500/id_stage.v:317]
+WARNING: [VRFC 10-3380] identifier 'inst_ld_en' is used before its declaration [E:/la32r_soc_ciciec/rtl/ip/open-la500/id_stage.v:318]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/if_stage.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module if_stage
+WARNING: [VRFC 10-3380] identifier 'btb_lock_en' is used before its declaration [E:/la32r_soc_ciciec/rtl/ip/open-la500/if_stage.v:163]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/mem_stage.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_stage
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module YDecoder
+INFO: [VRFC 10-311] analyzing module BoothBase
+INFO: [VRFC 10-311] analyzing module BoothInterBase
+INFO: [VRFC 10-311] analyzing module addr
+INFO: [VRFC 10-311] analyzing module WallaceTreeBase
+INFO: [VRFC 10-311] analyzing module mul
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module core_top
+INFO: [VRFC 10-2458] undeclared symbol ws_valid_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:620]
+INFO: [VRFC 10-2458] undeclared symbol cnt_inst_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:621]
+INFO: [VRFC 10-2458] undeclared symbol timer_64_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:622]
+INFO: [VRFC 10-2458] undeclared symbol inst_ld_en_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:623]
+INFO: [VRFC 10-2458] undeclared symbol ld_paddr_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:624]
+INFO: [VRFC 10-2458] undeclared symbol ld_vaddr_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:625]
+INFO: [VRFC 10-2458] undeclared symbol inst_st_en_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:626]
+INFO: [VRFC 10-2458] undeclared symbol st_paddr_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:627]
+INFO: [VRFC 10-2458] undeclared symbol st_vaddr_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:628]
+INFO: [VRFC 10-2458] undeclared symbol st_data_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:629]
+INFO: [VRFC 10-2458] undeclared symbol csr_rstat_en_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:630]
+INFO: [VRFC 10-2458] undeclared symbol csr_data_diff, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:631]
+INFO: [VRFC 10-2458] undeclared symbol csr_crmd_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:703]
+INFO: [VRFC 10-2458] undeclared symbol csr_prmd_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:704]
+INFO: [VRFC 10-2458] undeclared symbol csr_ectl_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:705]
+INFO: [VRFC 10-2458] undeclared symbol csr_estat_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:706]
+INFO: [VRFC 10-2458] undeclared symbol csr_era_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:707]
+INFO: [VRFC 10-2458] undeclared symbol csr_badv_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:708]
+INFO: [VRFC 10-2458] undeclared symbol csr_eentry_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:709]
+INFO: [VRFC 10-2458] undeclared symbol csr_tlbidx_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:710]
+INFO: [VRFC 10-2458] undeclared symbol csr_tlbehi_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:711]
+INFO: [VRFC 10-2458] undeclared symbol csr_tlbelo0_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:712]
+INFO: [VRFC 10-2458] undeclared symbol csr_tlbelo1_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:713]
+INFO: [VRFC 10-2458] undeclared symbol csr_asid_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:714]
+INFO: [VRFC 10-2458] undeclared symbol csr_save0_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:715]
+INFO: [VRFC 10-2458] undeclared symbol csr_save1_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:716]
+INFO: [VRFC 10-2458] undeclared symbol csr_save2_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:717]
+INFO: [VRFC 10-2458] undeclared symbol csr_save3_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:718]
+INFO: [VRFC 10-2458] undeclared symbol csr_tid_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:719]
+INFO: [VRFC 10-2458] undeclared symbol csr_tcfg_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:720]
+INFO: [VRFC 10-2458] undeclared symbol csr_tval_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:721]
+INFO: [VRFC 10-2458] undeclared symbol csr_ticlr_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:722]
+INFO: [VRFC 10-2458] undeclared symbol csr_llbctl_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:723]
+INFO: [VRFC 10-2458] undeclared symbol csr_tlbrentry_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:724]
+INFO: [VRFC 10-2458] undeclared symbol csr_dmw0_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:725]
+INFO: [VRFC 10-2458] undeclared symbol csr_dmw1_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:726]
+INFO: [VRFC 10-2458] undeclared symbol csr_pgdl_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:727]
+INFO: [VRFC 10-2458] undeclared symbol csr_pgdh_diff_0, assumed default net type wire [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:728]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/perf_counter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module perf_counter
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/raminfr.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module raminfr
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/regfile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module regfile
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/rst_sync/rst_sync.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rst_sync
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/soc_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module soc_top
+INFO: [VRFC 10-2458] undeclared symbol pll_locked, assumed default net type wire [E:/la32r_soc_ciciec/rtl/soc_top.v:118]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/sim/sram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sram_sp
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/tlb_entry.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tlb_entry
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module decoder_2_4
+INFO: [VRFC 10-311] analyzing module encoder_4_2
+INFO: [VRFC 10-311] analyzing module decoder_4_16
+INFO: [VRFC 10-311] analyzing module encoder_16_4
+INFO: [VRFC 10-311] analyzing module decoder_5_32
+INFO: [VRFC 10-311] analyzing module encoder_32_5
+INFO: [VRFC 10-311] analyzing module decoder_6_64
+INFO: [VRFC 10-311] analyzing module one_valid_n
+INFO: [VRFC 10-311] analyzing module one_valid_16
+INFO: [VRFC 10-311] analyzing module one_valid_32
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_receiver.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_receiver
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_regs.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_regs
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_rfifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_rfifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_sync_flops.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_sync_flops
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_tfifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_tfifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module UART_TOP
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_transmitter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_transmitter
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/rtl/ip/open-la500/wb_stage.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wb_stage
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/sim/mycpu_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/la32r_soc_ciciec/fpga/project/Loongson_Soc.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 2533.969 ; gain = 0.000
+INFO: [USF-XSim-69] 'compile' step finished in '5' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/la32r_soc_ciciec/fpga/project/Loongson_Soc.sim/sim_1/behav/xsim'
+"xelab -wto 8549a2b3bab04757be5197c965d49aa1 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 8549a2b3bab04757be5197c965d49aa1 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 2 for port 'awlock' [E:/la32r_soc_ciciec/rtl/soc_top.v:220]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 64 for port 'ws_timer_64_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:622]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'ws_inst_ld_en_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:623]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'ws_ld_paddr_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:624]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'ws_ld_vaddr_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:625]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 8 for port 'ws_inst_st_en_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:626]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'ws_st_paddr_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:627]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'ws_st_vaddr_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:628]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'ws_st_data_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:629]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'ws_csr_data_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:631]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_crmd_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:703]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_prmd_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:704]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_ectl_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:705]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_estat_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:706]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_era_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:707]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_badv_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:708]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_eentry_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:709]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_tlbidx_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:710]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_tlbehi_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:711]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_tlbelo0_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:712]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_tlbelo1_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:713]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_asid_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:714]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_save0_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:715]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_save1_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:716]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_save2_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:717]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_save3_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:718]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_tid_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:719]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_tcfg_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:720]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_tval_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:721]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_ticlr_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:722]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_llbctl_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:723]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_tlbrentry_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:724]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_dmw0_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:725]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_dmw1_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:726]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_pgdl_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:727]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'csr_pgdh_diff' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:728]
+WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 1 for port 'axiIn_arlock' [E:/la32r_soc_ciciec/rtl/soc_top.v:329]
+WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 1 for port 'axiOut_1_awlock' [E:/la32r_soc_ciciec/rtl/soc_top.v:621]
+WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 1 for port 'axiOut_1_arlock' [E:/la32r_soc_ciciec/rtl/soc_top.v:643]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 5 for port 'axiOut_2_rid' [E:/la32r_soc_ciciec/rtl/soc_top.v:654]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'axiOut_2_rdata' [E:/la32r_soc_ciciec/rtl/soc_top.v:655]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 2 for port 'axiOut_2_rresp' [E:/la32r_soc_ciciec/rtl/soc_top.v:656]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 5 for port 'axiOut_2_bid' [E:/la32r_soc_ciciec/rtl/soc_top.v:661]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 2 for port 'axiOut_2_bresp' [E:/la32r_soc_ciciec/rtl/soc_top.v:662]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 2 for port 'axi_arlock' [E:/la32r_soc_ciciec/rtl/soc_top.v:720]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 2 for port 'axi_awlock' [E:/la32r_soc_ciciec/rtl/soc_top.v:738]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 4 for port 's_arlen' [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/axi_wrap_ram_sp_ext.v:200]
+WARNING: [VRFC 10-3091] actual bit length 5 differs from formal bit length 6 for port 's_awid' [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/axi_wrap_ram_sp_ext.v:208]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 4 for port 's_awlen' [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/axi_wrap_ram_sp_ext.v:209]
+WARNING: [VRFC 10-3091] actual bit length 5 differs from formal bit length 6 for port 's_rid' [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/axi_wrap_ram_sp_ext.v:226]
+WARNING: [VRFC 10-5021] port 'clock_btn' is not connected on this instance [E:/la32r_soc_ciciec/sim/mycpu_tb.v:113]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v" Line 5. Module AxiCrossbar_1x4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v" Line 1304. Module Axi4ReadOnlyDecoder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v" Line 1684. Module Axi4ReadOnlyErrorSlave doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v" Line 918. Module Axi4WriteOnlyDecoder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v" Line 1616. Module Axi4WriteOnlyErrorSlave doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.rst_sync
+Compiling module xil_defaultlib.if_stage
+Compiling module xil_defaultlib.decoder_6_64
+Compiling module xil_defaultlib.decoder_4_16
+Compiling module xil_defaultlib.decoder_2_4
+Compiling module xil_defaultlib.decoder_5_32
+Compiling module xil_defaultlib.regfile
+Compiling module xil_defaultlib.id_stage
+Compiling module xil_defaultlib.alu
+Compiling module xil_defaultlib.exe_stage
+Compiling module xil_defaultlib.div
+Compiling module xil_defaultlib.YDecoder
+Compiling module xil_defaultlib.BoothBase
+Compiling module xil_defaultlib.BoothInterBase_default
+Compiling module xil_defaultlib.addr
+Compiling module xil_defaultlib.WallaceTreeBase
+Compiling module xil_defaultlib.mul_default
+Compiling module xil_defaultlib.mem_stage
+Compiling module xil_defaultlib.wb_stage
+Compiling module xil_defaultlib.csr
+Compiling module xil_defaultlib.axi_bridge
+Compiling module xil_defaultlib.encoder_4_2
+Compiling module xil_defaultlib.encoder_16_4
+Compiling module xil_defaultlib.encoder_32_5
+Compiling module xil_defaultlib.tlb_entry_default
+Compiling module xil_defaultlib.addr_trans
+Compiling module xil_defaultlib.one_valid_n(n=2)
+Compiling module xil_defaultlib.data_bank_sram_default
+Compiling module xil_defaultlib.tagv_sram_default
+Compiling module xil_defaultlib.lfsr
+Compiling module xil_defaultlib.icache_default
+Compiling module xil_defaultlib.dcache_default
+Compiling module xil_defaultlib.one_valid_32
+Compiling module xil_defaultlib.one_valid_16
+Compiling module xil_defaultlib.btb_default
+Compiling module xil_defaultlib.perf_counter
+Compiling module xil_defaultlib.core_top
+Compiling module xil_defaultlib.BufferCC_9
+Compiling module xil_defaultlib.BufferCC_10
+Compiling module xil_defaultlib.BufferCC_11
+Compiling module xil_defaultlib.StreamFifoCC
+Compiling module xil_defaultlib.BufferCC_7
+Compiling module xil_defaultlib.BufferCC_8
+Compiling module xil_defaultlib.StreamFifoCC_1
+Compiling module xil_defaultlib.BufferCC_4
+Compiling module xil_defaultlib.BufferCC_5
+Compiling module xil_defaultlib.BufferCC_6
+Compiling module xil_defaultlib.StreamFifoCC_2
+Compiling module xil_defaultlib.StreamFifoCC_3
+Compiling module xil_defaultlib.BufferCC
+Compiling module xil_defaultlib.BufferCC_1
+Compiling module xil_defaultlib.StreamFifoCC_4
+Compiling module xil_defaultlib.Axi_CDC
+Compiling module xil_defaultlib.Axi4ReadOnlyErrorSlave
+Compiling module xil_defaultlib.Axi4ReadOnlyDecoder
+Compiling module xil_defaultlib.Axi4WriteOnlyErrorSlave
+Compiling module xil_defaultlib.Axi4WriteOnlyDecoder
+Compiling module xil_defaultlib.AxiCrossbar_1x4
+Compiling module xil_defaultlib.axi2sram_sp_ext_default
+Compiling module xil_defaultlib.axi_wrap_ram_sp_ext
+Compiling module xil_defaultlib.axi2apb_bridge
+Compiling module xil_defaultlib.arb_2_1
+Compiling module xil_defaultlib.apb_mux2
+Compiling module xil_defaultlib.raminfr
+Compiling module xil_defaultlib.uart_tfifo
+Compiling module xil_defaultlib.uart_transmitter
+Compiling module xil_defaultlib.uart_sync_flops(width=1,init_val...
+Compiling module xil_defaultlib.uart_rfifo(fifo_width=11)
+Compiling module xil_defaultlib.uart_receiver
+Compiling module xil_defaultlib.uart_regs
+Compiling module xil_defaultlib.UART_TOP
+Compiling module xil_defaultlib.axi_uart_controller
+Compiling module xil_defaultlib.digitaltube_controller
+Compiling module xil_defaultlib.confreg(SIMULATION=1'b1)
+Compiling module xil_defaultlib.soc_top(SIMULATION=1'b1)
+Compiling module xil_defaultlib.sram_sp(AW=18,Init_File="../../....
+Compiling module xil_defaultlib.tb_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_top_behav
+
+****** Webtalk v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source E:/la32r_soc_ciciec/fpga/project/Loongson_Soc.sim/sim_1/behav/xsim/xsim.dir/tb_top_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu May 15 22:03:05 2025...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:21 . Memory (MB): peak = 2533.969 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '21' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/la32r_soc_ciciec/fpga/project/Loongson_Soc.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_top_behav -key {Behavioral:sim_1:Functional:tb_top} -tclbatch {tb_top.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source tb_top.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# log_wave -r /
+WARNING: [Simtcl 6-197] One or more HDL objects could not be logged because of object type or size limitations.  To see details please rerun the command with -verbose (-v).
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:32 . Memory (MB): peak = 2622.992 ; gain = 89.023
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/clk}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/reset}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/base_ram_data}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/base_ram_addr}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/base_ram_be_n}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/base_ram_ce_n}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/base_ram_oe_n}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/base_ram_we_n}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/ext_ram_data}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/ext_ram_addr}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/ext_ram_be_n}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/ext_ram_ce_n}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/ext_ram_oe_n}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/ext_ram_we_n}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/cpu_clk}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/cpu_resetn}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/sys_clk}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/sys_resetn}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/tb_top/u_soc_top/debug_wb_pc}} 
+run all
+Hello Loongarch32r!
+
+a = 100
+
+b = 3.25run: Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2622.992 ; gain = 0.000

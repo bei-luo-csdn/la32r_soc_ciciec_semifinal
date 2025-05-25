@@ -1,0 +1,2385 @@
+
+*** Running vivado
+    with args -log soc_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_top.tcl
+
+
+****** Vivado v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source soc_top.tcl -notrace
+Command: synth_design -top soc_top -part xc7a200tfbg676-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Device 21-403] Loading part xc7a200tfbg676-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 18316 
+WARNING: [Synth 8-2490] overwriting previous definition of module clk_pll [E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll_stub.v:15]
+WARNING: [Synth 8-2611] redeclaration of ansi port s_wready is not allowed [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:112]
+WARNING: [Synth 8-2611] redeclaration of ansi port s_rdata is not allowed [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:173]
+WARNING: [Synth 8-2611] redeclaration of ansi port s_rvalid is not allowed [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:174]
+WARNING: [Synth 8-2611] redeclaration of ansi port s_rlast is not allowed [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:174]
+WARNING: [Synth 8-2611] redeclaration of ansi port s_bvalid is not allowed [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:208]
+WARNING: [Synth 8-6901] identifier 'inst_csr_rstat_en' is used before its declaration [E:/la32r_soc_ciciec/rtl/ip/open-la500/id_stage.v:316]
+WARNING: [Synth 8-6901] identifier 'inst_st_en' is used before its declaration [E:/la32r_soc_ciciec/rtl/ip/open-la500/id_stage.v:317]
+WARNING: [Synth 8-6901] identifier 'inst_ld_en' is used before its declaration [E:/la32r_soc_ciciec/rtl/ip/open-la500/id_stage.v:318]
+WARNING: [Synth 8-6901] identifier 'btb_lock_en' is used before its declaration [E:/la32r_soc_ciciec/rtl/ip/open-la500/if_stage.v:163]
+WARNING: [Synth 8-6901] identifier 'btb_lock_buffer' is used before its declaration [E:/la32r_soc_ciciec/rtl/ip/open-la500/if_stage.v:163]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1009.609 ; gain = 242.145
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'soc_top' [E:/la32r_soc_ciciec/rtl/soc_top.v:36]
+	Parameter SIMULATION bound to: 1'b0 
+INFO: [Synth 8-6157] synthesizing module 'clk_pll' [E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll_stub.v:15]
+INFO: [Synth 8-6157] synthesizing module 'rst_sync' [E:/la32r_soc_ciciec/rtl/ip/rst_sync/rst_sync.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'rst_sync' (1#1) [E:/la32r_soc_ciciec/rtl/ip/rst_sync/rst_sync.v:1]
+INFO: [Synth 8-6157] synthesizing module 'core_top' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:1]
+	Parameter TLBNUM bound to: 32 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'if_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/if_stage.v:4]
+	Parameter flush_inst_req_empty bound to: 1'b0 
+	Parameter flush_inst_req_full bound to: 1'b1 
+	Parameter br_target_inst_req_empty bound to: 3'b001 
+	Parameter br_target_inst_req_wait_slot bound to: 3'b010 
+	Parameter br_target_inst_req_wait_br_target bound to: 3'b100 
+INFO: [Synth 8-6155] done synthesizing module 'if_stage' (2#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/if_stage.v:4]
+INFO: [Synth 8-6157] synthesizing module 'id_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/id_stage.v:3]
+INFO: [Synth 8-6157] synthesizing module 'decoder_6_64' [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:85]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_6_64' (3#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:85]
+INFO: [Synth 8-6157] synthesizing module 'decoder_4_16' [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_4_16' (4#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:26]
+INFO: [Synth 8-6157] synthesizing module 'decoder_2_4' [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_2_4' (5#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:1]
+INFO: [Synth 8-6157] synthesizing module 'decoder_5_32' [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_5_32' (6#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:57]
+INFO: [Synth 8-6157] synthesizing module 'regfile' [E:/la32r_soc_ciciec/rtl/ip/open-la500/regfile.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'regfile' (7#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/regfile.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'id_stage' (8#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/id_stage.v:3]
+INFO: [Synth 8-6157] synthesizing module 'exe_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/exe_stage.v:4]
+INFO: [Synth 8-6157] synthesizing module 'alu' [E:/la32r_soc_ciciec/rtl/ip/open-la500/alu.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (9#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/alu.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'exe_stage' (10#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/exe_stage.v:4]
+INFO: [Synth 8-6157] synthesizing module 'div' [E:/la32r_soc_ciciec/rtl/ip/open-la500/div.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'div' (11#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/div.v:2]
+INFO: [Synth 8-6157] synthesizing module 'mul' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:120]
+INFO: [Synth 8-6157] synthesizing module 'BoothInterBase' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:29]
+INFO: [Synth 8-6157] synthesizing module 'BoothBase' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'BoothBase' (12#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:14]
+INFO: [Synth 8-6157] synthesizing module 'YDecoder' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'YDecoder' (13#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'BoothInterBase' (14#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:29]
+INFO: [Synth 8-6157] synthesizing module 'WallaceTreeBase' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:77]
+INFO: [Synth 8-6157] synthesizing module 'addr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:66]
+INFO: [Synth 8-6155] done synthesizing module 'addr' (15#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:66]
+INFO: [Synth 8-6155] done synthesizing module 'WallaceTreeBase' (16#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:77]
+INFO: [Synth 8-6155] done synthesizing module 'mul' (17#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:120]
+INFO: [Synth 8-6157] synthesizing module 'mem_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mem_stage.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'mem_stage' (18#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/mem_stage.v:4]
+INFO: [Synth 8-6157] synthesizing module 'wb_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/wb_stage.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'wb_stage' (19#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/wb_stage.v:4]
+WARNING: [Synth 8-689] width (1) of port connection 'ws_timer_64_diff' does not match port width (64) of module 'wb_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:622]
+WARNING: [Synth 8-689] width (1) of port connection 'ws_inst_ld_en_diff' does not match port width (8) of module 'wb_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:623]
+WARNING: [Synth 8-689] width (1) of port connection 'ws_ld_paddr_diff' does not match port width (32) of module 'wb_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:624]
+WARNING: [Synth 8-689] width (1) of port connection 'ws_ld_vaddr_diff' does not match port width (32) of module 'wb_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:625]
+WARNING: [Synth 8-689] width (1) of port connection 'ws_inst_st_en_diff' does not match port width (8) of module 'wb_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:626]
+WARNING: [Synth 8-689] width (1) of port connection 'ws_st_paddr_diff' does not match port width (32) of module 'wb_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:627]
+WARNING: [Synth 8-689] width (1) of port connection 'ws_st_vaddr_diff' does not match port width (32) of module 'wb_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:628]
+WARNING: [Synth 8-689] width (1) of port connection 'ws_st_data_diff' does not match port width (32) of module 'wb_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:629]
+WARNING: [Synth 8-689] width (1) of port connection 'ws_csr_data_diff' does not match port width (32) of module 'wb_stage' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:631]
+INFO: [Synth 8-6157] synthesizing module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/csr.v:4]
+	Parameter TLBNUM bound to: 32 - type: integer 
+	Parameter CRMD bound to: 14'b00000000000000 
+	Parameter PRMD bound to: 14'b00000000000001 
+	Parameter ECTL bound to: 14'b00000000000100 
+	Parameter ESTAT bound to: 14'b00000000000101 
+	Parameter ERA bound to: 14'b00000000000110 
+	Parameter BADV bound to: 14'b00000000000111 
+	Parameter EENTRY bound to: 14'b00000000001100 
+	Parameter TLBIDX bound to: 14'b00000000010000 
+	Parameter TLBEHI bound to: 14'b00000000010001 
+	Parameter TLBELO0 bound to: 14'b00000000010010 
+	Parameter TLBELO1 bound to: 14'b00000000010011 
+	Parameter ASID bound to: 14'b00000000011000 
+	Parameter PGDL bound to: 14'b00000000011001 
+	Parameter PGDH bound to: 14'b00000000011010 
+	Parameter PGD bound to: 14'b00000000011011 
+	Parameter CPUID bound to: 14'b00000000100000 
+	Parameter SAVE0 bound to: 14'b00000000110000 
+	Parameter SAVE1 bound to: 14'b00000000110001 
+	Parameter SAVE2 bound to: 14'b00000000110010 
+	Parameter SAVE3 bound to: 14'b00000000110011 
+	Parameter TID bound to: 14'b00000001000000 
+	Parameter TCFG bound to: 14'b00000001000001 
+	Parameter TVAL bound to: 14'b00000001000010 
+	Parameter CNTC bound to: 14'b00000001000011 
+	Parameter TICLR bound to: 14'b00000001000100 
+	Parameter LLBCTL bound to: 14'b00000001100000 
+	Parameter TLBRENTRY bound to: 14'b00000010001000 
+	Parameter DMW0 bound to: 14'b00000110000000 
+	Parameter DMW1 bound to: 14'b00000110000001 
+	Parameter BRK bound to: 14'b00000100000000 
+	Parameter DISABLE_CACHE bound to: 14'b00000100000001 
+WARNING: [Synth 8-6014] Unused sequential element csr_brk_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/open-la500/csr.v:745]
+INFO: [Synth 8-6155] done synthesizing module 'csr' (20#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/csr.v:4]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_crmd_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:703]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_prmd_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:704]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_ectl_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:705]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_estat_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:706]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_era_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:707]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_badv_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:708]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_eentry_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:709]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_tlbidx_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:710]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_tlbehi_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:711]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_tlbelo0_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:712]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_tlbelo1_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:713]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_asid_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:714]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_save0_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:715]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_save1_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:716]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_save2_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:717]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_save3_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:718]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_tid_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:719]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_tcfg_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:720]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_tval_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:721]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_ticlr_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:722]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_llbctl_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:723]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_tlbrentry_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:724]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_dmw0_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:725]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_dmw1_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:726]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_pgdl_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:727]
+WARNING: [Synth 8-689] width (1) of port connection 'csr_pgdh_diff' does not match port width (32) of module 'csr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:728]
+INFO: [Synth 8-6157] synthesizing module 'axi_bridge' [E:/la32r_soc_ciciec/rtl/ip/open-la500/axi_bridge.v:1]
+	Parameter read_requst_empty bound to: 1'b0 
+	Parameter read_requst_ready bound to: 1'b1 
+	Parameter read_respond_empty bound to: 1'b0 
+	Parameter read_respond_transfer bound to: 1'b1 
+	Parameter write_request_empty bound to: 3'b000 
+	Parameter write_addr_ready bound to: 3'b001 
+	Parameter write_data_ready bound to: 3'b010 
+	Parameter write_all_ready bound to: 3'b011 
+	Parameter write_data_transform bound to: 3'b100 
+	Parameter write_data_wait bound to: 3'b101 
+	Parameter write_wait_b bound to: 3'b110 
+WARNING: [Synth 8-6014] Unused sequential element read_respond_state_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/open-la500/axi_bridge.v:223]
+INFO: [Synth 8-6155] done synthesizing module 'axi_bridge' (21#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/axi_bridge.v:1]
+INFO: [Synth 8-6157] synthesizing module 'addr_trans' [E:/la32r_soc_ciciec/rtl/ip/open-la500/addr_trans.v:3]
+	Parameter TLBNUM bound to: 32 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'tlb_entry' [E:/la32r_soc_ciciec/rtl/ip/open-la500/tlb_entry.v:1]
+	Parameter TLBNUM bound to: 32 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'encoder_32_5' [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:69]
+INFO: [Synth 8-6157] synthesizing module 'encoder_16_4' [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:38]
+INFO: [Synth 8-6157] synthesizing module 'encoder_4_2' [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'encoder_4_2' (22#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'encoder_16_4' (23#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'encoder_32_5' (24#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:69]
+WARNING: [Synth 8-693] zero replication count - replication ignored [E:/la32r_soc_ciciec/rtl/ip/open-la500/tlb_entry.v:135]
+WARNING: [Synth 8-693] zero replication count - replication ignored [E:/la32r_soc_ciciec/rtl/ip/open-la500/tlb_entry.v:136]
+WARNING: [Synth 8-693] zero replication count - replication ignored [E:/la32r_soc_ciciec/rtl/ip/open-la500/tlb_entry.v:139]
+WARNING: [Synth 8-693] zero replication count - replication ignored [E:/la32r_soc_ciciec/rtl/ip/open-la500/tlb_entry.v:148]
+WARNING: [Synth 8-6014] Unused sequential element s0_fetch_r_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/open-la500/tlb_entry.v:110]
+WARNING: [Synth 8-6014] Unused sequential element s1_fetch_r_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/open-la500/tlb_entry.v:116]
+INFO: [Synth 8-6155] done synthesizing module 'tlb_entry' (25#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/tlb_entry.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'addr_trans' (26#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/addr_trans.v:3]
+INFO: [Synth 8-6157] synthesizing module 'icache' [E:/la32r_soc_ciciec/rtl/ip/open-la500/icache.v:1]
+	Parameter main_idle bound to: 5'b00001 
+	Parameter main_lookup bound to: 5'b00010 
+	Parameter main_replace bound to: 5'b01000 
+	Parameter main_refill bound to: 5'b10000 
+	Parameter write_buffer_idle bound to: 1'b0 
+	Parameter write_buffer_write bound to: 1'b1 
+INFO: [Synth 8-6157] synthesizing module 'data_bank_sram' [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/cache_sram.v:3]
+	Parameter V_STYLE bound to: block - type: string 
+	Parameter P_STYLE bound to: block_ram - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'data_bank_sram' (27#1) [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/cache_sram.v:3]
+INFO: [Synth 8-6157] synthesizing module 'tagv_sram' [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/cache_sram.v:52]
+	Parameter V_STYLE bound to: block - type: string 
+	Parameter P_STYLE bound to: block_ram - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'tagv_sram' (28#1) [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/cache_sram.v:52]
+INFO: [Synth 8-6157] synthesizing module 'one_valid_n' [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:100]
+	Parameter n bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'one_valid_n' (29#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:100]
+INFO: [Synth 8-6157] synthesizing module 'lfsr' [E:/la32r_soc_ciciec/rtl/ip/open-la500/dcache.v:623]
+INFO: [Synth 8-6155] done synthesizing module 'lfsr' (30#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/dcache.v:623]
+WARNING: [Synth 8-6014] Unused sequential element request_buffer_op_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/open-la500/icache.v:128]
+WARNING: [Synth 8-6014] Unused sequential element request_buffer_wstrb_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/open-la500/icache.v:132]
+WARNING: [Synth 8-6014] Unused sequential element request_buffer_wdata_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/open-la500/icache.v:133]
+WARNING: [Synth 8-3848] Net wr_type in module/entity icache does not have driver. [E:/la32r_soc_ciciec/rtl/ip/open-la500/icache.v:33]
+WARNING: [Synth 8-3848] Net wr_addr in module/entity icache does not have driver. [E:/la32r_soc_ciciec/rtl/ip/open-la500/icache.v:34]
+WARNING: [Synth 8-3848] Net wr_wstrb in module/entity icache does not have driver. [E:/la32r_soc_ciciec/rtl/ip/open-la500/icache.v:35]
+WARNING: [Synth 8-3848] Net wr_data in module/entity icache does not have driver. [E:/la32r_soc_ciciec/rtl/ip/open-la500/icache.v:36]
+INFO: [Synth 8-6155] done synthesizing module 'icache' (31#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/icache.v:1]
+INFO: [Synth 8-6157] synthesizing module 'dcache' [E:/la32r_soc_ciciec/rtl/ip/open-la500/dcache.v:1]
+	Parameter main_idle bound to: 5'b00001 
+	Parameter main_lookup bound to: 5'b00010 
+	Parameter main_miss bound to: 5'b00100 
+	Parameter main_replace bound to: 5'b01000 
+	Parameter main_refill bound to: 5'b10000 
+	Parameter write_buffer_idle bound to: 1'b0 
+	Parameter write_buffer_write bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'dcache' (32#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/dcache.v:1]
+INFO: [Synth 8-6157] synthesizing module 'btb' [E:/la32r_soc_ciciec/rtl/ip/open-la500/btb.v:1]
+	Parameter BTBNUM bound to: 32 - type: integer 
+	Parameter RASNUM bound to: 16 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'one_valid_32' [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:147]
+INFO: [Synth 8-6155] done synthesizing module 'one_valid_32' (33#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:147]
+INFO: [Synth 8-6157] synthesizing module 'one_valid_16' [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:126]
+INFO: [Synth 8-6155] done synthesizing module 'one_valid_16' (34#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/tools.v:126]
+INFO: [Synth 8-6155] done synthesizing module 'btb' (35#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/btb.v:1]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:972]
+INFO: [Synth 8-6157] synthesizing module 'perf_counter' [E:/la32r_soc_ciciec/rtl/ip/open-la500/perf_counter.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'perf_counter' (36#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/perf_counter.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'core_top' (37#1) [E:/la32r_soc_ciciec/rtl/ip/open-la500/mycpu_top.v:1]
+WARNING: [Synth 8-689] width (1) of port connection 'awlock' does not match port width (2) of module 'core_top' [E:/la32r_soc_ciciec/rtl/soc_top.v:220]
+INFO: [Synth 8-6157] synthesizing module 'Axi_CDC' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:6]
+INFO: [Synth 8-6157] synthesizing module 'StreamFifoCC' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1122]
+INFO: [Synth 8-6157] synthesizing module 'BufferCC_9' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1586]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1593]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1594]
+INFO: [Synth 8-6155] done synthesizing module 'BufferCC_9' (38#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1586]
+INFO: [Synth 8-6157] synthesizing module 'BufferCC_10' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1562]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1569]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1570]
+INFO: [Synth 8-6155] done synthesizing module 'BufferCC_10' (39#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1562]
+INFO: [Synth 8-6157] synthesizing module 'BufferCC_11' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1538]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1545]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1546]
+INFO: [Synth 8-6155] done synthesizing module 'BufferCC_11' (40#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1538]
+WARNING: [Synth 8-6014] Unused sequential element popCC_addressGen_rData_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1282]
+INFO: [Synth 8-6155] done synthesizing module 'StreamFifoCC' (41#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1122]
+INFO: [Synth 8-6157] synthesizing module 'StreamFifoCC_1' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:921]
+INFO: [Synth 8-6157] synthesizing module 'BufferCC_7' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1514]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1521]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1522]
+INFO: [Synth 8-6155] done synthesizing module 'BufferCC_7' (42#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1514]
+INFO: [Synth 8-6157] synthesizing module 'BufferCC_8' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1490]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1497]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1498]
+INFO: [Synth 8-6155] done synthesizing module 'BufferCC_8' (43#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1490]
+WARNING: [Synth 8-6014] Unused sequential element popCC_addressGen_rData_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1053]
+INFO: [Synth 8-6155] done synthesizing module 'StreamFifoCC_1' (44#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:921]
+INFO: [Synth 8-6157] synthesizing module 'StreamFifoCC_2' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:719]
+INFO: [Synth 8-6157] synthesizing module 'BufferCC_4' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1466]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1473]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1474]
+INFO: [Synth 8-6155] done synthesizing module 'BufferCC_4' (45#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1466]
+INFO: [Synth 8-6157] synthesizing module 'BufferCC_5' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1442]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1449]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1450]
+INFO: [Synth 8-6155] done synthesizing module 'BufferCC_5' (46#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1442]
+INFO: [Synth 8-6157] synthesizing module 'BufferCC_6' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1418]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1425]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1426]
+INFO: [Synth 8-6155] done synthesizing module 'BufferCC_6' (47#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1418]
+WARNING: [Synth 8-6014] Unused sequential element popCC_addressGen_rData_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:855]
+INFO: [Synth 8-6155] done synthesizing module 'StreamFifoCC_2' (48#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:719]
+INFO: [Synth 8-6157] synthesizing module 'StreamFifoCC_3' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:487]
+WARNING: [Synth 8-6014] Unused sequential element popCC_addressGen_rData_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:636]
+INFO: [Synth 8-6155] done synthesizing module 'StreamFifoCC_3' (49#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:487]
+INFO: [Synth 8-6157] synthesizing module 'StreamFifoCC_4' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:279]
+INFO: [Synth 8-6157] synthesizing module 'BufferCC' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1390]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1397]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1398]
+INFO: [Synth 8-6155] done synthesizing module 'BufferCC' (50#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1390]
+INFO: [Synth 8-6157] synthesizing module 'BufferCC_1' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1366]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1373]
+INFO: [Synth 8-5534] Detected attribute (* async_reg = "true" *) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1374]
+INFO: [Synth 8-6155] done synthesizing module 'BufferCC_1' (51#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:1366]
+WARNING: [Synth 8-6014] Unused sequential element popCC_addressGen_rData_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:415]
+INFO: [Synth 8-6155] done synthesizing module 'StreamFifoCC_4' (52#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:279]
+INFO: [Synth 8-6155] done synthesizing module 'Axi_CDC' (53#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/Axi_CDC.v:6]
+WARNING: [Synth 8-689] width (2) of port connection 'axiIn_arlock' does not match port width (1) of module 'Axi_CDC' [E:/la32r_soc_ciciec/rtl/soc_top.v:329]
+INFO: [Synth 8-6157] synthesizing module 'AxiCrossbar_1x4' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v:5]
+INFO: [Synth 8-6157] synthesizing module 'Axi4ReadOnlyDecoder' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v:1304]
+INFO: [Synth 8-6157] synthesizing module 'Axi4ReadOnlyErrorSlave' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v:1684]
+WARNING: [Synth 8-3848] Net io_axi_r_payload_data in module/entity Axi4ReadOnlyErrorSlave does not have driver. [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v:1697]
+INFO: [Synth 8-6155] done synthesizing module 'Axi4ReadOnlyErrorSlave' (54#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v:1684]
+INFO: [Synth 8-6155] done synthesizing module 'Axi4ReadOnlyDecoder' (55#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v:1304]
+INFO: [Synth 8-6157] synthesizing module 'Axi4WriteOnlyDecoder' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v:918]
+INFO: [Synth 8-6157] synthesizing module 'Axi4WriteOnlyErrorSlave' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v:1616]
+INFO: [Synth 8-6155] done synthesizing module 'Axi4WriteOnlyErrorSlave' (56#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v:1616]
+INFO: [Synth 8-6155] done synthesizing module 'Axi4WriteOnlyDecoder' (57#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v:918]
+INFO: [Synth 8-6155] done synthesizing module 'AxiCrossbar_1x4' (58#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/AxiCrossbar_1x4.v:5]
+WARNING: [Synth 8-689] width (2) of port connection 'axiOut_1_awlock' does not match port width (1) of module 'AxiCrossbar_1x4' [E:/la32r_soc_ciciec/rtl/soc_top.v:621]
+WARNING: [Synth 8-689] width (2) of port connection 'axiOut_1_arlock' does not match port width (1) of module 'AxiCrossbar_1x4' [E:/la32r_soc_ciciec/rtl/soc_top.v:643]
+WARNING: [Synth 8-7023] instance 'u_AxiCrossbar_1x4' of module 'AxiCrossbar_1x4' has 177 connections declared, but only 153 given [E:/la32r_soc_ciciec/rtl/soc_top.v:523]
+INFO: [Synth 8-6157] synthesizing module 'axi_wrap_ram_sp_ext' [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/axi_wrap_ram_sp_ext.v:34]
+INFO: [Synth 8-6157] synthesizing module 'axi2sram_sp_ext' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/axi2sram_sp_ext.v:20]
+	Parameter AXI_ID_WIDTH bound to: 5 - type: integer 
+	Parameter AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter LOG_NR_BYTES bound to: 2 - type: integer 
+	Parameter IDLE bound to: 3'b000 
+	Parameter READ bound to: 3'b001 
+	Parameter WRITE bound to: 3'b010 
+	Parameter SEND_B bound to: 3'b011 
+	Parameter WAIT_WVALID bound to: 3'b100 
+	Parameter WRITE_NOP bound to: 3'b101 
+	Parameter READ_ADDR bound to: 3'b110 
+	Parameter FIXED bound to: 2'b00 
+	Parameter INCR bound to: 2'b01 
+	Parameter WRAP bound to: 2'b10 
+INFO: [Synth 8-155] case statement is not full and has no default [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/axi2sram_sp_ext.v:263]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/axi2sram_sp_ext.v:306]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/axi2sram_sp_ext.v:171]
+WARNING: [Synth 8-6014] Unused sequential element ax_req_q_size_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/axi2sram_sp_ext.v:352]
+INFO: [Synth 8-6155] done synthesizing module 'axi2sram_sp_ext' (59#1) [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/axi2sram_sp_ext.v:20]
+WARNING: [Synth 8-689] width (8) of port connection 's_arlen' does not match port width (4) of module 'axi2sram_sp_ext' [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/axi_wrap_ram_sp_ext.v:200]
+WARNING: [Synth 8-689] width (8) of port connection 's_awlen' does not match port width (4) of module 'axi2sram_sp_ext' [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/axi_wrap_ram_sp_ext.v:209]
+WARNING: [Synth 8-689] width (5) of port connection 's_rid' does not match port width (6) of module 'axi2sram_sp_ext' [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/axi_wrap_ram_sp_ext.v:226]
+INFO: [Synth 8-6155] done synthesizing module 'axi_wrap_ram_sp_ext' (60#1) [E:/la32r_soc_ciciec/rtl/ip/ram_wrap/axi_wrap_ram_sp_ext.v:34]
+INFO: [Synth 8-6157] synthesizing module 'axi_uart_controller' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/axi_uart_controller.v:36]
+	Parameter ADDR_APB bound to: 20 - type: integer 
+	Parameter DATA_APB bound to: 8 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'axi2apb_bridge' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/axi2apb.v:36]
+	Parameter L_ADDR_APB bound to: 20 - type: integer 
+	Parameter CSR_RW_SM_IDLE bound to: 4'b0001 
+	Parameter CSR_RW_SM_GET_AXI_ADDR bound to: 4'b0010 
+	Parameter CSR_RW_SM_SEND_AXI_RSP bound to: 4'b1000 
+INFO: [Synth 8-226] default block is never used [E:/la32r_soc_ciciec/rtl/ip/APB_UART/axi2apb.v:337]
+WARNING: [Synth 8-6014] Unused sequential element apb_wr_size_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/APB_UART/axi2apb.v:201]
+INFO: [Synth 8-6155] done synthesizing module 'axi2apb_bridge' (61#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/axi2apb.v:36]
+INFO: [Synth 8-6157] synthesizing module 'apb_mux2' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/apb_mux2.v:38]
+	Parameter ADDR_APB bound to: 20 - type: integer 
+	Parameter DATA_APB bound to: 8 - type: integer 
+	Parameter DATA_APB_32 bound to: 32 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'arb_2_1' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/apb_mux2.v:185]
+INFO: [Synth 8-6155] done synthesizing module 'arb_2_1' (62#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/apb_mux2.v:185]
+INFO: [Synth 8-6155] done synthesizing module 'apb_mux2' (63#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/apb_mux2.v:38]
+INFO: [Synth 8-6157] synthesizing module 'UART_TOP' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_top.v:36]
+INFO: [Synth 8-6157] synthesizing module 'uart_regs' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_regs.v:39]
+INFO: [Synth 8-6157] synthesizing module 'uart_transmitter' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_transmitter.v:36]
+	Parameter s_idle bound to: 3'b000 
+	Parameter s_send_start bound to: 3'b001 
+	Parameter s_send_byte bound to: 3'b010 
+	Parameter s_send_parity bound to: 3'b011 
+	Parameter s_send_stop bound to: 3'b100 
+	Parameter s_pop_byte bound to: 3'b101 
+	Parameter s_send_guard1 bound to: 3'b110 
+INFO: [Synth 8-6157] synthesizing module 'uart_tfifo' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_tfifo.v:36]
+	Parameter fifo_width bound to: 8 - type: integer 
+	Parameter fifo_depth bound to: 16 - type: integer 
+	Parameter fifo_pointer_w bound to: 4 - type: integer 
+	Parameter fifo_counter_w bound to: 5 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'raminfr' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/raminfr.v:34]
+	Parameter addr_width bound to: 4 - type: integer 
+	Parameter data_width bound to: 8 - type: integer 
+	Parameter depth bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'raminfr' (64#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/raminfr.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'uart_tfifo' (65#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_tfifo.v:36]
+INFO: [Synth 8-6155] done synthesizing module 'uart_transmitter' (66#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_transmitter.v:36]
+INFO: [Synth 8-6157] synthesizing module 'uart_sync_flops' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_sync_flops.v:34]
+	Parameter Tp bound to: 1 - type: integer 
+	Parameter width bound to: 1 - type: integer 
+	Parameter init_value bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'uart_sync_flops' (67#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_sync_flops.v:34]
+INFO: [Synth 8-6157] synthesizing module 'uart_receiver' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_receiver.v:36]
+	Parameter sr_idle bound to: 4'b0000 
+	Parameter sr_rec_start bound to: 4'b0001 
+	Parameter sr_rec_bit bound to: 4'b0010 
+	Parameter sr_rec_parity bound to: 4'b0011 
+	Parameter sr_rec_stop bound to: 4'b0100 
+	Parameter sr_check_parity bound to: 4'b0101 
+	Parameter sr_rec_prepare bound to: 4'b0110 
+	Parameter sr_end_bit bound to: 4'b0111 
+	Parameter sr_ca_lc_parity bound to: 4'b1000 
+	Parameter sr_wait1 bound to: 4'b1001 
+	Parameter sr_push bound to: 4'b1010 
+INFO: [Synth 8-6157] synthesizing module 'uart_rfifo' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_rfifo.v:36]
+	Parameter fifo_width bound to: 11 - type: integer 
+	Parameter fifo_depth bound to: 16 - type: integer 
+	Parameter fifo_pointer_w bound to: 4 - type: integer 
+	Parameter fifo_counter_w bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'uart_rfifo' (68#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_rfifo.v:36]
+WARNING: [Synth 8-6014] Unused sequential element rbit_in_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_receiver.v:115]
+INFO: [Synth 8-6155] done synthesizing module 'uart_receiver' (69#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_receiver.v:36]
+INFO: [Synth 8-6155] done synthesizing module 'uart_regs' (70#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_regs.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'UART_TOP' (71#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_top.v:36]
+INFO: [Synth 8-6155] done synthesizing module 'axi_uart_controller' (72#1) [E:/la32r_soc_ciciec/rtl/ip/APB_UART/axi_uart_controller.v:36]
+INFO: [Synth 8-6157] synthesizing module 'confreg' [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:40]
+	Parameter SIMULATION bound to: 1'b0 
+INFO: [Synth 8-6157] synthesizing module 'digitaltube_controller' [E:/la32r_soc_ciciec/rtl/ip/confreg/digitaltube_controller.v:1]
+WARNING: [Synth 8-5788] Register dpy0_data_reg in module digitaltube_controller is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/la32r_soc_ciciec/rtl/ip/confreg/digitaltube_controller.v:58]
+WARNING: [Synth 8-5788] Register dpy1_data_reg in module digitaltube_controller is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/la32r_soc_ciciec/rtl/ip/confreg/digitaltube_controller.v:81]
+INFO: [Synth 8-6155] done synthesizing module 'digitaltube_controller' (73#1) [E:/la32r_soc_ciciec/rtl/ip/confreg/digitaltube_controller.v:1]
+WARNING: [Synth 8-6014] Unused sequential element buf_len_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:142]
+WARNING: [Synth 8-6014] Unused sequential element buf_size_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:143]
+WARNING: [Synth 8-6014] Unused sequential element buf_burst_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:144]
+WARNING: [Synth 8-6014] Unused sequential element buf_lock_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:145]
+WARNING: [Synth 8-6014] Unused sequential element buf_cache_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:146]
+WARNING: [Synth 8-6014] Unused sequential element buf_prot_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:147]
+WARNING: [Synth 8-6014] Unused sequential element timer_int_reg was removed.  [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:251]
+WARNING: [Synth 8-3848] Net confreg_int_en in module/entity confreg does not have driver. [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:100]
+WARNING: [Synth 8-3848] Net confreg_int_edge in module/entity confreg does not have driver. [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:100]
+WARNING: [Synth 8-3848] Net confreg_int_pol in module/entity confreg does not have driver. [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:100]
+WARNING: [Synth 8-3848] Net confreg_int_clr in module/entity confreg does not have driver. [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:100]
+WARNING: [Synth 8-3848] Net confreg_int_set in module/entity confreg does not have driver. [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:100]
+WARNING: [Synth 8-3848] Net confreg_int_state in module/entity confreg does not have driver. [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:101]
+WARNING: [Synth 8-3848] Net confreg_int in module/entity confreg does not have driver. [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:92]
+INFO: [Synth 8-6155] done synthesizing module 'confreg' (74#1) [E:/la32r_soc_ciciec/rtl/ip/confreg/confreg.v:40]
+WARNING: [Synth 8-3848] Net video_red in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:42]
+WARNING: [Synth 8-3848] Net video_green in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:43]
+WARNING: [Synth 8-3848] Net video_blue in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:44]
+WARNING: [Synth 8-3848] Net video_hsync in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:45]
+WARNING: [Synth 8-3848] Net video_vsync in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:46]
+WARNING: [Synth 8-3848] Net video_clk in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:47]
+WARNING: [Synth 8-3848] Net video_de in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:48]
+WARNING: [Synth 8-3848] Net flash_a in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:73]
+WARNING: [Synth 8-3848] Net flash_rp_n in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:75]
+WARNING: [Synth 8-3848] Net flash_vpen in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:76]
+WARNING: [Synth 8-3848] Net flash_ce_n in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:77]
+WARNING: [Synth 8-3848] Net flash_oe_n in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:78]
+WARNING: [Synth 8-3848] Net flash_we_n in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:79]
+WARNING: [Synth 8-3848] Net flash_byte_n in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:80]
+WARNING: [Synth 8-3848] Net confreg_wid in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:470]
+WARNING: [Synth 8-3848] Net uart_wid in module/entity soc_top does not have driver. [E:/la32r_soc_ciciec/rtl/soc_top.v:431]
+INFO: [Synth 8-6155] done synthesizing module 'soc_top' (75#1) [E:/la32r_soc_ciciec/rtl/soc_top.v:36]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[31]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[30]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[29]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[28]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[27]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[26]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[25]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[24]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[23]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[22]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[21]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[20]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[19]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[18]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[17]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[16]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[15]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[14]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[13]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[12]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[11]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[10]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[9]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port data_reg[8]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[31]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[30]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[29]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[28]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[27]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[26]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[25]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[24]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[23]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[22]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[21]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[20]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[19]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[18]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[17]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[16]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[15]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[14]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[13]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[12]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[11]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[10]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[9]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[8]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[7]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[6]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[5]
+WARNING: [Synth 8-3331] design digitaltube_controller has unconnected port control_reg[4]
+WARNING: [Synth 8-3331] design confreg has unconnected port confreg_int
+WARNING: [Synth 8-3331] design confreg has unconnected port cpu_clk
+WARNING: [Synth 8-3331] design confreg has unconnected port cpu_resetn
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awid[4]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awlen[7]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awlen[6]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awlen[5]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awlen[4]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awlen[3]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awlen[2]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awlen[1]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awlen[0]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awsize[2]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awsize[1]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awsize[0]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awburst[1]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awburst[0]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awlock
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awcache[3]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awcache[2]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awcache[1]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awcache[0]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awprot[2]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awprot[1]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_awprot[0]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_wid[4]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_wid[3]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_wid[2]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_wid[1]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_wid[0]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_wstrb[3]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_wstrb[2]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_wstrb[1]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_wstrb[0]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arid[4]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arlen[7]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arlen[6]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arlen[5]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arlen[4]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arlen[3]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arlen[2]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arlen[1]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arlen[0]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arsize[2]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arsize[1]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arsize[0]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arburst[1]
+WARNING: [Synth 8-3331] design confreg has unconnected port s_arburst[0]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1193.004 ; gain = 425.539
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1193.004 ; gain = 425.539
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1193.004 ; gain = 425.539
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.321 . Memory (MB): peak = 1193.004 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll/clk_pll_in_context.xdc] for cell 'pll_clk.u_clk_pll'
+Finished Parsing XDC File [E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll/clk_pll_in_context.xdc] for cell 'pll_clk.u_clk_pll'
+Parsing XDC File [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc]
+WARNING: [Constraints 18-619] A clock with name 'clk' already exists, overwriting the previous clock with the same name. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:4]
+WARNING: [Vivado 12-507] No nets matched 'clock_btn_IBUF'. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:107]
+WARNING: [Vivado 12-508] No pins matched 'pll_clk.u_clk_pll/inst/plle2_adv_inst/CLKOUT0'. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:283]
+WARNING: [Vivado 12-508] No pins matched 'pll_clk.u_clk_pll/inst/plle2_adv_inst/CLKOUT1'. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:284]
+WARNING: [Vivado 12-627] No clocks matched 'cpu_clk'. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:286]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:286]
+WARNING: [Vivado 12-627] No clocks matched 'sys_clk'. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:286]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:286]
+CRITICAL WARNING: [Vivado 12-4739] set_clock_groups:No valid object(s) found for '-group [get_clocks cpu_clk]'. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:286]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+CRITICAL WARNING: [Vivado 12-4739] set_clock_groups:No valid object(s) found for '-group [get_clocks sys_clk]'. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:286]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:288]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:289]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:291]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:292]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:293]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:294]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:295]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:296]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:297]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:298]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:299]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:300]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:301]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:302]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:304]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:305]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:307]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:308]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:309]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:310]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:311]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:312]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:313]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:314]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:315]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:316]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:317]
+WARNING: [Vivado 12-646] clock 'sys_clk' not found. [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc:318]
+Finished Parsing XDC File [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/soc_top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/la32r_soc_ciciec/fpga/constraints/soc.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/soc_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/soc_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1384.332 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.120 . Memory (MB): peak = 1384.332 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1384.332 ; gain = 616.867
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tfbg676-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1384.332 ; gain = 616.867
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll/clk_pll_in_context.xdc, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  E:/la32r_soc_ciciec/rtl/ip/PLL_2019_2/clk_pll/clk_pll_in_context.xdc, line 5).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1384.332 ; gain = 616.867
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4471] merging register 'fs_excp_num_reg' into 'fs_excp_reg' [E:/la32r_soc_ciciec/rtl/ip/open-la500/if_stage.v:306]
+INFO: [Synth 8-802] inferred FSM for state register 'br_target_inst_req_state_reg' in module 'if_stage'
+WARNING: [Synth 8-3936] Found unconnected internal register 'SecStageCarry_reg' and it is trimmed from '17' to '16' bits. [E:/la32r_soc_ciciec/rtl/ip/open-la500/mul.v:158]
+INFO: [Synth 8-4471] merging register 'csr_cpuid_reg[31:0]' into 'csr_ticlr_reg[31:0]' [E:/la32r_soc_ciciec/rtl/ip/open-la500/csr.v:281]
+INFO: [Synth 8-802] inferred FSM for state register 'write_requst_state_reg' in module 'axi_bridge'
+INFO: [Synth 8-802] inferred FSM for state register 'main_state_reg' in module 'icache'
+INFO: [Synth 8-802] inferred FSM for state register 'state_q_reg' in module 'axi2sram_sp_ext'
+INFO: [Synth 8-4471] merging register 'axi_s_rvalid_reg' into 'axi_s_rlast_reg' [E:/la32r_soc_ciciec/rtl/ip/APB_UART/axi2apb.v:203]
+INFO: [Synth 8-802] inferred FSM for state register 'csr_rw_sm_reg' in module 'axi2apb_bridge'
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_tfifo.v:97]
+INFO: [Synth 8-802] inferred FSM for state register 'tstate_reg' in module 'uart_transmitter'
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_rfifo.v:133]
+INFO: [Synth 8-802] inferred FSM for state register 'rstate_reg' in module 'uart_receiver'
+INFO: [Synth 8-5544] ROM "toc_value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rparity_xor" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [E:/la32r_soc_ciciec/rtl/ip/APB_UART/URT/uart_regs.v:533]
+INFO: [Synth 8-5544] ROM "block_value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "block_value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "trigger_level" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "seg_code" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "seg_code" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+br_target_inst_req_empty |                              001 |                              001
+br_target_inst_req_wait_slot |                              010 |                              010
+br_target_inst_req_wait_br_target |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'br_target_inst_req_state_reg' in module 'if_stage'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+     write_request_empty |                               00 |                              000
+         write_data_wait |                               01 |                              101
+    write_data_transform |                               10 |                              100
+            write_wait_b |                               11 |                              110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'write_requst_state_reg' using encoding 'sequential' in module 'axi_bridge'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+               main_idle |                            00001 |                            00001
+             main_lookup |                            00010 |                            00010
+            main_replace |                            01000 |                            01000
+             main_refill |                            10000 |                            10000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'main_state_reg' in module 'icache'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+                    READ |                              001 |                              001
+               READ_ADDR |                              010 |                              110
+             WAIT_WVALID |                              011 |                              100
+                   WRITE |                              100 |                              010
+                  SEND_B |                              101 |                              011
+               WRITE_NOP |                              110 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_q_reg' using encoding 'sequential' in module 'axi2sram_sp_ext'
+WARNING: [Synth 8-327] inferring latch for variable 's_rdata_reg' [E:/la32r_soc_ciciec/rtl/ip/Bus_interconnects/axi2sram_sp_ext.v:238]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+          CSR_RW_SM_IDLE |                             0001 |                             0001
+  CSR_RW_SM_GET_AXI_ADDR |                             0010 |                             0010
+  CSR_RW_SM_SEND_AXI_RSP |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'csr_rw_sm_reg' in module 'axi2apb_bridge'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  s_idle |                              000 |                              000
+              s_pop_byte |                              001 |                              101
+            s_send_start |                              010 |                              001
+             s_send_byte |                              011 |                              010
+           s_send_parity |                              100 |                              011
+           s_send_guard1 |                              101 |                              110
+             s_send_stop |                              110 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'tstate_reg' using encoding 'sequential' in module 'uart_transmitter'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 sr_idle |                             0000 |                             0000
+            sr_rec_start |                             0001 |                             0001
+          sr_rec_prepare |                             0010 |                             0110
+              sr_rec_bit |                             0011 |                             0010
+              sr_end_bit |                             0100 |                             0111
+           sr_rec_parity |                             0101 |                             0011
+         sr_ca_lc_parity |                             0110 |                             1000
+         sr_check_parity |                             0111 |                             0101
+                sr_wait1 |                             1000 |                             1001
+             sr_rec_stop |                             1001 |                             0100
+                 sr_push |                             1010 |                             1010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rstate_reg' using encoding 'sequential' in module 'uart_receiver'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1384.332 ; gain = 616.867
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+--------------+------------+----------+
+|      |RTL Partition |Replication |Instances |
++------+--------------+------------+----------+
+|1     |core_top__GB0 |           1|     35952|
+|2     |core_top__GB1 |           1|     16406|
+|3     |core_top__GB2 |           1|     26674|
+|4     |soc_top__GC0  |           1|     10452|
++------+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     64 Bit       Adders := 1     
+	   3 Input     64 Bit       Adders := 1     
+	   3 Input     33 Bit       Adders := 2     
+	   2 Input     32 Bit       Adders := 15    
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     30 Bit       Adders := 1     
+	   2 Input     20 Bit       Adders := 3     
+	   3 Input     16 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 3     
+	   2 Input      8 Bit       Adders := 7     
+	   2 Input      5 Bit       Adders := 3     
+	   2 Input      4 Bit       Adders := 14    
+	   3 Input      4 Bit       Adders := 4     
+	   2 Input      3 Bit       Adders := 15    
+	   3 Input      3 Bit       Adders := 6     
+	   2 Input      2 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      4 Bit         XORs := 5     
+	   2 Input      3 Bit         XORs := 6     
+	   2 Input      1 Bit         XORs := 40    
++---XORs : 
+	                9 Bit    Wide XORs := 1     
+	                8 Bit    Wide XORs := 2     
+	                7 Bit    Wide XORs := 2     
+	                6 Bit    Wide XORs := 2     
+	                5 Bit    Wide XORs := 2     
++---Registers : 
+	              493 Bit    Registers := 1     
+	              425 Bit    Registers := 1     
+	              350 Bit    Registers := 1     
+	              128 Bit    Registers := 1     
+	              109 Bit    Registers := 1     
+	               64 Bit    Registers := 17    
+	               57 Bit    Registers := 2     
+	               39 Bit    Registers := 1     
+	               38 Bit    Registers := 1     
+	               37 Bit    Registers := 1     
+	               33 Bit    Registers := 3     
+	               32 Bit    Registers := 71    
+	               30 Bit    Registers := 48    
+	               28 Bit    Registers := 1     
+	               24 Bit    Registers := 1     
+	               21 Bit    Registers := 4     
+	               20 Bit    Registers := 3     
+	               19 Bit    Registers := 34    
+	               16 Bit    Registers := 3     
+	               11 Bit    Registers := 1     
+	               10 Bit    Registers := 35    
+	                9 Bit    Registers := 1     
+	                8 Bit    Registers := 28    
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 34    
+	                5 Bit    Registers := 9     
+	                4 Bit    Registers := 40    
+	                3 Bit    Registers := 50    
+	                2 Bit    Registers := 44    
+	                1 Bit    Registers := 202   
++---RAMs : 
+	               8K Bit         RAMs := 16    
+	               5K Bit         RAMs := 4     
+	              960 Bit         RAMs := 1     
+	              312 Bit         RAMs := 1     
+	              296 Bit         RAMs := 1     
+	              240 Bit         RAMs := 1     
+	              228 Bit         RAMs := 2     
+	              128 Bit         RAMs := 2     
+	               24 Bit         RAMs := 1     
++---Muxes : 
+	   4 Input    128 Bit        Muxes := 1     
+	   2 Input    128 Bit        Muxes := 1     
+	   2 Input     65 Bit        Muxes := 4     
+	   2 Input     64 Bit        Muxes := 1     
+	   2 Input     33 Bit        Muxes := 3     
+	   3 Input     33 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 183   
+	   3 Input     32 Bit        Muxes := 4     
+	   7 Input     32 Bit        Muxes := 3     
+	   4 Input     32 Bit        Muxes := 40    
+	   5 Input     32 Bit        Muxes := 3     
+	  15 Input     32 Bit        Muxes := 1     
+	   2 Input     30 Bit        Muxes := 3     
+	   3 Input     28 Bit        Muxes := 1     
+	   2 Input     28 Bit        Muxes := 4     
+	   2 Input     24 Bit        Muxes := 2     
+	   2 Input     20 Bit        Muxes := 13    
+	   2 Input     19 Bit        Muxes := 7     
+	   2 Input     16 Bit        Muxes := 4     
+	   2 Input     11 Bit        Muxes := 2     
+	  11 Input     11 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 5     
+	   8 Input     10 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 60    
+	   7 Input      8 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 2     
+	  11 Input      8 Bit        Muxes := 2     
+	   8 Input      8 Bit        Muxes := 1     
+	   3 Input      8 Bit        Muxes := 2     
+	   2 Input      7 Bit        Muxes := 2     
+	   7 Input      7 Bit        Muxes := 2     
+	  17 Input      7 Bit        Muxes := 2     
+	   2 Input      6 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 13    
+	   5 Input      5 Bit        Muxes := 1     
+	   6 Input      5 Bit        Muxes := 2     
+	   7 Input      5 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 31    
+	   5 Input      4 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 6     
+	  11 Input      4 Bit        Muxes := 3     
+	   6 Input      4 Bit        Muxes := 1     
+	  15 Input      4 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 4     
+	   2 Input      3 Bit        Muxes := 29    
+	   7 Input      3 Bit        Muxes := 5     
+	  11 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 22    
+	   4 Input      2 Bit        Muxes := 5     
+	   5 Input      2 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 759   
+	   4 Input      1 Bit        Muxes := 62    
+	   5 Input      1 Bit        Muxes := 13    
+	   6 Input      1 Bit        Muxes := 7     
+	   7 Input      1 Bit        Muxes := 28    
+	  11 Input      1 Bit        Muxes := 11    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module if_stage 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
++---Registers : 
+	               38 Bit    Registers := 1     
+	               32 Bit    Registers := 4     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 23    
+	   4 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 8     
+	   4 Input      1 Bit        Muxes := 2     
+Module regfile 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+Module id_stage 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	              109 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     65 Bit        Muxes := 4     
+	   2 Input     32 Bit        Muxes := 3     
+	   2 Input      5 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 3     
+Module alu 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     33 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module exe_stage 
+Detailed RTL Component Info : 
++---Registers : 
+	              350 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 6     
+Module div 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     33 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 4     
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	               33 Bit    Registers := 3     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     33 Bit        Muxes := 2     
+	   3 Input     33 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 8     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 7     
+	   4 Input      1 Bit        Muxes := 1     
+Module mem_stage 
+Detailed RTL Component Info : 
++---Registers : 
+	              425 Bit    Registers := 1     
+	               32 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module wb_stage 
+Detailed RTL Component Info : 
++---Registers : 
+	              493 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module csr 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     64 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 28    
+	               28 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 38    
+	   3 Input     32 Bit        Muxes := 2     
+	   7 Input     32 Bit        Muxes := 1     
+	   3 Input     28 Bit        Muxes := 1     
+	   2 Input     28 Bit        Muxes := 4     
+	   2 Input     19 Bit        Muxes := 7     
+	   2 Input     10 Bit        Muxes := 4     
+	   2 Input      3 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 10    
+Module tlb_entry 
+Detailed RTL Component Info : 
++---Registers : 
+	               19 Bit    Registers := 34    
+	               10 Bit    Registers := 34    
+	                6 Bit    Registers := 32    
+	                1 Bit    Registers := 66    
++---Muxes : 
+	   2 Input     20 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 388   
+Module addr_trans 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     20 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 1     
+Module axi_bridge 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	              128 Bit    Registers := 1     
+	               32 Bit    Registers := 3     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 3     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   4 Input    128 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 2     
+	   5 Input      4 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 7     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 19    
+	   4 Input      1 Bit        Muxes := 11    
+Module lfsr 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 3     
++---Registers : 
+	                8 Bit    Registers := 1     
+Module tagv_sram__3 
+Detailed RTL Component Info : 
++---Registers : 
+	               21 Bit    Registers := 1     
++---RAMs : 
+	               5K Bit         RAMs := 1     
+Module tagv_sram 
+Detailed RTL Component Info : 
++---Registers : 
+	               21 Bit    Registers := 1     
++---RAMs : 
+	               5K Bit         RAMs := 1     
+Module data_bank_sram__9 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__10 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__11 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__12 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__13 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__14 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__15 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module icache 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               20 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input     20 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 2     
+	   5 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 4     
+	   2 Input      3 Bit        Muxes := 1     
+	   5 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 6     
+Module lfsr__1 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 3     
++---Registers : 
+	                8 Bit    Registers := 1     
+Module tagv_sram__1 
+Detailed RTL Component Info : 
++---Registers : 
+	               21 Bit    Registers := 1     
++---RAMs : 
+	               5K Bit         RAMs := 1     
+Module tagv_sram__2 
+Detailed RTL Component Info : 
++---Registers : 
+	               21 Bit    Registers := 1     
++---RAMs : 
+	               5K Bit         RAMs := 1     
+Module data_bank_sram__1 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__2 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__3 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__4 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__5 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__6 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__7 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module data_bank_sram__8 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module dcache 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	               20 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 4     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 9     
++---Muxes : 
+	   2 Input    128 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 3     
+	   2 Input      8 Bit        Muxes := 14    
+	   6 Input      5 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 3     
+	   6 Input      2 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 7     
+	   2 Input      1 Bit        Muxes := 4     
+Module btb 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     30 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 3     
+	   2 Input      2 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 3     
+	               30 Bit    Registers := 48    
+	               16 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 32    
+	                1 Bit    Registers := 2     
++---RAMs : 
+	              960 Bit         RAMs := 1     
+	              240 Bit         RAMs := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   2 Input     30 Bit        Muxes := 3     
+	   2 Input     16 Bit        Muxes := 3     
+	   2 Input      5 Bit        Muxes := 3     
+	   2 Input      4 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 145   
+Module mul 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     64 Bit       Adders := 1     
++---Registers : 
+	               64 Bit    Registers := 17    
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 1     
+	   2 Input     33 Bit        Muxes := 1     
+Module core_top 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module rst_sync__1 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
+Module rst_sync 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
+Module BufferCC_9 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 2     
+Module BufferCC_10 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
+Module BufferCC_11 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 2     
+Module StreamFifoCC 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
+	   3 Input      3 Bit       Adders := 2     
++---XORs : 
+	   2 Input      3 Bit         XORs := 2     
+	   2 Input      1 Bit         XORs := 4     
++---Registers : 
+	               57 Bit    Registers := 1     
+	                3 Bit    Registers := 3     
+	                1 Bit    Registers := 1     
++---RAMs : 
+	              228 Bit         RAMs := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module BufferCC_7 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 2     
+Module BufferCC_8 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 2     
+Module StreamFifoCC_1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 3     
+	   3 Input      4 Bit       Adders := 2     
++---XORs : 
+	   2 Input      4 Bit         XORs := 2     
+	   2 Input      1 Bit         XORs := 6     
++---Registers : 
+	               37 Bit    Registers := 1     
+	                4 Bit    Registers := 4     
+	                1 Bit    Registers := 1     
++---RAMs : 
+	              296 Bit         RAMs := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module BufferCC_4 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 2     
+Module BufferCC_5 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
+Module BufferCC_6 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 2     
+Module StreamFifoCC_2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
+	   3 Input      3 Bit       Adders := 2     
++---XORs : 
+	   2 Input      3 Bit         XORs := 2     
+	   2 Input      1 Bit         XORs := 4     
++---Registers : 
+	                6 Bit    Registers := 1     
+	                3 Bit    Registers := 3     
+	                1 Bit    Registers := 1     
++---RAMs : 
+	               24 Bit         RAMs := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module BufferCC_9__1 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 2     
+Module BufferCC_11__1 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 2     
+Module StreamFifoCC_3 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
+	   3 Input      3 Bit       Adders := 2     
++---XORs : 
+	   2 Input      3 Bit         XORs := 2     
+	   2 Input      1 Bit         XORs := 4     
++---Registers : 
+	               57 Bit    Registers := 1     
+	                3 Bit    Registers := 3     
+	                1 Bit    Registers := 1     
++---RAMs : 
+	              228 Bit         RAMs := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module BufferCC 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 2     
+Module BufferCC_1 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 2     
+Module StreamFifoCC_4 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 3     
+	   3 Input      4 Bit       Adders := 2     
++---XORs : 
+	   2 Input      4 Bit         XORs := 2     
+	   2 Input      1 Bit         XORs := 6     
++---Registers : 
+	               39 Bit    Registers := 1     
+	                4 Bit    Registers := 4     
+	                1 Bit    Registers := 1     
++---RAMs : 
+	              312 Bit         RAMs := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module Axi4ReadOnlyErrorSlave 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 7     
+Module Axi4ReadOnlyDecoder 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+Module Axi4WriteOnlyErrorSlave 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module Axi4WriteOnlyDecoder 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 2     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module AxiCrossbar_1x4 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 8     
+Module axi2sram_sp_ext 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 7     
+	   5 Input     32 Bit        Muxes := 1     
+	   3 Input     32 Bit        Muxes := 1     
+	   7 Input     32 Bit        Muxes := 2     
+	   7 Input      8 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 1     
+	   7 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   7 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 7     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   7 Input      1 Bit        Muxes := 12    
+Module axi_wrap_ram_sp_ext 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 3     
+	   2 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 3     
+Module axi2apb_bridge 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     20 Bit       Adders := 3     
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 2     
+	               24 Bit    Registers := 1     
+	               20 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                5 Bit    Registers := 2     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 9     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 9     
+	   3 Input     32 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 2     
+	   5 Input     32 Bit        Muxes := 2     
+	   2 Input     20 Bit        Muxes := 5     
+	   2 Input      8 Bit        Muxes := 7     
+	   2 Input      4 Bit        Muxes := 6     
+	   4 Input      4 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 2     
+	   4 Input      3 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 48    
+	   4 Input      1 Bit        Muxes := 5     
+	   5 Input      1 Bit        Muxes := 7     
+Module arb_2_1 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module apb_mux2 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input     24 Bit        Muxes := 2     
+	   2 Input     20 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 5     
+	   2 Input      1 Bit        Muxes := 4     
+Module raminfr 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
++---RAMs : 
+	              128 Bit         RAMs := 1     
+Module uart_tfifo 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 2     
++---Registers : 
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   4 Input      2 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 2     
+Module uart_transmitter 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 3     
++---XORs : 
+	                8 Bit    Wide XORs := 2     
+	                7 Bit    Wide XORs := 2     
+	                6 Bit    Wide XORs := 2     
+	                5 Bit    Wide XORs := 2     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input      7 Bit        Muxes := 2     
+	   7 Input      7 Bit        Muxes := 2     
+	   2 Input      6 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 3     
+	   6 Input      5 Bit        Muxes := 1     
+	   7 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   7 Input      3 Bit        Muxes := 4     
+	   2 Input      3 Bit        Muxes := 5     
+	   2 Input      1 Bit        Muxes := 12    
+	   4 Input      1 Bit        Muxes := 3     
+	   7 Input      1 Bit        Muxes := 16    
+Module uart_sync_flops 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module raminfr__1 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
++---RAMs : 
+	              128 Bit         RAMs := 1     
+Module uart_rfifo 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 2     
++---Registers : 
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 16    
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   4 Input      3 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 34    
+	   4 Input      1 Bit        Muxes := 19    
+Module uart_receiver 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
++---XORs : 
+	                9 Bit    Wide XORs := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 2     
+	  11 Input     11 Bit        Muxes := 1     
+	   8 Input     10 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 3     
+	   4 Input      8 Bit        Muxes := 2     
+	  11 Input      8 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 7     
+	  11 Input      4 Bit        Muxes := 3     
+	  11 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 6     
+	   4 Input      1 Bit        Muxes := 1     
+	  11 Input      1 Bit        Muxes := 11    
+Module uart_regs 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     16 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 3     
++---XORs : 
+	   2 Input      4 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               16 Bit    Registers := 1     
+	                9 Bit    Registers := 1     
+	                8 Bit    Registers := 9     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 3     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 39    
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 6     
+	   8 Input      8 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 22    
+Module digitaltube_controller 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 2     
++---Muxes : 
+	   3 Input      8 Bit        Muxes := 2     
+	  17 Input      7 Bit        Muxes := 2     
+Module confreg 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 8     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 5     
+	  15 Input     32 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	  15 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 6     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5544] ROM "uart0/regs/receiver/toc_value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "uart0/regs/receiver/" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "uart0/regs/block_value" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[246]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[195]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[247]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[196]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[248]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[197]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[249]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[198]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[250]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[199]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[251]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[200]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[252]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[201]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[253]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[202]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[254]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[203]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[255]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[204]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[256]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[205]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[257]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[206]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[258]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[207]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[259]' (FDE) to 'u_cpui_1/exe_stage/ds_to_es_bus_r_reg[208]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[222]' (FDE) to 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[141]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[223]' (FDE) to 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[142]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[224]' (FDE) to 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[143]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[144]' (FDE) to 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[225]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[145]' (FDE) to 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[226]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[146]' (FDE) to 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[227]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[147]' (FDE) to 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[228]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[148]' (FDE) to 'u_cpui_1/wb_stage/ms_to_ws_bus_r_reg[229]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[0]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[0]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw1_reg[1]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw0_reg[1]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[1] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[1]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[1]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw1_reg[2]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw0_reg[2]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[2]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[2]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[3] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[3]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[3]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_prmd_reg[3]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[4] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[4]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[4]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_prmd_reg[4]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[5] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[5]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[5]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbidx_reg[5]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_prmd_reg[5]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw1_reg[6]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw0_reg[6]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[6] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[6]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[6]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbidx_reg[6]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_prmd_reg[6]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw1_reg[7]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw0_reg[7]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[7] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[7]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbelo1_reg[7]' (FDE) to 'u_cpui_1/u_csr/csr_tlbelo0_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbelo0_reg[7]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[7]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[8]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbidx_reg[7]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[8]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_prmd_reg[7]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[8]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw1_reg[8]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[8]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw0_reg[8]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[8]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[8] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[8]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[8]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[9]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbidx_reg[8]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[9]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_prmd_reg[8]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[9]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_crmd_reg[9]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[9]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw1_reg[9]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[9]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw0_reg[9]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[9]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[9] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[9]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[9]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[10]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbidx_reg[9]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[10]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_prmd_reg[9]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[10]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_crmd_reg[10]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[10]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw1_reg[10]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[10]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw0_reg[10]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[10]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[10] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[10]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_asid_reg[10]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[10]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[10]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[11]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbidx_reg[10]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[11]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_prmd_reg[10]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[11]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_crmd_reg[11]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[11]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw1_reg[11]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[11]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw0_reg[11]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[11]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[11] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[11]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_asid_reg[11]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[11]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[11]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[12]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbidx_reg[11]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[12]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_prmd_reg[11]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[12]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_crmd_reg[12]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[12]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw1_reg[12]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[12]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw0_reg[12]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[12]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[12] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[12]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_asid_reg[12]' (FDE) to 'u_cpui_1/u_csr/csr_tlbehi_reg[12]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbehi_reg[12]' (FDE) to 'u_cpui_1/u_csr/csr_dmw1_reg[28]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbidx_reg[12]' (FDE) to 'u_cpui_1/u_csr/csr_dmw1_reg[28]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_prmd_reg[12]' (FDE) to 'u_cpui_1/u_csr/csr_dmw1_reg[28]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_crmd_reg[13]' (FDE) to 'u_cpui_1/u_csr/csr_dmw1_reg[28]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw1_reg[13]' (FDE) to 'u_cpui_1/u_csr/csr_dmw1_reg[28]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_dmw0_reg[13]' (FDE) to 'u_cpui_1/u_csr/csr_dmw1_reg[28]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[13] )
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_ticlr_reg[13]' (FDRE) to 'u_cpui_1/u_csr/csr_ticlr_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_asid_reg[13]' (FDE) to 'u_cpui_1/u_csr/csr_dmw1_reg[28]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_tlbidx_reg[13]' (FDE) to 'u_cpui_1/u_csr/csr_dmw1_reg[28]'
+INFO: [Synth 8-3886] merging instance 'u_cpui_1/u_csr/csr_estat_reg[13]' (FDE) to 'u_cpui_1/u_csr/csr_dmw1_reg[28]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[19] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (u_cpui_1/u_csr/\csr_asid_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[26] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[26] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_estat_reg[30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_llbctl_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ticlr_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_ectl_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_estat_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_2/icache/\main_state_reg[2] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (u_cpui_2/axi_bridge/rready_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_2/axi_bridge/\arlen_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_2/axi_bridge/\arlen_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_2/axi_bridge/\arid_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/u_confreg/\simu_flag_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/u_axi_uart_controller/\AA_axi2apb_bridge_cpu/csr_rw_sm_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/u_axi_uart_controller/\AA_axi2apb_bridge_cpu/axi_s_w_id_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/u_axi_uart_controller/\u_apb_mux2/arb_2_1/dma_grant_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/u_axi_ram/\u_axi_sram_sp/ax_req_q_len_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[26] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/\data_rd_buff_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/if_stage/\btb_lock_buffer_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/u_csr/\csr_estat_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/mem_stage/data_buff_enable_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_cpui_1/id_stage/\fs_to_ds_bus_r_reg[78] )
+INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:20 ; elapsed = 00:01:29 . Memory (MB): peak = 1533.816 ; gain = 766.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping	Report (see note below)
++----------------+------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name     | RTL Object                                     | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++----------------+------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|u_cpui_2/icache | tagv_ram_way[0].u/mem_reg_reg                  | 256 x 21(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
+|u_cpui_2/icache | tagv_ram_way[1].u/mem_reg_reg                  | 256 x 21(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[1].data_ram_bank[0].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[1].data_ram_bank[1].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[1].data_ram_bank[3].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[1].data_ram_bank[2].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[0].data_ram_bank[0].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[0].data_ram_bank[1].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[0].data_ram_bank[3].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[0].data_ram_bank[2].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | tagv_ram_way[0].u/mem_reg_reg                  | 256 x 21(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
+|u_cpui_2/dcache | tagv_ram_way[1].u/mem_reg_reg                  | 256 x 21(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[0].data_ram_bank[0].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[0].data_ram_bank[1].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[0].data_ram_bank[2].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[0].data_ram_bank[3].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[1].data_ram_bank[0].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[1].data_ram_bank[1].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[1].data_ram_bank[2].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[1].data_ram_bank[3].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
++----------------+------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping	Report (see note below)
++------------------------------+----------------------------------------------+-----------+----------------------+----------------+
+|Module Name                   | RTL Object                                   | Inference | Size (Depth x Width) | Primitives     | 
++------------------------------+----------------------------------------------+-----------+----------------------+----------------+
+|u_cpui_1/id_stage             | u_regfile/rf_reg                             | Implied   | 32 x 32              | RAM32M x 12	   | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_ppn0_reg                                 | Implied   | 32 x 20              | RAM32M x 12	   | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_ppn1_reg                                 | Implied   | 32 x 20              | RAM32M x 12	   | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_v0_reg                                   | Implied   | 32 x 1               | RAM32X1D x 3	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_v1_reg                                   | Implied   | 32 x 1               | RAM32X1D x 3	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_d0_reg                                   | Implied   | 32 x 1               | RAM32X1D x 3	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_d1_reg                                   | Implied   | 32 x 1               | RAM32X1D x 3	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_mat0_reg                                 | Implied   | 32 x 2               | RAM32X1D x 6	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_mat1_reg                                 | Implied   | 32 x 2               | RAM32X1D x 6	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_plv0_reg                                 | Implied   | 32 x 2               | RAM32X1D x 6	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_plv1_reg                                 | Implied   | 32 x 2               | RAM32X1D x 6	  | 
+|u_cpui_2/dcache               | way_d_reg_reg                                | Implied   | 256 x 2              | RAM128X1D x 8	 | 
+|u_cpui_2/btb                  | btb_target_reg                               | Implied   | 32 x 30              | RAM32M x 15	   | 
+|u_cpui_2/btb                  | ras_reg                                      | Implied   | 8 x 30               | RAM32M x 5	    | 
+|i_0/u_axi_cdc                 | awFifo/ram_reg                               | Implied   | 4 x 57               | RAM32M x 10	   | 
+|i_0/u_axi_cdc                 | wFifo/ram_reg                                | Implied   | 8 x 37               | RAM32M x 7	    | 
+|i_0/u_axi_cdc                 | arFifo/ram_reg                               | Implied   | 4 x 57               | RAM32M x 10	   | 
+|i_0/u_axi_cdc                 | rFifo/ram_reg                                | Implied   | 8 x 39               | RAM32M x 7	    | 
+|i_0/u_axi_uart_controller     | uart0/regs/receiver/fifo_rx/rfifo/ram_reg    | Implied   | 16 x 8               | RAM32M x 2	    | 
+|i_0/u_axi_uart_controller     | uart0/regs/transmitter/fifo_tx/tfifo/ram_reg | Implied   | 16 x 8               | RAM32M x 2	    | 
++------------------------------+----------------------------------------------+-----------+----------------------+----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+--------------+------------+----------+
+|      |RTL Partition |Replication |Instances |
++------+--------------+------------+----------+
+|1     |core_top__GB0 |           1|     21198|
+|2     |core_top__GB1 |           1|      9563|
+|3     |core_top__GB2 |           1|     12951|
+|4     |soc_top__GC0  |           1|      5991|
++------+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-565] redefining clock 'clk'
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:25 ; elapsed = 00:01:34 . Memory (MB): peak = 1533.816 ; gain = 766.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:27 ; elapsed = 00:01:36 . Memory (MB): peak = 1533.816 ; gain = 766.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping	Report
++----------------+------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name     | RTL Object                                     | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++----------------+------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|u_cpui_2/icache | tagv_ram_way[0].u/mem_reg_reg                  | 256 x 21(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
+|u_cpui_2/icache | tagv_ram_way[1].u/mem_reg_reg                  | 256 x 21(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[1].data_ram_bank[0].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[1].data_ram_bank[1].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[1].data_ram_bank[3].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[1].data_ram_bank[2].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[0].data_ram_bank[0].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[0].data_ram_bank[1].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[0].data_ram_bank[3].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/icache | data_ram_way[0].data_ram_bank[2].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | tagv_ram_way[0].u/mem_reg_reg                  | 256 x 21(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
+|u_cpui_2/dcache | tagv_ram_way[1].u/mem_reg_reg                  | 256 x 21(NO_CHANGE)    | W | R |                        |   |   | Port A           | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[0].data_ram_bank[0].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[0].data_ram_bank[1].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[0].data_ram_bank[2].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[0].data_ram_bank[3].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[1].data_ram_bank[0].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[1].data_ram_bank[1].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[1].data_ram_bank[2].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|u_cpui_2/dcache | data_ram_way[1].data_ram_bank[3].u/mem_reg_reg | 256 x 32(READ_FIRST)   | W |   | 256 x 32(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
++----------------+------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping	Report
++------------------------------+----------------------------------------------+-----------+----------------------+----------------+
+|Module Name                   | RTL Object                                   | Inference | Size (Depth x Width) | Primitives     | 
++------------------------------+----------------------------------------------+-----------+----------------------+----------------+
+|u_cpui_1/id_stage             | u_regfile/rf_reg                             | Implied   | 32 x 32              | RAM32M x 12	   | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_ppn0_reg                                 | Implied   | 32 x 20              | RAM32M x 12	   | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_ppn1_reg                                 | Implied   | 32 x 20              | RAM32M x 12	   | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_v0_reg                                   | Implied   | 32 x 1               | RAM32X1D x 3	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_v1_reg                                   | Implied   | 32 x 1               | RAM32X1D x 3	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_d0_reg                                   | Implied   | 32 x 1               | RAM32X1D x 3	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_d1_reg                                   | Implied   | 32 x 1               | RAM32X1D x 3	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_mat0_reg                                 | Implied   | 32 x 2               | RAM32X1D x 6	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_mat1_reg                                 | Implied   | 32 x 2               | RAM32X1D x 6	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_plv0_reg                                 | Implied   | 32 x 2               | RAM32X1D x 6	  | 
+|u_cpui_1/addr_trans/tlb_entry | tlb_plv1_reg                                 | Implied   | 32 x 2               | RAM32X1D x 6	  | 
+|u_cpui_2/dcache               | way_d_reg_reg                                | Implied   | 256 x 2              | RAM128X1D x 8	 | 
+|u_cpui_2/btb                  | btb_target_reg                               | Implied   | 32 x 30              | RAM32M x 15	   | 
+|u_cpui_2/btb                  | ras_reg                                      | Implied   | 8 x 30               | RAM32M x 5	    | 
+|i_0/u_axi_cdc                 | awFifo/ram_reg                               | Implied   | 4 x 57               | RAM32M x 10	   | 
+|i_0/u_axi_cdc                 | wFifo/ram_reg                                | Implied   | 8 x 37               | RAM32M x 7	    | 
+|i_0/u_axi_cdc                 | arFifo/ram_reg                               | Implied   | 4 x 57               | RAM32M x 10	   | 
+|i_0/u_axi_cdc                 | rFifo/ram_reg                                | Implied   | 8 x 39               | RAM32M x 7	    | 
+|i_0/u_axi_uart_controller     | uart0/regs/receiver/fifo_rx/rfifo/ram_reg    | Implied   | 16 x 8               | RAM32M x 2	    | 
+|i_0/u_axi_uart_controller     | uart0/regs/transmitter/fifo_tx/tfifo/ram_reg | Implied   | 16 x 8               | RAM32M x 2	    | 
++------------------------------+----------------------------------------------+-----------+----------------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+--------------+------------+----------+
+|      |RTL Partition |Replication |Instances |
++------+--------------+------------+----------+
+|1     |core_top__GB0 |           1|     21198|
+|2     |core_top__GB1 |           1|      9563|
+|3     |core_top__GB2 |           1|     12951|
+|4     |soc_top__GC0  |           1|      5991|
++------+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/tagv_ram_way[0].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/tagv_ram_way[0].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/tagv_ram_way[1].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/tagv_ram_way[1].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/data_ram_way[1].data_ram_bank[0].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/data_ram_way[1].data_ram_bank[1].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/data_ram_way[1].data_ram_bank[3].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/data_ram_way[1].data_ram_bank[2].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/data_ram_way[0].data_ram_bank[0].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/data_ram_way[0].data_ram_bank[1].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/data_ram_way[0].data_ram_bank[3].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/icache/data_ram_way[0].data_ram_bank[2].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/tagv_ram_way[0].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/tagv_ram_way[0].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/tagv_ram_way[1].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/tagv_ram_way[1].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/data_ram_way[0].data_ram_bank[0].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/data_ram_way[0].data_ram_bank[1].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/data_ram_way[0].data_ram_bank[2].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/data_ram_way[0].data_ram_bank[3].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/data_ram_way[1].data_ram_bank[0].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/data_ram_way[1].data_ram_bank[1].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/data_ram_way[1].data_ram_bank[2].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance u_cpu/dcache/data_ram_way[1].data_ram_bank[3].u/mem_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:34 ; elapsed = 00:01:43 . Memory (MB): peak = 1533.816 ; gain = 766.352
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:36 ; elapsed = 00:01:46 . Memory (MB): peak = 1533.816 ; gain = 766.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:36 ; elapsed = 00:01:46 . Memory (MB): peak = 1533.816 ; gain = 766.352
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:38 ; elapsed = 00:01:47 . Memory (MB): peak = 1533.816 ; gain = 766.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:38 ; elapsed = 00:01:47 . Memory (MB): peak = 1533.816 ; gain = 766.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:38 ; elapsed = 00:01:48 . Memory (MB): peak = 1533.816 ; gain = 766.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:38 ; elapsed = 00:01:48 . Memory (MB): peak = 1533.816 ; gain = 766.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_pll       |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+---------------+------+
+|      |Cell           |Count |
++------+---------------+------+
+|1     |clk_pll_bbox_0 |     1|
+|2     |BUFG           |     1|
+|3     |CARRY4         |   781|
+|4     |LUT1           |   244|
+|5     |LUT2           |   709|
+|6     |LUT3           |  1373|
+|7     |LUT4           |  1101|
+|8     |LUT5           |  2086|
+|9     |LUT6           |  5374|
+|10    |MUXF7          |   226|
+|11    |MUXF8          |    58|
+|12    |RAM128X1D      |     8|
+|13    |RAM32M         |    92|
+|14    |RAM32X1D       |    34|
+|15    |RAMB18E1       |     4|
+|16    |RAMB18E1_1     |    16|
+|17    |FDCE           |   295|
+|18    |FDPE           |     1|
+|19    |FDRE           |  6329|
+|20    |FDSE           |    84|
+|21    |LD             |    32|
+|22    |IBUF           |    33|
+|23    |IOBUF          |    66|
+|24    |OBUF           |    86|
+|25    |OBUFT          |    41|
++------+---------------+------+
+
+Report Instance Areas: 
++------+-------------------------------------------+------------------------+------+
+|      |Instance                                   |Module                  |Cells |
++------+-------------------------------------------+------------------------+------+
+|1     |top                                        |                        | 19077|
+|2     |  \pll_clk.u_rst_cpu                       |rst_sync                |     3|
+|3     |  \pll_clk.u_rst_sys                       |rst_sync_0              |     5|
+|4     |  u_AxiCrossbar_1x4                        |AxiCrossbar_1x4         |   133|
+|5     |    axiIn_readOnly_decoder                 |Axi4ReadOnlyDecoder     |    87|
+|6     |      errorSlave                           |Axi4ReadOnlyErrorSlave  |    37|
+|7     |    axiIn_writeOnly_decoder                |Axi4WriteOnlyDecoder    |    32|
+|8     |      errorSlave                           |Axi4WriteOnlyErrorSlave |     9|
+|9     |  u_axi_cdc                                |Axi_CDC                 |   603|
+|10    |    arFifo                                 |StreamFifoCC_3          |   164|
+|11    |      popToPushGray_buffercc               |BufferCC_9_21           |     7|
+|12    |      pushToPopGray_buffercc               |BufferCC_11_22          |    12|
+|13    |    awFifo                                 |StreamFifoCC            |   152|
+|14    |      bufferCC_12                          |BufferCC_10             |     3|
+|15    |      popToPushGray_buffercc               |BufferCC_9              |     8|
+|16    |      pushToPopGray_buffercc               |BufferCC_11             |    11|
+|17    |    bFifo                                  |StreamFifoCC_2          |    45|
+|18    |      bufferCC_12                          |BufferCC_5              |     3|
+|19    |      popToPushGray_buffercc               |BufferCC_4              |     8|
+|20    |      pushToPopGray_buffercc               |BufferCC_6              |    10|
+|21    |    rFifo                                  |StreamFifoCC_4          |    97|
+|22    |      popToPushGray_buffercc               |BufferCC                |    11|
+|23    |      pushToPopGray_buffercc               |BufferCC_1              |    10|
+|24    |    wFifo                                  |StreamFifoCC_1          |   145|
+|25    |      popToPushGray_buffercc               |BufferCC_7              |    11|
+|26    |      pushToPopGray_buffercc               |BufferCC_8              |    11|
+|27    |  u_axi_ram                                |axi_wrap_ram_sp_ext     |   465|
+|28    |    u_axi_sram_sp                          |axi2sram_sp_ext         |   465|
+|29    |  u_axi_uart_controller                    |axi_uart_controller     |  1306|
+|30    |    AA_axi2apb_bridge_cpu                  |axi2apb_bridge          |   449|
+|31    |    uart0                                  |UART_TOP                |   857|
+|32    |      regs                                 |uart_regs               |   857|
+|33    |        i_uart_sync_flops                  |uart_sync_flops         |     4|
+|34    |        receiver                           |uart_receiver           |   393|
+|35    |          fifo_rx                          |uart_rfifo              |   251|
+|36    |            rfifo                          |raminfr_20              |    23|
+|37    |        transmitter                        |uart_transmitter        |   154|
+|38    |          fifo_tx                          |uart_tfifo              |    67|
+|39    |            tfifo                          |raminfr                 |    22|
+|40    |  u_confreg                                |confreg                 |   499|
+|41    |    u_digitaltube_controller               |digitaltube_controller  |    40|
+|42    |  u_cpu                                    |core_top                | 15810|
+|43    |    addr_trans                             |addr_trans              |  4080|
+|44    |      tlb_entry                            |tlb_entry               |  4040|
+|45    |    axi_bridge                             |axi_bridge              |   275|
+|46    |    btb                                    |btb                     |  2784|
+|47    |      dec_btb_add_entry                    |decoder_5_32            |     5|
+|48    |    dcache                                 |dcache                  |   729|
+|49    |      \data_ram_way[0].data_ram_bank[0].u  |data_bank_sram_9        |    50|
+|50    |      \data_ram_way[0].data_ram_bank[1].u  |data_bank_sram_10       |    18|
+|51    |      \data_ram_way[0].data_ram_bank[2].u  |data_bank_sram_11       |    50|
+|52    |      \data_ram_way[0].data_ram_bank[3].u  |data_bank_sram_12       |    52|
+|53    |      \data_ram_way[1].data_ram_bank[0].u  |data_bank_sram_13       |    18|
+|54    |      \data_ram_way[1].data_ram_bank[1].u  |data_bank_sram_14       |    50|
+|55    |      \data_ram_way[1].data_ram_bank[2].u  |data_bank_sram_15       |    82|
+|56    |      \data_ram_way[1].data_ram_bank[3].u  |data_bank_sram_16       |    55|
+|57    |      lfsr                                 |lfsr_17                 |    11|
+|58    |      \tagv_ram_way[0].u                   |tagv_sram_18            |    64|
+|59    |      \tagv_ram_way[1].u                   |tagv_sram_19            |    48|
+|60    |    exe_stage                              |exe_stage               |  1660|
+|61    |      u_alu                                |alu                     |    33|
+|62    |    icache                                 |icache                  |   313|
+|63    |      \data_ram_way[0].data_ram_bank[0].u  |data_bank_sram          |     5|
+|64    |      \data_ram_way[0].data_ram_bank[1].u  |data_bank_sram_1        |     4|
+|65    |      \data_ram_way[0].data_ram_bank[2].u  |data_bank_sram_2        |    68|
+|66    |      \data_ram_way[0].data_ram_bank[3].u  |data_bank_sram_3        |     4|
+|67    |      \data_ram_way[1].data_ram_bank[0].u  |data_bank_sram_4        |     4|
+|68    |      \data_ram_way[1].data_ram_bank[1].u  |data_bank_sram_5        |     4|
+|69    |      \data_ram_way[1].data_ram_bank[2].u  |data_bank_sram_6        |    36|
+|70    |      \data_ram_way[1].data_ram_bank[3].u  |data_bank_sram_7        |     5|
+|71    |      lfsr                                 |lfsr                    |    11|
+|72    |      \tagv_ram_way[0].u                   |tagv_sram               |    20|
+|73    |      \tagv_ram_way[1].u                   |tagv_sram_8             |    91|
+|74    |    id_stage                               |id_stage                |  1193|
+|75    |    if_stage                               |if_stage                |   347|
+|76    |    mem_stage                              |mem_stage               |   325|
+|77    |    u_csr                                  |csr                     |   867|
+|78    |    u_div                                  |div                     |   308|
+|79    |    u_mul                                  |mul                     |  1881|
+|80    |    wb_stage                               |wb_stage                |  1035|
++------+-------------------------------------------+------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:38 ; elapsed = 00:01:48 . Memory (MB): peak = 1533.816 ; gain = 766.352
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 61 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:27 ; elapsed = 00:01:42 . Memory (MB): peak = 1533.816 ; gain = 575.023
+Synthesis Optimization Complete : Time (s): cpu = 00:01:38 ; elapsed = 00:01:48 . Memory (MB): peak = 1533.816 ; gain = 766.352
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.231 . Memory (MB): peak = 1533.816 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1317 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1533.816 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 232 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 66 instances
+  LD => LDCE: 32 instances
+  RAM128X1D => RAM128X1D (MUXF7(x2), RAMD64E(x4)): 8 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 92 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 34 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+446 Infos, 249 Warnings, 2 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:42 ; elapsed = 00:01:54 . Memory (MB): peak = 1533.816 ; gain = 1104.684
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1533.816 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'E:/la32r_soc_ciciec/fpga/project/synth_1/soc_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file soc_top_utilization_synth.rpt -pb soc_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu May 15 21:53:21 2025...
