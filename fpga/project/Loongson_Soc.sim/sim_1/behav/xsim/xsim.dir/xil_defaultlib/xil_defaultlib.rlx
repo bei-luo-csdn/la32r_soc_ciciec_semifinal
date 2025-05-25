@@ -1,8 +1,0 @@
-0.6
-2019.2
-Nov  6 2019
-21:57:16
-C:/Users/spf/Documents/GitHub/la32r_soc_ciciec_semifinal/fpga/project/Loongson_Soc.sim/sim_1/behav/xsim/glbl.v,1748160517,verilog,,,,glbl,,,,,,,,
-C:/Users/spf/Documents/GitHub/la32r_soc_ciciec_semifinal/rtl/config.h,1748160518,verilog,,,,,,,,,,,,
-C:/Users/spf/Documents/GitHub/la32r_soc_ciciec_semifinal/sim/mycpu_tb.v,1748161135,verilog,,,C:/Users/spf/Documents/GitHub/la32r_soc_ciciec_semifinal/rtl/config.h,tb_top,,,../../../../../../rtl;../../../../../../rtl/ip/APB_UART/URT;../../../../../../rtl/ip/open-la500;../../../../ipgen/clk_pll,,,,,
-C:/Users/spf/Documents/GitHub/la32r_soc_ciciec_semifinal/sim/sram.v,1748160518,verilog,,C:/Users/spf/Documents/GitHub/la32r_soc_ciciec_semifinal/sim/mycpu_tb.v,,sram_sp,,,../../../../../../rtl;../../../../../../rtl/ip/APB_UART/URT;../../../../../../rtl/ip/open-la500;../../../../ipgen/clk_pll,,,,,

@@ -1,6 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/spf/Documents/GitHub/la32r_soc_ciciec_semifinal/sim/sram.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module sram_sp
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/spf/Documents/GitHub/la32r_soc_ciciec_semifinal/sim/mycpu_tb.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module tb_top
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/spf/Documents/GitHub/la32r_soc_ciciec_semifinal/fpga/project/Loongson_Soc.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module glbl
