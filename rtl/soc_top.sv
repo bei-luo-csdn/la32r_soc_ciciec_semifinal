@@ -891,12 +891,12 @@ axi_uart_controller u_axi_uart_controller
     .dma_ack_i (1'b0 ),
 
     //UART0
-    .uart0_txd_i (uart0_txd_i ),
-    .uart0_txd_o (uart0_txd_o ),
-    .uart0_txd_oe (uart0_txd_oe ),
-    .uart0_rxd_i (uart0_rxd_i ),
-    .uart0_rxd_o (uart0_rxd_o ),
-    .uart0_rxd_oe (uart0_rxd_oe ),
+    .uart0_txd_i (uart_TX_i ),
+    .uart0_txd_o (uart_TX_o ),
+    .uart0_txd_oe (uart_TX_oe ),
+    .uart0_rxd_i (uart_RX_i ),
+    .uart0_rxd_o (uart_RX_o ),
+    .uart0_rxd_oe (uart_RX_oe ),
     .uart0_rts_o (uart0_rts_o ),
     .uart0_dtr_o (uart0_dtr_o ),
     .uart0_cts_i (uart0_cts_i ),
