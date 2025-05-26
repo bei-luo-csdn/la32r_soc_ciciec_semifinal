@@ -8,9 +8,11 @@ module Axi_CDC (
   input  wire          axiInRst,
   input  wire          axiOutClk,
   input  wire          axiOutRst,
+
   input  wire          axiIn_awvalid,
   output wire          axiIn_awready,
   input  wire [31:0]   axiIn_awaddr,
+
   input  wire [3:0]    axiIn_awid,
   input  wire [7:0]    axiIn_awlen,
   input  wire [2:0]    axiIn_awsize,
@@ -25,11 +27,13 @@ module Axi_CDC (
   input  wire          axiIn_wlast,
   output wire          axiIn_bvalid,
   input  wire          axiIn_bready,
+  
   output wire [3:0]    axiIn_bid,
   output wire [1:0]    axiIn_bresp,
   input  wire          axiIn_arvalid,
   output wire          axiIn_arready,
   input  wire [31:0]   axiIn_araddr,
+
   input  wire [3:0]    axiIn_arid,
   input  wire [7:0]    axiIn_arlen,
   input  wire [2:0]    axiIn_arsize,
@@ -40,12 +44,14 @@ module Axi_CDC (
   output wire          axiIn_rvalid,
   input  wire          axiIn_rready,
   output wire [31:0]   axiIn_rdata,
+
   output wire [3:0]    axiIn_rid,
   output wire [1:0]    axiIn_rresp,
   output wire          axiIn_rlast,
   output wire          axiOut_awvalid,
   input  wire          axiOut_awready,
   output wire [31:0]   axiOut_awaddr,
+
   output wire [3:0]    axiOut_awid,
   output wire [7:0]    axiOut_awlen,
   output wire [2:0]    axiOut_awsize,
@@ -60,11 +66,13 @@ module Axi_CDC (
   output wire          axiOut_wlast,
   input  wire          axiOut_bvalid,
   output wire          axiOut_bready,
+
   input  wire [3:0]    axiOut_bid,
   input  wire [1:0]    axiOut_bresp,
   output wire          axiOut_arvalid,
   input  wire          axiOut_arready,
   output wire [31:0]   axiOut_araddr,
+
   output wire [3:0]    axiOut_arid,
   output wire [7:0]    axiOut_arlen,
   output wire [2:0]    axiOut_arsize,
@@ -75,6 +83,7 @@ module Axi_CDC (
   input  wire          axiOut_rvalid,
   output wire          axiOut_rready,
   input  wire [31:0]   axiOut_rdata,
+
   input  wire [3:0]    axiOut_rid,
   input  wire [1:0]    axiOut_rresp,
   input  wire          axiOut_rlast

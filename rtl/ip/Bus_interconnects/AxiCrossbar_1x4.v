@@ -38,6 +38,7 @@ module AxiCrossbar_1x4 (
   output wire [3:0]    axiIn_rid,
   output wire [1:0]    axiIn_rresp,
   output wire          axiIn_rlast,//r6
+
   output wire          axiOut_0_awvalid,
   input  wire          axiOut_0_awready,
   output wire [31:0]   axiOut_0_awaddr,
@@ -73,6 +74,7 @@ module AxiCrossbar_1x4 (
   input  wire [4:0]    axiOut_0_rid,
   input  wire [1:0]    axiOut_0_rresp,
   input  wire          axiOut_0_rlast,
+
   output wire          axiOut_1_awvalid,
   input  wire          axiOut_1_awready,
   output wire [31:0]   axiOut_1_awaddr,
@@ -108,6 +110,7 @@ module AxiCrossbar_1x4 (
   input  wire [4:0]    axiOut_1_rid,
   input  wire [1:0]    axiOut_1_rresp,
   input  wire          axiOut_1_rlast,
+
   output wire          axiOut_2_awvalid,
   input  wire          axiOut_2_awready,
   output wire [31:0]   axiOut_2_awaddr,
@@ -143,6 +146,7 @@ module AxiCrossbar_1x4 (
   input  wire [4:0]    axiOut_2_rid,
   input  wire [1:0]    axiOut_2_rresp,
   input  wire          axiOut_2_rlast,
+  
   output wire          axiOut_3_awvalid,
   input  wire          axiOut_3_awready,
   output wire [31:0]   axiOut_3_awaddr,

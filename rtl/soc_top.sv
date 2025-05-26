@@ -157,6 +157,26 @@ else begin: pll_clk
         .rst_n_in(sys_resetn),
         .rst_n_out(cpu_resetn)
     );
+/*
+// 直接使用 clk_i 分配时钟
+assign cpu_clk = clk_i;  
+assign sys_clk = clk_i;  
+
+// 使用 rst_sync 模块生成同步复位信号
+rst_sync u_rst_sys(  
+    .clk(sys_clk),  
+    .rst_n_in(~reset_i),  
+    .rst_n_out(sys_resetn)  
+);  
+rst_sync u_rst_cpu(  
+    .clk(cpu_clk),  
+    .rst_n_in(sys_resetn),  
+    .rst_n_out(cpu_resetn)  
+); 
+*/   
+//DC综合时替换掉原有的pll_clk模块
+
+
 end
 endgenerate
 
@@ -214,12 +234,9 @@ endgenerate
 
 //实例化core_top
 core_top u_cpu(
-
-    //外部中断信号
-    .intrpt(8'h0),
-    //high active
-    .aclk (cpu_clk),
+    .aclk (cpu_clk),//high active
     .aresetn (cpu_resetn),
+    .intrpt(8'h0),//外部中断信号
 
     //读地址通道
     .arid (cpu_arid),
@@ -229,7 +246,6 @@ core_top u_cpu(
     .arburst (cpu_arburst),
     .arlock (cpu_arlock),
     .arcache (cpu_arcache),
-
     .arprot (cpu_arprot ),
     .arvalid (cpu_arvalid ),
     .arready (cpu_arready ),
@@ -331,6 +347,7 @@ Axi_CDC u_axi_cdc(
     .axiIn_awvalid(cpu_awvalid) ,
     .axiIn_awready(cpu_awready) ,
     .axiIn_awaddr(cpu_awaddr) ,
+
     .axiIn_awid(cpu_awid|cpu_wid) ,
     .axiIn_awlen(cpu_awlen) ,
     .axiIn_awsize(cpu_awsize) ,
@@ -344,13 +361,14 @@ Axi_CDC u_axi_cdc(
     .axiIn_wstrb(cpu_wstrb) ,
     .axiIn_wlast(cpu_wlast) ,
     .axiIn_bvalid(cpu_bvalid) ,
-
     .axiIn_bready(cpu_bready) ,
+
     .axiIn_bid(cpu_bid) ,
     .axiIn_bresp(cpu_bresp) ,
     .axiIn_arvalid(cpu_arvalid) ,
     .axiIn_arready(cpu_arready) ,
     .axiIn_araddr(cpu_araddr) ,
+
     .axiIn_arid(cpu_arid) ,
     .axiIn_arlen(cpu_arlen) ,
     .axiIn_arsize(cpu_arsize) ,
@@ -361,6 +379,7 @@ Axi_CDC u_axi_cdc(
     .axiIn_rvalid(cpu_rvalid) ,
     .axiIn_rready(cpu_rready) ,
     .axiIn_rdata(cpu_rdata) ,
+
     .axiIn_rid(cpu_rid) ,
     .axiIn_rresp(cpu_rresp) ,
     .axiIn_rlast(cpu_rlast) ,
@@ -368,6 +387,7 @@ Axi_CDC u_axi_cdc(
     .axiOut_awvalid(cpu_sync_awvalid),
     .axiOut_awready( cpu_sync_awready),
     .axiOut_awaddr( cpu_sync_awaddr),
+
     .axiOut_awid( cpu_sync_awid),
     .axiOut_awlen( cpu_sync_awlen),
     .axiOut_awsize( cpu_sync_awsize),
@@ -381,13 +401,14 @@ Axi_CDC u_axi_cdc(
     .axiOut_wstrb( cpu_sync_wstrb),
     .axiOut_wlast( cpu_sync_wlast),
     .axiOut_bvalid( cpu_sync_bvalid),
-
     .axiOut_bready( cpu_sync_bready),
+
     .axiOut_bid( cpu_sync_bid),
     .axiOut_bresp( cpu_sync_bresp),
     .axiOut_arvalid( cpu_sync_arvalid),
     .axiOut_arready( cpu_sync_arready),
     .axiOut_araddr( cpu_sync_araddr),
+
     .axiOut_arid( cpu_sync_arid),
     .axiOut_arlen( cpu_sync_arlen),
     .axiOut_arsize( cpu_sync_arsize),
@@ -398,6 +419,7 @@ Axi_CDC u_axi_cdc(
     .axiOut_rvalid( cpu_sync_rvalid),
     .axiOut_rready( cpu_sync_rready),
     .axiOut_rdata( cpu_sync_rdata),
+
     .axiOut_rid( cpu_sync_rid),
     .axiOut_rresp( cpu_sync_rresp),
     .axiOut_rlast( cpu_sync_rlast)
@@ -834,86 +856,84 @@ axi_wrap_ram_sp_ext u_axi_ram (
     assign uart0_dsr_i = UART_DSR;
     assign uart0_ri_i = UART_RI ;
 
+//UART_CONTROLLER
+axi_uart_controller u_axi_uart_controller
+(
+    .clk (sys_clk ),
+    .rst_n (sys_resetn ),
 
-//AXI2APB  
-//axi_uart_controller的实例化
-axi_uart_controller u_axi_uart_controller  
-(  
-    .clk                (sys_clk                ),  
-    .rst_n              (sys_resetn             ),  
-  
-    .axi_s_awid         (uart_awid              ),  
-    .axi_s_awaddr       (uart_awaddr            ),  
-    .axi_s_awlen        (uart_awlen             ),  
-    .axi_s_awsize       (uart_awsize            ),  
-    .axi_s_awburst      (uart_awburst           ),  
-    .axi_s_awlock       (uart_awlock            ),  
-    .axi_s_awcache      (uart_awcache           ),  
-    .axi_s_awprot       (uart_awprot            ),  
-    .axi_s_awvalid      (uart_awvalid           ),  
-    .axi_s_awready      (uart_awready           ),  
-    .axi_s_wid          (uart_wid               ),  
-    .axi_s_wdata        (uart_wdata             ),  
-    .axi_s_wstrb        (uart_wstrb             ),  
-    .axi_s_wlast        (uart_wlast             ),  
-    .axi_s_wvalid       (uart_wvalid            ),  
-    .axi_s_wready       (uart_wready            ),  
-    .axi_s_bid          (uart_bid               ),  
-    .axi_s_bresp        (uart_bresp             ),  
-    .axi_s_bvalid       (uart_bvalid            ),  
-    .axi_s_bready       (uart_bready            ),  
-    .axi_s_arid         (uart_arid              ),  
-    .axi_s_araddr       (uart_araddr            ),  
-    .axi_s_arlen        (uart_arlen             ),  
-    .axi_s_arsize       (uart_arsize            ),  
-    .axi_s_arburst      (uart_arburst           ),  
-    .axi_s_arlock       (uart_arlock            ),  
-    .axi_s_arcache      (uart_arcache           ),  
-    .axi_s_arprot       (uart_arprot            ),  
-    .axi_s_arvalid      (uart_arvalid           ),  
-    .axi_s_arready      (uart_arready           ),  
-    .axi_s_rid          (uart_rid               ),  
-    .axi_s_rdata        (uart_rdata             ),  
-    .axi_s_rresp        (uart_rresp             ),  
-    .axi_s_rlast        (uart_rlast             ),  
-    .axi_s_rvalid       (uart_rvalid            ),  
-    .axi_s_rready       (uart_rready            ),  
-  
-    .apb_rw_dma         (1'b0                   ),  
-    .apb_psel_dma       (1'b0                   ),  
-    .apb_enab_dma       (1'b0                   ),  
-    .apb_addr_dma       (20'b0                  ),  
-    .apb_valid_dma      (1'b0                   ),  
-    .apb_wdata_dma      (32'b0                  ),  
-    .apb_rdata_dma      (                       ),  
-    .apb_ready_dma      (                       ),   
-    .dma_grant          (                       ),  
-  
-    .dma_req_o          (                       ),  
-    .dma_ack_i          (1'b0                   ),  
-  
-    //UART0  
-    .uart0_txd_i        (UART_TX_i              ),  
-    .uart0_txd_o        (UART_TX_o              ),  
-    .uart0_txd_oe       (UART_TX_oe             ),  
-    .uart0_rxd_i        (UART_RX_i              ),  
-    .uart0_rxd_o        (UART_RX_o              ),  
-    .uart0_rxd_oe       (UART_RX_oe             ),  
-    .uart0_rts_o        (uart0_rts_o            ),  
-    .uart0_dtr_o        (uart0_dtr_o            ),  
-    .uart0_cts_i        (uart0_cts_i            ),  
-    .uart0_dsr_i        (uart0_dsr_i            ),  
-    .uart0_dcd_i        (uart0_dcd_i            ),  
-    .uart0_ri_i         (uart0_ri_i             ),  
-    .uart0_int          (uart0_int              )  
-);  
+    .axi_s_awid (uart_awid ),
+    .axi_s_awaddr (uart_awaddr ),
+    .axi_s_awlen (uart_awlen ),
+    .axi_s_awsize (uart_awsize ),
+    .axi_s_awburst (uart_awburst ),
+    .axi_s_awlock (uart_awlock ),
+    .axi_s_awcache (uart_awcache ),
+    .axi_s_awprot (uart_awprot ),
+    .axi_s_awvalid (uart_awvalid ),
+    .axi_s_awready (uart_awready ),
+    .axi_s_wid (uart_wid ),
+    .axi_s_wdata (uart_wdata ),
+    .axi_s_wstrb (uart_wstrb ),
+    .axi_s_wlast (uart_wlast ),
+    .axi_s_wvalid (uart_wvalid ),
+    .axi_s_wready (uart_wready ),
+    .axi_s_bid (uart_bid ),
+    .axi_s_bresp (uart_bresp ),
+    .axi_s_bvalid (uart_bvalid ),
+    .axi_s_bready (uart_bready ),
+    .axi_s_arid (uart_arid ),
+    .axi_s_araddr (uart_araddr ),
+    .axi_s_arlen (uart_arlen ),
+    .axi_s_arsize (uart_arsize ),
+    .axi_s_arburst (uart_arburst ),
+    .axi_s_arlock (uart_arlock ),
+    .axi_s_arcache (uart_arcache ),
+    .axi_s_arprot (uart_arprot ),
+    .axi_s_arvalid (uart_arvalid ),
+    .axi_s_arready (uart_arready ),
+    .axi_s_rid (uart_rid ),
+    .axi_s_rdata (uart_rdata ),
+    .axi_s_rresp (uart_rresp ),
+    .axi_s_rlast (uart_rlast ),
+    .axi_s_rvalid (uart_rvalid ),
+    .axi_s_rready (uart_rready ),
 
+    .apb_rw_dma (1'b0 ),
+    .apb_psel_dma (1'b0 ),
+    .apb_enab_dma (1'b0 ),
+    .apb_addr_dma (20'b0 ),
+    .apb_valid_dma (1'b0 ),
+    .apb_wdata_dma (32'b0 ),
+    .apb_rdata_dma ( ),
+    .apb_ready_dma ( ),
+    .dma_grant ( ),
+
+    .dma_req_o ( ),
+    .dma_ack_i (1'b0 ),
+
+    //UART0
+    .uart0_txd_i (uart0_txd_i ),
+    .uart0_txd_o (uart0_txd_o ),
+    .uart0_txd_oe (uart0_txd_oe ),
+    .uart0_rxd_i (uart0_rxd_i ),
+    .uart0_rxd_o (uart0_rxd_o ),
+    .uart0_rxd_oe (uart0_rxd_oe ),
+    .uart0_rts_o (uart0_rts_o ),
+    .uart0_dtr_o (uart0_dtr_o ),
+    .uart0_cts_i (uart0_cts_i ),
+    .uart0_dsr_i (uart0_dsr_i ),
+    .uart0_dcd_i (uart0_dcd_i ),
+    .uart0_ri_i (uart0_ri_i ),
+    .uart0_int (uart0_int )
+);
 //confreg的实例化
 confreg#(.SIMULATION(SIMULATION)) u_confreg (
     .aclk ( sys_clk ),
     .aresetn ( sys_resetn ),
     .cpu_clk ( cpu_clk ),
     .cpu_resetn ( cpu_resetn ),
+
     .s_awid ( confreg_awid ),
     .s_awaddr ( confreg_awaddr ),
     .s_awlen ( confreg_awlen ),
@@ -923,12 +943,20 @@ confreg#(.SIMULATION(SIMULATION)) u_confreg (
     .s_awcache ( confreg_awcache ),
     .s_awprot ( confreg_awprot ),
     .s_awvalid ( confreg_awvalid ),
+    .s_awready ( confreg_awready ),
+
     .s_wid ( confreg_wid ),
     .s_wdata ( confreg_wdata ),
     .s_wstrb ( confreg_wstrb ),
     .s_wlast ( confreg_wlast ),
     .s_wvalid ( confreg_wvalid ),
+    .s_wready ( confreg_wready ),
+
+    .s_bid ( confreg_bid ),
+    .s_bresp ( confreg_bresp ),
+    .s_bvalid ( confreg_bvalid ),
     .s_bready ( confreg_bready ),
+
     .s_arid ( confreg_arid ),
     .s_araddr ( confreg_araddr ),
     .s_arlen ( confreg_arlen ),
@@ -938,25 +966,19 @@ confreg#(.SIMULATION(SIMULATION)) u_confreg (
     .s_arcache ( confreg_arcache ),
     .s_arprot ( confreg_arprot ),
     .s_arvalid ( confreg_arvalid ),
-    .s_rready ( confreg_rready ),
-
-    .s_awready ( confreg_awready ),
-    .s_wready ( confreg_wready ),
-    .s_bid ( confreg_bid ),
-    .s_bresp ( confreg_bresp ),
-    .s_bvalid ( confreg_bvalid ),
     .s_arready ( confreg_arready ),
+    
     .s_rid ( confreg_rid ),
     .s_rdata ( confreg_rdata ),
     .s_rresp ( confreg_rresp ),
     .s_rlast ( confreg_rlast ),
     .s_rvalid ( confreg_rvalid ),
 
-    .switch ( dip_sw_i ),
-    .touch_btn ( touch_btn_i ),
-    .led ( leds_o ),
-    .dpy0 ( dpy0_o ),
-    .dpy1 ( dpy1_o ),
+    .switch ( dip_sw ),
+    .touch_btn ( touch_btn ),
+    .led ( leds ),
+    .dpy0 ( dpy0 ),
+    .dpy1 ( dpy1 ),
     .confreg_int ( )
 );
 

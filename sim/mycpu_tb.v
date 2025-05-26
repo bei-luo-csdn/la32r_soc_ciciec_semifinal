@@ -110,11 +110,14 @@ begin
 
 end
 
+wire clk_o;
 soc_top  #(.SIMULATION(1'b1)) u_soc_top (
     .clk                     ( clk           ),
     .reset                   ( reset         ),
+    .clk_o                   ( clk_o         ),
     .touch_btn               ( touch_btn     ),
     .dip_sw                  ( dip_sw        ),
+
 
     .video_red               ( video_red     ),
     .video_green             ( video_green   ),
