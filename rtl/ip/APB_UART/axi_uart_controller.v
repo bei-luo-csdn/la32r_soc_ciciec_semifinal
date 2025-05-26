@@ -31,7 +31,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --------------------------------------------------------------------------------
 ------------------------------------------------------------------------------*/
 
-`include "e:/la32r_soc_ciciec/rtl/config.h"
+`include "../../config.h"
 
 module axi_uart_controller
 (
