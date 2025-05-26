@@ -207,6 +207,7 @@ endgenerate
     wire [3:0] debug_wb_rf_wen;
     wire [4:0] debug_wb_rf_wnum;
     wire [31:0] debug_wb_rf_wdata;
+    wire cpu_int;
 
 //TODO: add your code
 //依次例化core_top、Axi_CDC、AxiCrossbar_1x4、axi_wrap_ram、axi_uart_controller、confreg
@@ -216,7 +217,7 @@ endgenerate
 core_top u_cpu(
 
     //外部中断信号
-    .intrpt(8'h0),
+    .intrpt(cpu_int), //confreg中的中断信号
     //high active
     .aclk (cpu_clk),
     .aresetn (cpu_resetn),
@@ -954,7 +955,7 @@ confreg#(.SIMULATION(SIMULATION)) u_confreg (
     .led ( leds ),
     .dpy0 ( dpy0 ),
     .dpy1 ( dpy1 ),
-    .confreg_int ( )
+    .confreg_int ( cpu_int )
 );
 
 endmodule

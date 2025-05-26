@@ -401,8 +401,8 @@ module my_int_ctrl #(parameter N=5)(
     genvar i;
     generate for(i=0;i<N;i=i+1) begin: int_ctrl
         my_int_ctrl_one u_int_ctrl_one (
-            .clk(cpu_clk),
-            .resetn(cpu_resetn),
+            .clk(sys_clk),
+            .resetn(sys_resetn),
             .int_in(int_in[i]),
             .int_en(int_en[i]),
             .int_state(int_state[i])
@@ -411,8 +411,8 @@ module my_int_ctrl #(parameter N=5)(
     endgenerate
 
     reg int_valid;
-    always @(posedge cpu_clk or negedge cpu_resetn) begin
-        if (!cpu_resetn) begin
+    always @(posedge sys_clk or negedge sys_resetn) begin
+        if (~sys_resetn) begin
             int_valid <= 1'b0;
         end
         else begin
@@ -422,8 +422,8 @@ module my_int_ctrl #(parameter N=5)(
 
     // 又打了一拍
     reg [1:0] int_valid_r;
-    always @(posedge sys_clk or negedge sys_resetn) begin
-        if (!sys_resetn) begin
+    always @(posedge cpu_clk or negedge cpu_resetn) begin
+        if (~cpu_resetn) begin
             int_valid_r <= 2'b0;
         end
         else begin
