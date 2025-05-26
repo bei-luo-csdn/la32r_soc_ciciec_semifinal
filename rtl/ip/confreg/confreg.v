@@ -30,7 +30,7 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --------------------------------------------------------------------------------
 ------------------------------------------------------------------------------*/
-`define CONFREG_INT_ADDR    16'hf000 //1f20_f000
+`define CONFREG_INT_ADDR    16'hf000 //1f20_f000 软件中是虚拟地址，高几位与此可能不同
 `define TIMER_ADDR          16'hf100 //1f20_f100
 `define DIGITAL_ADDR        16'hf200 //1f20_f200
 `define LED_ADDR            16'hf300 //1f20_f300
@@ -101,6 +101,7 @@ wire [3:0] touch_btn_data;//按键中断信号，上升沿触发
 reg  [31:0] led_data;
 wire [31:0] switch_data;
 reg  [31:0] simu_flag;
+
 // 2.2外部中断控制
 reg [31:0] confreg_int_en,confreg_int_edge,confreg_int_pol,confreg_int_clr,confreg_int_set;
 wire [31:0] confreg_int_state;
@@ -342,7 +343,93 @@ end
 
 //-------------------------------{int_ctrl}begin----------------------------//
 //TODO: add your code
-// 
+// 这里实现了2.2写的使能功能（write_confreg_int_en）
+wire write_confreg_int_en  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h0);
+
+always @(posedge aclk) begin
+    if(!aresetn) begin
+        confreg_int_en <= 32'd0;
+    end
+    else if (write_confreg_int_en) begin
+        confreg_int_en <= s_wdata;
+    end
+end
+// 中断控制器
+my_int_ctrl #(.N(5)) u_my_int_ctrl (
+    .sys_clk       ( aclk          ),
+    .sys_resetn    ( aresetn       ),
+    .cpu_clk       ( cpu_clk       ),
+    .cpu_resetn    ( cpu_resetn    ),
+
+    .int_in        ({timer_int, 4'h0}),// 4'h0本来是touch_btn_data，但目前只支持电平触发
+    .int_en        (confreg_int_en[4:0]), // 这里是中断使能
+    .int_state     (confreg_int_state), // 中断状态输出
+    .int_out       (confreg_int) // 中断输出
+);
+
+// 以上是视频代码
 //--------------------------------{int_ctrl}end-----------------------------//
 
+endmodule
+
+//TODO: add your module
+// 实现一个bit中断处理
+// 输出中断状态
+module my_int_ctrl_one(
+    input clk,
+    input resetn,
+    
+    input int_in,
+    input int_en, // 中断有效
+    output int_state
+);
+   assign int_state = int_in & int_en;
+
+endmodule
+//中断控制器
+module my_int_ctrl #(parameter N=5)(
+    input sys_clk,
+    input sys_resetn,
+    input cpu_clk,
+    input cpu_resetn,// 需要cdc处理，因为中断在sys时钟域产生，但需要传输到cpu
+
+    input [N-1:0] int_in,
+    input [N-1:0] int_en,
+    output [N-1:0] int_state,
+    output int_out
+);
+    genvar i;
+    generate for(i=0;i<N;i=i+1) begin: int_ctrl
+        my_int_ctrl_one u_int_ctrl_one (
+            .clk(cpu_clk),
+            .resetn(cpu_resetn),
+            .int_in(int_in[i]),
+            .int_en(int_en[i]),
+            .int_state(int_state[i])
+        );
+    end
+    endgenerate
+
+    reg int_valid;
+    always @(posedge cpu_clk or negedge cpu_resetn) begin
+        if (!cpu_resetn) begin
+            int_valid <= 1'b0;
+        end
+        else begin
+            int_valid <= |int_state;
+        end
+    end
+
+    // 又打了一拍
+    reg [1:0] int_valid_r;
+    always @(posedge sys_clk or negedge sys_resetn) begin
+        if (!sys_resetn) begin
+            int_valid_r <= 2'b0;
+        end
+        else begin
+            int_valid_r <= {int_valid_r[0], int_valid};
+        end
+    end
+
+   assign int_out = int_valid_r[1];
 endmodule
