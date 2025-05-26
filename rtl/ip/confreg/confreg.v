@@ -37,6 +37,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 `define SWITCH_ADDR         16'hf400 //1f20_f400
 `define SIMU_FLAG_ADDR      16'hf500 //1f20_f500 
 
+// 可以把ip需要的其他寄存器都写到confreg里，confreg产生的控制信号连接到ip
 module confreg #(
     parameter   SIMULATION=1'b0
 )
@@ -100,7 +101,7 @@ wire [3:0] touch_btn_data;//按键中断信号，上升沿触发
 reg  [31:0] led_data;
 wire [31:0] switch_data;
 reg  [31:0] simu_flag;
-
+// 2.2外部中断控制
 reg [31:0] confreg_int_en,confreg_int_edge,confreg_int_pol,confreg_int_clr,confreg_int_set;
 wire [31:0] confreg_int_state;
 
@@ -171,7 +172,8 @@ always@(posedge aclk)
     if(~aresetn) s_wready <= 1'b0;
     else if(aw_enter) s_wready <= 1'b1;
     else if(w_enter & s_wlast) s_wready <= 1'b0;
-
+// 这里实现了2.2读的功能
+// 修改这个让处理器核能读到寄存器
 wire [31:0] rdata_d =   buf_addr[15:0] == (`CONFREG_INT_ADDR + 16'h0)     ? confreg_int_en        : 
                         buf_addr[15:0] == (`CONFREG_INT_ADDR + 16'h4)     ? confreg_int_edge      : 
                         buf_addr[15:0] == (`CONFREG_INT_ADDR + 16'h8)     ? confreg_int_pol       : 
@@ -290,6 +292,7 @@ assign switch_data = switch;
 
 
 //---------------------------{digital number}begin-----------------------//
+// 复制这个到todo，在此基础上修改实现2.2写的功能
 wire write_digital_ctrl   = w_enter & (buf_addr[15:0]==`DIGITAL_ADDR + 16'h0);
 wire write_digital_data   = w_enter & (buf_addr[15:0]==`DIGITAL_ADDR + 16'h4);
 
@@ -339,7 +342,7 @@ end
 
 //-------------------------------{int_ctrl}begin----------------------------//
 //TODO: add your code
-
+// 
 //--------------------------------{int_ctrl}end-----------------------------//
 
 endmodule
