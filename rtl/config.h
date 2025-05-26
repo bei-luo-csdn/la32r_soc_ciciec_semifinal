@@ -33,7 +33,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 `define SRAM_Init_File "../../../../../../sdk/axi_ram.mif"
 
-`define USE_CACHE
+`define USE_CACHE // 还不能关闭CACHE
 
 `define Lawcmd 4
 `define Lawdirqid 4
