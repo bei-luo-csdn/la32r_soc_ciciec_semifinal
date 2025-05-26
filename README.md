@@ -1,2 +1,3 @@
 # la32r_soc_ciciec_semifinal
-这个文件我做到了第圈5步骤，即我做到了尚未修改_i,_o,_oe的实例化内容（例如axi_wrap_ram)
+这里我完成了第一部分的修改即：
+⑦ 完成修改，试试之前初赛跑过的ciciec_func是否仿真和FPGA验证依然正常。-----这一步已经完成并且试验正常（我只实验了Hello_world）
