@@ -217,7 +217,7 @@ endgenerate
 core_top u_cpu(
 
     //外部中断信号
-    .intrpt(cpu_int), //confreg中的中断信号,先别连cpu_int，不然hello world给你干不跑了
+    .intrpt({7'h0,cpu_int}), //confreg中的中断信号,先别连cpu_int，不然hello world给你干不跑了
     //high active
     .aclk (cpu_clk),
     .aresetn (cpu_resetn),
