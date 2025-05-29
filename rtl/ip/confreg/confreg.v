@@ -344,11 +344,11 @@ end
 //-------------------------------{int_ctrl}begin----------------------------//
 //TODO: add your code
 // 这里实现了2.2写的使能功能（write_confreg_int_en）
-wire [32:0] write_confreg_int_en  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h0);
-wire [32:0] write_confreg_int_edge = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h4);
-wire [32:0] write_confreg_int_pol  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h8);
-wire [32:0] write_confreg_int_clr  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'hC);
-wire [32:0] write_confreg_int_state = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h10);
+wire [31:0] write_confreg_int_en  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h0);
+wire [31:0] write_confreg_int_edge = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h4);
+wire [31:0] write_confreg_int_pol  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h8);
+wire [31:0] write_confreg_int_clr  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'hC);
+wire [31:0] write_confreg_int_state = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h10);
 
 always @(posedge aclk) begin
     if(!aresetn) begin
