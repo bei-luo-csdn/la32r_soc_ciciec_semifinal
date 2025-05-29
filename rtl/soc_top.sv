@@ -207,7 +207,7 @@ endgenerate
     wire [3:0] debug_wb_rf_wen;
     wire [4:0] debug_wb_rf_wnum;
     wire [31:0] debug_wb_rf_wdata;
-    wire [7:0] cpu_int;
+    wire cpu_int;
 
 //TODO: add your code
 //依次例化core_top、Axi_CDC、AxiCrossbar_1x4、axi_wrap_ram、axi_uart_controller、confreg
