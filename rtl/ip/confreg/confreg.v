@@ -375,7 +375,7 @@ my_int_ctrl #(.N(32)) u_my_int_ctrl (
     .cpu_clk       ( cpu_clk       ),
     .cpu_resetn    ( cpu_resetn    ),
 
-    .int_en        (confreg_int_en[32:0]), // 这里是中断使能
+    .int_en        (confreg_int_en[31:0]), // 这里是中断使能
     .int_edge      (32'h0), // 这里是中断边沿触发
     .int_pol       (32'h0), // 这里是中断极性
     .int_in        ({timer_int, 4'h0}),// 4'h0本来是touch_btn_data，但目前只支持电平触发
