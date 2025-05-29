@@ -217,7 +217,7 @@ endgenerate
 core_top u_cpu(
 
     //外部中断信号
-    .intrpt(8'h0), //confreg中的中断信号,先别连cpu_int，不然hello world给你干不跑了
+    .intrpt(cpu_int), //confreg中的中断信号,先别连cpu_int，不然hello world给你干不跑了
     //high active
     .aclk (cpu_clk),
     .aresetn (cpu_resetn),
@@ -332,7 +332,7 @@ Axi_CDC u_axi_cdc(
     .axiIn_awvalid(cpu_awvalid) ,
     .axiIn_awready(cpu_awready) ,
     .axiIn_awaddr(cpu_awaddr) ,
-    .axiIn_awid(cpu_awid|cpu_wid) ,
+    .axiIn_awid(cpu_awid) ,
     .axiIn_awlen(cpu_awlen) ,
     .axiIn_awsize(cpu_awsize) ,
     .axiIn_awburst(cpu_awburst) ,

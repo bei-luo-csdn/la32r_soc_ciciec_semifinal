@@ -344,25 +344,41 @@ end
 //-------------------------------{int_ctrl}begin----------------------------//
 //TODO: add your code
 // 这里实现了2.2写的使能功能（write_confreg_int_en）
-wire write_confreg_int_en  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h0);
+wire [32:0] write_confreg_int_en  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h0);
+wire [32:0] write_confreg_int_edge = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h4);
+wire [32:0] write_confreg_int_pol  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h8);
+wire [32:0] write_confreg_int_clr  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'hC);
+wire [32:0] write_confreg_int_state = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h10);
 
 always @(posedge aclk) begin
     if(!aresetn) begin
         confreg_int_en <= 32'd0;
+        confreg_int_edge <= 32'd0;
+        confreg_int_pol <= 32'd0;
     end
-    else if (write_confreg_int_en) begin
+    else begin
+         if (write_confreg_int_en) begin
         confreg_int_en <= s_wdata;
+         end
+         if (write_confreg_int_edge) begin
+        confreg_int_edge <= s_wdata;
+         end
+         if (write_confreg_int_pol) begin
+        confreg_int_pol <= s_wdata;
+         end
     end
 end
 // 中断控制器
-my_int_ctrl #(.N(5)) u_my_int_ctrl (
+my_int_ctrl #(.N(32)) u_my_int_ctrl (
     .sys_clk       ( aclk          ),
     .sys_resetn    ( aresetn       ),
     .cpu_clk       ( cpu_clk       ),
     .cpu_resetn    ( cpu_resetn    ),
 
+    .int_en        (confreg_int_en[32:0]), // 这里是中断使能
+    .int_edge      (32'h0), // 这里是中断边沿触发
+    .int_pol       (32'h0), // 这里是中断极性
     .int_in        ({timer_int, 4'h0}),// 4'h0本来是touch_btn_data，但目前只支持电平触发
-    .int_en        (confreg_int_en[4:0]), // 这里是中断使能
     .int_state     (confreg_int_state), // 中断状态输出
     .int_out       (confreg_int) // 中断输出
 );
@@ -379,22 +395,36 @@ module my_int_ctrl_one(
     input clk,
     input resetn,
     
-    input int_in,
     input int_en, // 中断有效
-    output int_state
+    input int_pol, // 中断极性(1:高电平/上升沿触发)
+    input int_edge, // 中断边沿触发
+    input int_in,
+    output int_state// 为1表示对应位的中断有效
 );
-   assign int_state = int_in & int_en;
+    reg int_in_r;
+    reg int_edge_detect; // 中断边沿检测
+    always@(posedge clk) begin
+        if(int_in_r!=int_in)begin 
+            int_edge_detect <=int_pol?int_in:!int_in;
+            int_in_r <=int_in;
+            end
+        else int_edge_detect <= 0;
+    end
+    assign int_state = int_en & (int_edge ? int_edge_detect : (int_pol ? int_in : !int_in));
 
 endmodule
 //中断控制器
-module my_int_ctrl #(parameter N=5)(
+module my_int_ctrl #(parameter N=32)(
     input sys_clk,
     input sys_resetn,
     input cpu_clk,
     input cpu_resetn,// 需要cdc处理，因为中断在sys时钟域产生，但需要传输到cpu
 
-    input [N-1:0] int_in,
     input [N-1:0] int_en,
+    input [N-1:0] int_edge, // 中断边沿触发
+    input [N-1:0] int_pol, // 中断极性
+    input [N-1:0] int_in,
+    input [N-1:0] int_clr, // 中断清除
     output [N-1:0] int_state,
     output int_out
 );
@@ -403,8 +433,10 @@ module my_int_ctrl #(parameter N=5)(
         my_int_ctrl_one u_int_ctrl_one (
             .clk(sys_clk),
             .resetn(sys_resetn),
-            .int_in(int_in[i]),
             .int_en(int_en[i]),
+            .int_edge(int_edge[i]),
+            .int_pol(int_pol[i]),
+            .int_in(int_in[i]),
             .int_state(int_state[i])
         );
     end
