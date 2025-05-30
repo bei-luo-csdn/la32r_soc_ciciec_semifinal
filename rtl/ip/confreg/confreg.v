@@ -348,7 +348,6 @@ wire [31:0] write_confreg_int_en  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR
 wire [31:0] write_confreg_int_edge = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h4);
 wire [31:0] write_confreg_int_pol  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h8);
 wire [31:0] write_confreg_int_clr  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'hC);
-wire [31:0] write_confreg_int_state = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h10);
 
 always @(posedge aclk) begin
     if(!aresetn) begin
@@ -376,10 +375,10 @@ my_int_ctrl #(.N(32)) u_my_int_ctrl (
     .cpu_resetn    ( cpu_resetn    ),
 
     .int_en        (confreg_int_en[31:0]), // 这里是中断使能
-    .int_edge      (32'h0), // 这里是中断边沿触发
-    .int_pol       (32'h0), // 这里是中断极性
-    .int_in        ({timer_int, 4'h0}),// 4'h0本来是touch_btn_data，但目前只支持电平触发
-    .int_state     (confreg_int_state), // 中断状态输出
+    .int_edge      (confreg_int_edge[31:0]), // 中断边沿触发
+    .int_pol       (confreg_int_pol[31:0]), // 中断极性
+    .int_in        ({timer_int, touch_btn_data[3:0]}),// 4'h0本来是touch_btn_data，但目前只支持电平触发
+    .int_state     (confreg_int_state[31:0]), // 中断状态输出
     .int_out       (confreg_int) // 中断输出
 );
 
