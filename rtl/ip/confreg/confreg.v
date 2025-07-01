@@ -394,18 +394,41 @@ module my_int_ctrl_one(
     input clk,
     input resetn,
     
+    input int_clr, // 中断清除
     input int_en, // 中断有效
     input int_pol, // 中断极性(1:高电平/上升沿触发)
     input int_edge, // 中断边沿触发
     input int_in,
-    output int_state// 为1表示对应位的中断有效
+    output reg int_state// 为1表示对应位的中断有效
 );
     reg int_in_r;
     reg int_edge_detect; // 中断边沿检测
+    wire edge_detected;
+
+    assign edge_detected = (int_pol) ? 
+                          (int_in & ~int_in_r) :  // 上升沿检测
+                          (~int_in & int_in_r);   // 下降沿检测
+
+    always@(posedge clk or negedge resetn) begin
+        if(!resetn) begin
+            int_in_r <= 0;
+            int_state <= 0;
+        end
+        else begin
+            int_in_r <= int_in;  // 始终更新采样寄存器
+            
+            if(int_clr)          // 清除中断
+                int_state <= 0;
+            else if(int_en & int_edge & edge_detected) 
+                int_state <= 1;  // 锁存边沿中断
+            else if(int_en & !int_edge) 
+                int_state <= int_pol ? int_in : ~int_in;  // 电平中断
+        end
+    end
     always@(posedge clk) begin
-        if(int_in_r!=int_in)begin 
-            int_edge_detect <=int_pol?int_in:!int_in;
-            int_in_r <=int_in;
+        if(int_in_r!=int_in)begin // 出现边沿
+            int_edge_detect <= int_pol?int_in:!int_in;
+            int_in_r <= int_in;
             end
         else int_edge_detect <= 0;
     end
@@ -432,6 +455,7 @@ module my_int_ctrl #(parameter N=32)(
         my_int_ctrl_one u_int_ctrl_one (
             .clk(sys_clk),
             .resetn(sys_resetn),
+            .int_clr(int_clr[i]), // 中断清除
             .int_en(int_en[i]),
             .int_edge(int_edge[i]),
             .int_pol(int_pol[i]),
