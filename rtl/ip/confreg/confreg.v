@@ -388,7 +388,7 @@ my_int_ctrl #(.N(32)) u_my_int_ctrl (
 endmodule
 
 //TODO: add your module
-// 实现一个bit中断处理
+// 实现一个1bit中断处理
 // 输出中断状态
 module my_int_ctrl_one(
     input clk,
