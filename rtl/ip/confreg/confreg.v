@@ -354,6 +354,7 @@ always @(posedge aclk) begin
         confreg_int_en <= 32'd0;
         confreg_int_edge <= 32'd0;
         confreg_int_pol <= 32'd0;
+        confreg_int_clr <= 32'b0;
     end
     else begin
          if (write_confreg_int_en) begin
@@ -365,6 +366,13 @@ always @(posedge aclk) begin
          if (write_confreg_int_pol) begin
         confreg_int_pol <= s_wdata;
          end
+         if( write_confreg_int_clr) begin
+        confreg_int_clr <= s_wdata;
+         end
+        else begin
+            confreg_int_clr <= 32'b0; // 清除寄存器
+        end
+
     end
 end
 // 中断控制器
