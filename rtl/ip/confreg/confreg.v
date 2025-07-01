@@ -374,6 +374,7 @@ my_int_ctrl #(.N(32)) u_my_int_ctrl (
     .cpu_clk       ( cpu_clk       ),
     .cpu_resetn    ( cpu_resetn    ),
 
+    .int_clr       (confreg_int_clr[31:0]), // 中断清除
     .int_en        (confreg_int_en[31:0]), // 这里是中断使能
     .int_edge      (confreg_int_edge[31:0]), // 中断边沿触发
     .int_pol       (confreg_int_pol[31:0]), // 中断极性
