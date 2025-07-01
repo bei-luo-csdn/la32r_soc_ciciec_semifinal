@@ -386,12 +386,11 @@ my_int_ctrl #(.N(32)) u_my_int_ctrl (
     .int_en        (confreg_int_en[31:0]), // 这里是中断使能
     .int_edge      (confreg_int_edge[31:0]), // 中断边沿触发
     .int_pol       (confreg_int_pol[31:0]), // 中断极性
-    .int_in        ({timer_int, touch_btn_data[3:0]}),// 4'h0本来是touch_btn_data，但目前只支持电平触发
+    .int_in        ({timer_int, touch_btn_data[3:0]}),//
     .int_state     (confreg_int_state[31:0]), // 中断状态输出
     .int_out       (confreg_int) // 中断输出
 );
 
-// 以上是视频代码
 //--------------------------------{int_ctrl}end-----------------------------//
 
 endmodule
