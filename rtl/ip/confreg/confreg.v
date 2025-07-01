@@ -401,8 +401,7 @@ module my_int_ctrl_one(
     input int_in,
     output reg int_state// 为1表示对应位的中断有效
 );
-    reg int_in_r;
-    reg int_edge_detect; // 中断边沿检测
+    reg int_in_r; // int_in的采样寄存器
     wire edge_detected;
 
     assign edge_detected = (int_pol) ? 
@@ -425,14 +424,6 @@ module my_int_ctrl_one(
                 int_state <= int_pol ? int_in : ~int_in;  // 电平中断
         end
     end
-    always@(posedge clk) begin
-        if(int_in_r!=int_in)begin // 出现边沿
-            int_edge_detect <= int_pol?int_in:!int_in;
-            int_in_r <= int_in;
-            end
-        else int_edge_detect <= 0;
-    end
-    assign int_state = int_en & (int_edge ? int_edge_detect : (int_pol ? int_in : !int_in));
 
 endmodule
 //中断控制器
