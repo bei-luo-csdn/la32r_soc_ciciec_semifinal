@@ -348,13 +348,14 @@ wire [31:0] write_confreg_int_en  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR
 wire [31:0] write_confreg_int_edge = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h4);
 wire [31:0] write_confreg_int_pol  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h8);
 wire [31:0] write_confreg_int_clr  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'hC);
+reg [31:0] write_confreg_int_clr_r;
 
 always @(posedge aclk) begin
+    
     if(!aresetn) begin
         confreg_int_en <= 32'd0;
         confreg_int_edge <= 32'd0;
         confreg_int_pol <= 32'd0;
-        confreg_int_clr <= 32'b0;
     end
     else begin
          if (write_confreg_int_en) begin
@@ -366,13 +367,20 @@ always @(posedge aclk) begin
          if (write_confreg_int_pol) begin
         confreg_int_pol <= s_wdata;
          end
-         if( write_confreg_int_clr) begin
-        confreg_int_clr <= s_wdata;
+    end
+
+    
+    if(!aresetn) begin
+        confreg_int_clr <= 32'b0;
+    end
+    else begin
+        write_confreg_int_clr_r <= write_confreg_int_clr;
+         if( write_confreg_int_clr & ~write_confreg_int_clr_r) begin
+            confreg_int_clr <= s_wdata;
          end
         else begin
             confreg_int_clr <= 32'b0; // 清除寄存器
         end
-
     end
 end
 // 中断控制器
@@ -425,7 +433,10 @@ module my_int_ctrl_one(
             int_in_r <= int_in;  // 始终更新采样寄存器
             
             if(int_clr)          // 清除中断
+            begin
                 int_state <= 0;
+                int_in_r <=0;
+            end
             else if(int_en & int_edge & edge_detected) 
                 int_state <= 1;  // 锁存边沿中断
             else if(int_en & !int_edge) 
