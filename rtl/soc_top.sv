@@ -217,7 +217,7 @@ endgenerate
 core_top u_cpu(
 
     //外部中断信号
-    .intrpt({7'h0,cpu_int}), //confreg中的中断信号,先别连cpu_int，不然hello world给你干不跑了
+    .intrpt({7'h0,cpu_int}), //confreg中的中断信号
     //high active
     .aclk (cpu_clk),
     .aresetn (cpu_resetn),
@@ -812,24 +812,16 @@ axi_wrap_ram_sp_ext u_axi_ram (
     assign UART_DCD = 1'b0;
     assign UART_RI = 1'b0;
     wire uart0_int ;
-    wire uart0_txd_o ;
-    wire uart0_txd_i ;
-    wire uart0_txd_oe;
-    wire uart0_rxd_o ;
-    wire uart0_rxd_i ;
-    wire uart0_rxd_oe;
+
     wire uart0_rts_o ;
     wire uart0_cts_i ;
     wire uart0_dsr_i ;
     wire uart0_dcd_i ;
     wire uart0_dtr_o ;
     wire uart0_ri_i ;
-    assign UART_RX = uart0_rxd_oe? 1'bz : uart0_rxd_o;
-    assign UART_TX = uart0_txd_oe? 1'bz : uart0_txd_o;
+
     assign UART_RTS = uart0_rts_o ;
     assign UART_DTR = uart0_dtr_o ;
-    assign uart0_txd_i = UART_TX;
-    assign uart0_rxd_i = UART_RX;
     assign uart0_cts_i = UART_CTS;
     assign uart0_dcd_i = UART_DCD;
     assign uart0_dsr_i = UART_DSR;
@@ -892,12 +884,12 @@ axi_uart_controller u_axi_uart_controller
     .dma_ack_i (1'b0 ),
 
     //UART0
-    .uart0_txd_i (uart0_txd_i ),
-    .uart0_txd_o (uart0_txd_o ),
-    .uart0_txd_oe (uart0_txd_oe ),
-    .uart0_rxd_i (uart0_rxd_i ),
-    .uart0_rxd_o (uart0_rxd_o ),
-    .uart0_rxd_oe (uart0_rxd_oe ),
+    .uart0_txd_i (UART_TX_i ),
+    .uart0_txd_o (UART_TX_o ),
+    .uart0_txd_oe (UART_TX_oe ),
+    .uart0_rxd_i (UART_RX_i ),
+    .uart0_rxd_o (UART_RX_o ),
+    .uart0_rxd_oe (UART_RX_oe ),
     .uart0_rts_o (uart0_rts_o ),
     .uart0_dtr_o (uart0_dtr_o ),
     .uart0_cts_i (uart0_cts_i ),
@@ -952,6 +944,7 @@ confreg#(.SIMULATION(SIMULATION)) u_confreg (
 
     .switch ( dip_sw ),
     .touch_btn ( touch_btn ),
+    .uart0_int(uart0_int),
     .led ( leds ),
     .dpy0 ( dpy0 ),
     .dpy1 ( dpy1 ),
