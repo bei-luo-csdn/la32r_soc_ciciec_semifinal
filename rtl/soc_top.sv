@@ -185,7 +185,7 @@ endgenerate
     wire [7:0] cpu_awlen;
     wire [2:0] cpu_awsize;
     wire [1:0] cpu_awburst;
-    wire cpu_awlock;
+    wire [1:0] cpu_awlock;
     wire [3:0] cpu_awcache;
     wire [2:0] cpu_awprot;
     wire cpu_awvalid;
@@ -525,15 +525,15 @@ Axi_CDC u_axi_cdc(
     wire confreg_rready;
 
     wire axiOut_2_arready;
-    wire axiOut_2_rid;
-    wire axiOut_2_rdata;
-    wire axiOut_2_rresp;
+    wire [4:0] axiOut_2_rid;
+    wire [31:0] axiOut_2_rdata;
+    wire [1:0] axiOut_2_rresp;
     wire axiOut_2_rlast;
     wire axiOut_2_rvalid;
     wire axiOut_2_awready;
     wire axiOut_2_wready;
-    wire axiOut_2_bid;
-    wire axiOut_2_bresp;
+    wire [4:0] axiOut_2_bid;
+    wire [1:0] axiOut_2_bresp;
     wire axiOut_2_bvalid;
 
     assign axiOut_2_arready = 1'b1;
