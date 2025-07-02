@@ -348,10 +348,9 @@ wire [31:0] write_confreg_int_en  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR
 wire [31:0] write_confreg_int_edge = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h4);
 wire [31:0] write_confreg_int_pol  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h8);
 wire [31:0] write_confreg_int_clr  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'hC);
-reg [31:0] write_confreg_int_clr_r;
 
 always @(posedge aclk) begin
-    
+
     if(!aresetn) begin
         confreg_int_en <= 32'd0;
         confreg_int_edge <= 32'd0;
@@ -374,8 +373,7 @@ always @(posedge aclk) begin
         confreg_int_clr <= 32'b0;
     end
     else begin
-        write_confreg_int_clr_r <= write_confreg_int_clr;
-         if( write_confreg_int_clr & ~write_confreg_int_clr_r) begin
+         if( write_confreg_int_clr) begin
             confreg_int_clr <= s_wdata;
          end
         else begin
