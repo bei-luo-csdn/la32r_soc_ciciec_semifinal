@@ -1,4 +1,4 @@
-TARGET = int_test
+TARGET = lenet
 
 CFLAGS += -O3 -g
 

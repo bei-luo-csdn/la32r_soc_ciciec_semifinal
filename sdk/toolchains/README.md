@@ -1,6 +1,6 @@
 安装GNU交叉工具链与C库的方案
 
-* Step1：修改init.sh中的 CICIEC_WINDOWS_HOME 路径为windows下的发布包路径
+* Step1：修改init.sh中的 LA32RSOC_WINDOWS_HOME 路径为windows下的发布包路径
 
 * Step2：在终端中执行命令
 ./init.sh

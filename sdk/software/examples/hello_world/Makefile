@@ -2,9 +2,6 @@ TARGET = hello_world
 
 CFLAGS += -O3 -g
 
-#根据SIMU宏选择串口波特率,0：FPGA上板；1：仿真
-CFLAGS += -DSIMU=1
-
 C_SRCS := $(wildcard ./*.c )
 
 OBJDIR = obj

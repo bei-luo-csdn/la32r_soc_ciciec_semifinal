@@ -24,7 +24,7 @@ LDFLAGS +=  	-T $(LINKER_SCRIPT) \
 				-Wl,--gc-sections -Wl,--check-sections \
 				-lc -lm -lg -lsemihost -lgcc -L$(PICOLIBC_DIR)/lib
 
-LINKER_SCRIPT := $(COMMON_DIR)/env/separate.lds
+LINKER_SCRIPT := $(COMMON_DIR)/env/script.lds
 
 ASM_SRCS += $(COMMON_DIR)/env/start.S 
 
@@ -37,6 +37,9 @@ endif
 C_SRCS   += $(COMMON_DIR)/drivers/confreg_time.c
 C_SRCS   += $(COMMON_DIR)/drivers/core_time.c
 C_SRCS   += $(COMMON_DIR)/drivers/common_func.c
+C_SRCS   += $(COMMON_DIR)/drivers/dvi.c \
+			$(COMMON_DIR)/drivers/led.c \
+			$(COMMON_DIR)/drivers/seg7.c
 
 INCLUDES += -I./ \
 			-I$(COMMON_DIR)/include \
@@ -58,9 +61,9 @@ $(TARGET): $(LINK_OBJS) $(LINK_DEPS) convert Makefile
 	$(LA32R_OBJDUMP) --disassemble-all -S $(OBJDIR)/$@.elf > $(OBJDIR)/$@.s
 	$(OBJDIR)/convert $@.bin $(OBJDIR)/
 	cp ./$(OBJDIR)/axi_ram.mif $(COMMON_DIR)/../../
-	cp ./$(OBJDIR)/axi_ram.mif $(CICIEC_WINDOWS_HOME)/sdk
+	cp ./$(OBJDIR)/axi_ram.mif $(LA32RSOC_WINDOWS_HOME)/sdk
 	cp ./$(OBJDIR)/$@.bin $(COMMON_DIR)/../../
-	cp ./$(OBJDIR)/$@.bin $(CICIEC_WINDOWS_HOME)/sdk
+	cp ./$(OBJDIR)/$@.bin $(LA32RSOC_WINDOWS_HOME)/sdk
 	rm -f $(LINK_OBJS)
 	rm -f $(OBJDIR)/convert
 

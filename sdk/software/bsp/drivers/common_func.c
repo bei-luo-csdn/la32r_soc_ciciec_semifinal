@@ -10,4 +10,11 @@ unsigned int RegRead(unsigned int addr)
 	return (*((volatile unsigned int *)(addr)));
 }
 
+//memcpy 32bit
+void SaveMemory(unsigned int  *DestAddr, unsigned int  *SrcAddr, unsigned int Size)
+{
+	unsigned int i;
+	for (i = 0; i < Size; i += 1)
+		*(U32*)(DestAddr + i) = SrcAddr[i];
+}
 

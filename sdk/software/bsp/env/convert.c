@@ -6,6 +6,9 @@ void binary_out(FILE* out,unsigned char* mem)
 {
     char tmp;
     unsigned char num[8];
+    int i;
+    int j;
+
     num[0] = 1;
     num[1] = 2;
     num[2] = 4;
@@ -14,9 +17,9 @@ void binary_out(FILE* out,unsigned char* mem)
     num[5] = 32;
     num[6] = 64;
     num[7] = 128;
-    for(int i=3;i>=0;i--)
+    for(i=3;i>=0;i--)
     {
-        for(int j=7;j>=0;j--)
+        for(j=7;j>=0;j--)
         {
             if( (mem[i] & num[j] ) != 0)
                 tmp = '1';

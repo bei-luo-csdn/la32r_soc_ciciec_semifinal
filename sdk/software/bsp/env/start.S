@@ -173,7 +173,7 @@ _start:
 	b 1b
 
 .globl _myexit
-.org 0x548
+.org 0x200
 _myexit:
 1:
 	b 1b

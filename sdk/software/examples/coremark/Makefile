@@ -11,7 +11,7 @@ C_SRCS := \
 CFLAGS := -O3 -funroll-all-loops -finline-limit=200 -ftree-dominator-opts -fno-if-conversion2 -fselective-scheduling -fno-code-hoisting -fno-common -falign-functions=4 -falign-jumps=4 -falign-loops=4
 
 #根据SIMU宏选择串口波特率,0：FPGA上板；1：仿真
-CFLAGS += -DSIMU=1
+CFLAGS += -DSIMU=0
 
 CFLAGS += -DFLAGS_STR=\""$(CFLAGS)"\"
 CFLAGS += -g

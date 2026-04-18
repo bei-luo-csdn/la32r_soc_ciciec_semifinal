@@ -1,4 +1,4 @@
-TARGET = int_test
+TARGET = pinball_game
 
 CFLAGS += -O3 -g
 
