@@ -41,7 +41,7 @@ module soc_top #(parameter SIMULATION=1'b0)
     input           reset,              //BTN6手动复位按钮开关，带消抖电路，按下时为1
 
     //图像输出信号
-    /*output [2:0]    video_red,          //红色像素，3位
+    output [2:0]    video_red,          //红色像素，3位
     output [2:0]    video_green,        //绿色像素，3位
     output [1:0]    video_blue,         //蓝色像素，2位
     output          video_hsync,        //行同步（水平同步）信号
@@ -49,7 +49,7 @@ module soc_top #(parameter SIMULATION=1'b0)
     output          video_clk,          //像素时钟输出
     output          video_de,           //行数据有效信号，用于区分消隐区
 
-    input           clock_btn,          //BTN5手动时钟按钮开关，带消抖电路，按下时为1   */   //复赛删除的信号
+    input           clock_btn,          //BTN5手动时钟按钮开关，带消抖电路，按下时为1  
     input  [3:0]    touch_btn,          //BTN1~BTN4，按钮开关，按下时为1
     input  [31:0]   dip_sw,             //32位拨码开关，拨到“ON”时为1
     output [15:0]   leds,               //16位LED，输出时1点亮
@@ -535,207 +535,7 @@ Axi_CDC u_axi_cdc(
     wire axiOut_2_bid;
     wire axiOut_2_bresp;
     wire axiOut_2_bvalid;
-/*
-    assign axiOut_2_arready = 1'b1;
-    assign axiOut_2_rid = 5'b0;
-    assign axiOut_2_rdata = 32'b0;
-    assign axiOut_2_rresp = 2'b0;
-    assign axiOut_2_rlast = 1'b0;
-    assign axiOut_2_rvalid = 1'b0;
-    assign axiOut_2_awready = 1'b1;
-    assign axiOut_2_wready = 1'b1;
-    assign axiOut_2_bid = 5'b0;
-    assign axiOut_2_bresp = 2'b0;
-    assign axiOut_2_bvalid = 1'b0;
-//
 
-
-//实例化AxiCrossbar_1x4
-AxiCrossbar_1x4  u_AxiCrossbar_1x4(
-    .clk (sys_clk ),
-    .resetn (sys_resetn ),
-
-    //master 0
-    //aw
-    .axiIn_awvalid (cpu_sync_awvalid ),
-    .axiIn_awready (cpu_sync_awready ),
-    .axiIn_awaddr (cpu_sync_awaddr ),
-    .axiIn_awid (cpu_sync_awid ),
-    .axiIn_awlen (cpu_sync_awlen ),
-    .axiIn_awsize (cpu_sync_awsize ),
-    .axiIn_awburst (cpu_sync_awburst ),
-    .axiIn_awlock (cpu_sync_awlock ),
-    .axiIn_awcache (cpu_sync_awcache ),
-    .axiIn_awprot (cpu_sync_awprot ),//10
-    //w
-    .axiIn_wvalid (cpu_sync_wvalid ),
-    .axiIn_wready (cpu_sync_wready ),
-    .axiIn_wdata (cpu_sync_wdata ),
-    .axiIn_wstrb (cpu_sync_wstrb ),
-    .axiIn_wlast (cpu_sync_wlast ),//5
-    //b
-    .axiIn_bready (cpu_sync_bready ),
-    .axiIn_bvalid (cpu_sync_bvalid ),
-    .axiIn_bid (cpu_sync_bid ),
-    .axiIn_bresp (cpu_sync_bresp ),//4
-    //ar
-    .axiIn_arvalid (cpu_sync_arvalid ),
-    .axiIn_arready (cpu_sync_arready ),
-    .axiIn_araddr (cpu_sync_araddr ),
-    .axiIn_arid (cpu_sync_arid ),
-    .axiIn_arlen (cpu_sync_arlen ),
-    .axiIn_arsize (cpu_sync_arsize ),
-    .axiIn_arburst (cpu_sync_arburst ),
-    .axiIn_arlock (cpu_sync_arlock ),
-    .axiIn_arcache (cpu_sync_arcache ),
-    .axiIn_arprot (cpu_sync_arprot ),//10
-    //r
-    .axiIn_rvalid (cpu_sync_rvalid ),
-    .axiIn_rready (cpu_sync_rready ),
-    .axiIn_rdata (cpu_sync_rdata ),
-    .axiIn_rid (cpu_sync_rid ),
-    .axiIn_rresp (cpu_sync_rresp ),
-    .axiIn_rlast (cpu_sync_rlast ),//5
-
-
-    //slave 0
-    //aw
-    .axiOut_0_awvalid ( ram_awvalid ),
-    .axiOut_0_awready ( ram_awready ),
-    .axiOut_0_awaddr ( ram_awaddr ),
-    .axiOut_0_awid ( ram_awid ),
-    .axiOut_0_awlen ( ram_awlen ),
-    .axiOut_0_awsize ( ram_awsize ),
-    .axiOut_0_awburst ( ram_awburst ),
-    .axiOut_0_awlock ( ram_awlock ),
-    .axiOut_0_awcache ( ram_awcache ),
-    .axiOut_0_awprot ( ram_awprot ),
-    //w
-    .axiOut_0_wvalid ( ram_wvalid ),
-    .axiOut_0_wready ( ram_wready ),
-    .axiOut_0_wdata ( ram_wdata ),
-    .axiOut_0_wstrb ( ram_wstrb ),
-    .axiOut_0_wlast ( ram_wlast ),
-    //b
-    .axiOut_0_bready ( ram_bready ),
-    .axiOut_0_bvalid ( ram_bvalid ),
-    .axiOut_0_bid ( ram_bid ),
-    .axiOut_0_bresp ( ram_bresp ),
-    //ar
-    .axiOut_0_arvalid ( ram_arvalid ),
-    .axiOut_0_arready ( ram_arready ),
-    .axiOut_0_araddr ( ram_araddr ),
-    .axiOut_0_arid ( ram_arid ),
-    .axiOut_0_arlen ( ram_arlen ),
-    .axiOut_0_arsize ( ram_arsize ),
-    .axiOut_0_arburst ( ram_arburst ),
-    .axiOut_0_arlock ( ram_arlock ),
-    .axiOut_0_arcache ( ram_arcache ),
-    .axiOut_0_arprot ( ram_arprot ),
-    //r
-    .axiOut_0_rvalid ( ram_rvalid ),
-    .axiOut_0_rready ( ram_rready ),
-    .axiOut_0_rdata ( ram_rdata ),
-    .axiOut_0_rid ( ram_rid ),
-    .axiOut_0_rresp ( ram_rresp ),
-    .axiOut_0_rlast ( ram_rlast ),
-
-    //slave 1
-    //axiOut_1连接axi转apb桥后连接UART
-    .axiOut_1_awvalid ( uart_awvalid ),
-    .axiOut_1_awready ( uart_awready ),
-    .axiOut_1_awaddr ( uart_awaddr ),
-    .axiOut_1_awid ( uart_awid ),
-    .axiOut_1_awlen ( uart_awlen ),
-    .axiOut_1_awsize ( uart_awsize ),
-    .axiOut_1_awburst ( uart_awburst ),
-    .axiOut_1_awlock ( uart_awlock ),
-    .axiOut_1_awcache ( uart_awcache ),
-    .axiOut_1_awprot ( uart_awprot ),
-    //w
-    .axiOut_1_wvalid ( uart_wvalid ),
-    .axiOut_1_wready ( uart_wready ),
-    .axiOut_1_wdata ( uart_wdata ),
-    .axiOut_1_wstrb ( uart_wstrb ),
-    .axiOut_1_wlast ( uart_wlast ),
-    //b
-    .axiOut_1_bready ( uart_bready ),
-    .axiOut_1_bvalid ( uart_bvalid ),
-    .axiOut_1_bid ( uart_bid ),
-    .axiOut_1_bresp ( uart_bresp ),
-    //ar
-    .axiOut_1_arvalid ( uart_arvalid ),
-    .axiOut_1_arready ( uart_arready ),
-    .axiOut_1_araddr ( uart_araddr ),
-    .axiOut_1_arid ( uart_arid ),
-    .axiOut_1_arlen ( uart_arlen ),
-    .axiOut_1_arsize ( uart_arsize ),
-    .axiOut_1_arburst ( uart_arburst ),
-    .axiOut_1_arlock ( uart_arlock ),
-    .axiOut_1_arcache ( uart_arcache ),
-    .axiOut_1_arprot ( uart_arprot ),
-    .axiOut_1_rvalid ( uart_rvalid ),
-    .axiOut_1_rready( uart_rready ),
-    .axiOut_1_rdata( uart_rdata ),
-    .axiOut_1_rid(  uart_rid ),
-    .axiOut_1_rresp( uart_rresp ),
-    .axiOut_1_rlast( uart_rlast ),
-    //over
-    .axiOut_2_arready(axiOut_2_arready),
-    .axiOut_2_rid(axiOut_2_rid),
-    .axiOut_2_rdata(axiOut_2_rdata),
-    .axiOut_2_rresp(axiOut_2_rresp),
-    .axiOut_2_rlast(axiOut_2_rlast),
-    .axiOut_2_rvalid(axiOut_2_rvalid),
-    .axiOut_2_awready(axiOut_2_awready),
-    .axiOut_2_wready(axiOut_2_wready),
-    .axiOut_2_bid(axiOut_2_bid),
-    .axiOut_2_bresp(axiOut_2_bresp),
-    .axiOut_2_bvalid(axiOut_2_bvalid),
-    //slave3  连接confreg
-    .axiOut_3_awvalid ( confreg_awvalid ),
-    .axiOut_3_awready ( confreg_awready ),
-    .axiOut_3_awaddr ( confreg_awaddr ),
-    .axiOut_3_awid ( confreg_awid ),
-    .axiOut_3_awlen ( confreg_awlen ),
-    .axiOut_3_awsize ( confreg_awsize ),
-    .axiOut_3_awburst ( confreg_awburst ),
-    .axiOut_3_awlock ( confreg_awlock ),
-    .axiOut_3_awcache ( confreg_awcache ),
-    .axiOut_3_awprot ( confreg_awprot ),
-    //w
-    .axiOut_3_wvalid ( confreg_wvalid ),
-    .axiOut_3_wready ( confreg_wready ),
-    .axiOut_3_wdata ( confreg_wdata ),
-    .axiOut_3_wstrb ( confreg_wstrb ),
-    .axiOut_3_wlast ( confreg_wlast ),
-    //b
-    .axiOut_3_bready ( confreg_bready ),
-    .axiOut_3_bvalid ( confreg_bvalid ),
-    .axiOut_3_bid ( confreg_bid ),
-    .axiOut_3_bresp ( confreg_bresp ),
-    //ar
-    .axiOut_3_arvalid ( confreg_arvalid ),
-    .axiOut_3_arready ( confreg_arready ),
-    .axiOut_3_araddr ( confreg_araddr ),
-    .axiOut_3_arid ( confreg_arid ),
-    .axiOut_3_arlen ( confreg_arlen ),
-    .axiOut_3_arsize ( confreg_arsize ),
-    .axiOut_3_arburst ( confreg_arburst ),
-    .axiOut_3_arlock ( confreg_arlock ),
-    .axiOut_3_arcache ( confreg_arcache ),
-    .axiOut_3_arprot ( confreg_arprot ),
-    //r
-    .axiOut_3_rvalid ( confreg_rvalid ),
-    .axiOut_3_rready ( confreg_rready ),
-    .axiOut_3_rdata ( confreg_rdata ),
-    .axiOut_3_rid ( confreg_rid ),
-    .axiOut_3_rresp ( confreg_rresp ),
-    .axiOut_3_rlast ( confreg_rlast )
-    //.axiOut_3_wid (confreg_wid)//debug
-    //over
-);
-*/
 //--------------------------------------------------------------------------
 // AxiCrossbar_2x8 实例化（地址映射依据实际硬件设计）
 // 主设备0: CPU (经 CDC)
