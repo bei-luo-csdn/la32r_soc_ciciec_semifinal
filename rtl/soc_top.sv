@@ -33,7 +33,6 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 `include "config.h"
-`include "iopad.svh"
 
 module soc_top #(parameter SIMULATION=1'b0)
 (
@@ -71,47 +70,10 @@ module soc_top #(parameter SIMULATION=1'b0)
     output          ext_ram_oe_n,       //ExtRAM读使能，低有效
     output          ext_ram_we_n,       //ExtRAM写使能，低有效
 
-    //Flash存储器信号，参考 JS28F640 芯片手册
-    /*output [22:0]   flash_a,            //Flash地址，a0仅在8bit模式有效，16bit模式无意义
-    inout  [15:0]   flash_d,            //Flash数据
-    output          flash_rp_n,         //Flash复位信号，低有效
-    output          flash_vpen,         //Flash写保护信号，低电平时不能擦除、烧写
-    output          flash_ce_n,         //Flash片选信号，低有效
-    output          flash_oe_n,         //Flash读使能信号，低有效
-    output          flash_we_n,         //Flash写使能信号，低有效
-    output          flash_byte_n,       //Flash 8bit模式选择，低有效。在使用flash的16位模式时请设为1    */    //复赛删除的信号
-
     //------uart-------
     inout           UART_RX,            //串口RX接收
     inout           UART_TX,             //串口TX发送
-    output           clk_o           //XTALO    //复赛新增的信号
 );
-
-
-// 添加 clk_i 声明
-wire clk_i;  // PX3W 时钟 IOPAD 的内部输入信号
-PX3W PAD_CLK_IN (.XIN(clk), .XOUT(clk_o), .XC(clk_i));
-`IPADU_GEN_SIMPLE(reset)  
-`IPAD_GEN_VEC_SIMPLE(touch_btn)  
-`IPAD_GEN_VEC_SIMPLE(dip_sw)  
-`OPAD_GEN_VEC_SIMPLE(leds)  
-`OPAD_GEN_VEC_SIMPLE(dpy0)  
-`OPAD_GEN_VEC_SIMPLE(dpy1)  
-`IOPAD_GEN_VEC_SIMPLE(base_ram_data)  
-`OPAD_GEN_VEC_SIMPLE(base_ram_addr)  
-`OPAD_GEN_VEC_SIMPLE(base_ram_be_n)  
-`OPAD_GEN_SIMPLE(base_ram_ce_n)  
-`OPAD_GEN_SIMPLE(base_ram_oe_n)  
-`OPAD_GEN_SIMPLE(base_ram_we_n)  
-`IOPAD_GEN_VEC_SIMPLE(ext_ram_data)  
-`OPAD_GEN_VEC_SIMPLE(ext_ram_addr)  
-`OPAD_GEN_VEC_SIMPLE(ext_ram_be_n)  
-`OPAD_GEN_SIMPLE(ext_ram_ce_n)  
-`OPAD_GEN_SIMPLE(ext_ram_oe_n)  
-`OPAD_GEN_SIMPLE(ext_ram_we_n)  
-`IOPAD_GEN_SIMPLE(UART_RX)  
-`IOPAD_GEN_SIMPLE(UART_TX)  
-
 
 wire cpu_clk;
 wire cpu_resetn;

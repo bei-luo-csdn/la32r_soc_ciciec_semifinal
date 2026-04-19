@@ -32,12 +32,14 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ------------------------------------------------------------------------------*/
 `timescale 1ns / 1ps
 `include "config.h"
+// `define FFT_OUTPUT_TXT
 
 `define UART_PSEL               u_soc_top.u_axi_uart_controller.uart0.PSEL
 `define UART_PENBLE             u_soc_top.u_axi_uart_controller.uart0.PENABLE
 `define UART_PWRITE             u_soc_top.u_axi_uart_controller.uart0.PWRITE
 `define UART_WADDR              u_soc_top.u_axi_uart_controller.uart0.PADDR[7:0]
 `define UART_WDATA              u_soc_top.u_axi_uart_controller.uart0.PWDATA[7:0]
+`define END_PC                  32'h1c000200
 
 module tb_top( );
 reg reset;
@@ -70,9 +72,8 @@ wire  ext_ram_we_n;
 wire  [31:0]  base_ram_data;
 wire  [31:0]  ext_ram_data;
 
-
-initial
-begin
+//产生时钟与复位信号
+initial begin
     clk = 1'b0;
     reset = 1'b1;
     dip_sw = 32'h0;
@@ -81,8 +82,9 @@ begin
 end
 always #10 clk=~clk;
 
-initial
-begin
+
+//产生按键信号
+initial begin
     touch_btn = 4'h0;
     dip_sw    = 32'h0000_abcd;
 
@@ -90,42 +92,39 @@ begin
 
     #100000
     touch_btn = 4'b0001;
-    #5000
+    #50
     touch_btn = 4'b0000;
 
     #100000
     touch_btn = 4'b0010;
-    #5000
+    #50
     touch_btn = 4'b0000;
 
     #100000
     touch_btn = 4'b0100;
-    #5000
+    #50
     touch_btn = 4'b0000;
 
     #100000
     touch_btn = 4'b1000;
-    #5000
+    #50
     touch_btn = 4'b0000;
 
 end
 
-wire clk_o;
 soc_top  #(.SIMULATION(1'b1)) u_soc_top (
     .clk                     ( clk           ),
     .reset                   ( reset         ),
-    .clk_o                   ( clk_o         ),
     .touch_btn               ( touch_btn     ),
     .dip_sw                  ( dip_sw        ),
 
-
-    // .video_red               ( video_red     ),
-    // .video_green             ( video_green   ),
-    // .video_blue              ( video_blue    ),
-    // .video_hsync             ( video_hsync   ),
-    // .video_vsync             ( video_vsync   ),
-    // .video_clk               ( video_clk     ),
-    // .video_de                ( video_de      ),
+    .video_red               ( video_red     ),
+    .video_green             ( video_green   ),
+    .video_blue              ( video_blue    ),
+    .video_hsync             ( video_hsync   ),
+    .video_vsync             ( video_vsync   ),
+    .video_clk               ( video_clk     ),
+    .video_de                ( video_de      ),
     .leds                    ( leds          ),
     .dpy0                    ( dpy0          ),
     .dpy1                    ( dpy1          ),
@@ -147,30 +146,6 @@ soc_top  #(.SIMULATION(1'b1)) u_soc_top (
     .UART_RX                 ( UART_RX       ),
     .UART_TX                 ( UART_TX       )
 );
-
-
-//模拟串口打印
-wire uart_display;
-wire [7:0] uart_data;
-wire uart_wen;
-assign uart_wen = (`UART_PSEL == 1'b1) &&  (`UART_PENBLE == 1'b1) && (`UART_PWRITE == 1'b1);
-assign uart_display = (uart_wen == 1'b1) && (`UART_WADDR == 8'h0);
-assign uart_data    = `UART_WDATA;
-
-always @(posedge clk)
-begin
-    if(uart_display)
-    begin
-        if(uart_data==8'hff)
-        begin
-            ;//$finish;
-        end
-        else
-        begin
-            $write("%c",uart_data);
-        end
-    end
-end
 
 sram_sp #(
     .AW        ( 18     ),
@@ -198,5 +173,59 @@ ext_sram_sp (
     .ram_data                ( ext_ram_data   )
 );
 
+//模拟串口打印
+wire uart_display;
+wire [7:0] uart_data;
+wire uart_wen;
+assign uart_wen = (`UART_PSEL == 1'b1) &&  (`UART_PENBLE == 1'b1) && (`UART_PWRITE == 1'b1);
+assign uart_display = (uart_wen == 1'b1) && (`UART_WADDR == 8'h0);
+assign uart_data    = `UART_WDATA;
+
+always @(posedge clk)
+begin
+    if(uart_display)
+    begin
+        if(uart_data==8'hff)
+        begin
+            ;//$finish;
+        end
+        else
+        begin
+            $write("%c",uart_data);
+        end
+    end
+end
+
+//仿真结束
+wire [31:0] debug_wb_pc;
+assign debug_wb_pc = u_soc_top.debug_wb_pc;
+wire test_end = debug_wb_pc==`END_PC;
+always @(posedge u_soc_top.cpu_clk)
+begin
+    if (!u_soc_top.cpu_resetn) begin
+    end
+    else if(test_end) begin
+        $display("==============================================================");
+        $display("Test end!");
+	    $finish;
+	end
+end
+
+//FFT测试结果输出
+`ifdef FFT_OUTPUT_TXT
+    integer fft_output_re;
+    integer fft_output_im;
+    initial begin
+        fft_output_re = $fopen("../python/fft512_output_re.txt", "w"); 
+        fft_output_im = $fopen("../python/fft512_output_im.txt", "w");
+        forever begin
+        @(posedge u_soc_top.u_axi_fft_top.u_axi_fft_wrap.aclk);
+        if(u_soc_top.u_axi_fft_top.u_axi_fft_wrap.valid_out) begin
+            $fwrite(fft_output_re, "%04h\n", u_soc_top.u_axi_fft_top.u_axi_fft_wrap.y_re);
+            $fwrite(fft_output_im, "%04h\n", u_soc_top.u_axi_fft_top.u_axi_fft_wrap.y_im);
+        end
+        end
+    end
+`endif
 
 endmodule
