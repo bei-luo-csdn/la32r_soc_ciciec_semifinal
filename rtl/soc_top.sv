@@ -524,6 +524,48 @@ Axi_CDC u_axi_cdc(
     wire confreg_rvalid;
     wire confreg_rready;
 
+// DVI AXI 接口信号 (从设备3)
+    wire [4:0]  dvi_awid;
+    wire [31:0] dvi_awaddr;
+    wire [7:0]  dvi_awlen;
+    wire [2:0]  dvi_awsize;
+    wire [1:0]  dvi_awburst;
+    wire        dvi_awlock;
+    wire [3:0]  dvi_awcache;
+    wire [2:0]  dvi_awprot;
+    wire        dvi_awvalid;
+    wire        dvi_awready;
+
+    wire [4:0]  dvi_wid;
+    wire [31:0] dvi_wdata;
+    wire [3:0]  dvi_wstrb;
+    wire        dvi_wlast;
+    wire        dvi_wvalid;
+    wire        dvi_wready;
+
+    wire [4:0]  dvi_bid;
+    wire [1:0]  dvi_bresp;
+    wire        dvi_bvalid;
+    wire        dvi_bready;
+
+    wire [4:0]  dvi_arid;
+    wire [31:0] dvi_araddr;
+    wire [7:0]  dvi_arlen;
+    wire [2:0]  dvi_arsize;
+    wire [1:0]  dvi_arburst;
+    wire        dvi_arlock;
+    wire [3:0]  dvi_arcache;
+    wire [2:0]  dvi_arprot;
+    wire        dvi_arvalid;
+    wire        dvi_arready;
+
+    wire [4:0]  dvi_rid;
+    wire [31:0] dvi_rdata;
+    wire [1:0]  dvi_rresp;
+    wire        dvi_rlast;
+    wire        dvi_rvalid;
+    wire        dvi_rready;
+
     wire axiOut_2_arready;
     wire axiOut_2_rid;
     wire axiOut_2_rdata;
@@ -535,7 +577,6 @@ Axi_CDC u_axi_cdc(
     wire axiOut_2_bid;
     wire axiOut_2_bresp;
     wire axiOut_2_bvalid;
-
 //--------------------------------------------------------------------------
 // AxiCrossbar_2x8 实例化（地址映射依据实际硬件设计）
 // 主设备0: CPU (经 CDC)
@@ -754,42 +795,42 @@ AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .axiOut_2_rresp   (uart_rresp),
     .axiOut_2_rlast   (uart_rlast),
 
-    // ================= 从设备 3 : DVI (未使用) =================
-    .axiOut_3_awvalid (),
-    .axiOut_3_awready (1'b1),
-    .axiOut_3_awaddr  (),
-    .axiOut_3_awid    (),
-    .axiOut_3_awlen   (),
-    .axiOut_3_awsize  (),
-    .axiOut_3_awburst (),
-    .axiOut_3_awlock  (),
-    .axiOut_3_awcache (),
-    .axiOut_3_awprot  (),
-    .axiOut_3_wvalid  (),
-    .axiOut_3_wready  (1'b1),
-    .axiOut_3_wdata   (),
-    .axiOut_3_wstrb   (),
-    .axiOut_3_wlast   (),
-    .axiOut_3_bvalid  (1'b0),
-    .axiOut_3_bready  (),
-    .axiOut_3_bid     (5'h0),
-    .axiOut_3_bresp   (2'h0),
-    .axiOut_3_arvalid (),
-    .axiOut_3_arready (1'b1),
-    .axiOut_3_araddr  (),
-    .axiOut_3_arid    (),
-    .axiOut_3_arlen   (),
-    .axiOut_3_arsize  (),
-    .axiOut_3_arburst (),
-    .axiOut_3_arlock  (),
-    .axiOut_3_arcache (),
-    .axiOut_3_arprot  (),
-    .axiOut_3_rvalid  (1'b0),
-    .axiOut_3_rready  (),
-    .axiOut_3_rdata   (32'h0),
-    .axiOut_3_rid     (5'h0),
-    .axiOut_3_rresp   (2'h0),
-    .axiOut_3_rlast   (1'b0),
+    // ================= 从设备 3 : DVI =================
+    .axiOut_3_awvalid (dvi_awvalid),
+    .axiOut_3_awready (dvi_awready),
+    .axiOut_3_awaddr  (dvi_awaddr),
+    .axiOut_3_awid    (dvi_awid),
+    .axiOut_3_awlen   (dvi_awlen),
+    .axiOut_3_awsize  (dvi_awsize),
+    .axiOut_3_awburst (dvi_awburst),
+    .axiOut_3_awlock  (dvi_awlock),
+    .axiOut_3_awcache (dvi_awcache),
+    .axiOut_3_awprot  (dvi_awprot),
+    .axiOut_3_wvalid  (dvi_wvalid),
+    .axiOut_3_wready  (dvi_wready),
+    .axiOut_3_wdata   (dvi_wdata),
+    .axiOut_3_wstrb   (dvi_wstrb),
+    .axiOut_3_wlast   (dvi_wlast),
+    .axiOut_3_bvalid  (dvi_bvalid),
+    .axiOut_3_bready  (dvi_bready),
+    .axiOut_3_bid     (dvi_bid),
+    .axiOut_3_bresp   (dvi_bresp),
+    .axiOut_3_arvalid (dvi_arvalid),
+    .axiOut_3_arready (dvi_arready),
+    .axiOut_3_araddr  (dvi_araddr),
+    .axiOut_3_arid    (dvi_arid),
+    .axiOut_3_arlen   (dvi_arlen),
+    .axiOut_3_arsize  (dvi_arsize),
+    .axiOut_3_arburst (dvi_arburst),
+    .axiOut_3_arlock  (dvi_arlock),
+    .axiOut_3_arcache (dvi_arcache),
+    .axiOut_3_arprot  (dvi_arprot),
+    .axiOut_3_rvalid  (dvi_rvalid),
+    .axiOut_3_rready  (dvi_rready),
+    .axiOut_3_rdata   (dvi_rdata),
+    .axiOut_3_rid     (dvi_rid),
+    .axiOut_3_rresp   (dvi_rresp),
+    .axiOut_3_rlast   (dvi_rlast),                                              
 
     // ================= 从设备 4 : Confreg =================
     .axiOut_4_awvalid (confreg_awvalid),
@@ -1114,56 +1155,144 @@ axi_uart_controller u_axi_uart_controller
     .uart0_ri_i (uart0_ri_i ),
     .uart0_int (uart0_int )
 );
+
 //confreg的实例化
-confreg#(.SIMULATION(SIMULATION)) u_confreg (
-    .aclk ( sys_clk ),
-    .aresetn ( sys_resetn ),
-    .cpu_clk ( cpu_clk ),
-    .cpu_resetn ( cpu_resetn ),
-    .s_awid ( confreg_awid ),
-    .s_awaddr ( confreg_awaddr ),
-    .s_awlen ( confreg_awlen ),
-    .s_awsize ( confreg_awsize ),
-    .s_awburst ( confreg_awburst ),
-    .s_awlock ( confreg_awlock ),
-    .s_awcache ( confreg_awcache ),
-    .s_awprot ( confreg_awprot ),
-    .s_awvalid ( confreg_awvalid ),
-    .s_wid ( confreg_wid ),
-    .s_wdata ( confreg_wdata ),
-    .s_wstrb ( confreg_wstrb ),
-    .s_wlast ( confreg_wlast ),
-    .s_wvalid ( confreg_wvalid ),
-    .s_bready ( confreg_bready ),
-    .s_arid ( confreg_arid ),
-    .s_araddr ( confreg_araddr ),
-    .s_arlen ( confreg_arlen ),
-    .s_arsize ( confreg_arsize ),
-    .s_arburst ( confreg_arburst ),
-    .s_arlock ( confreg_arlock ),
-    .s_arcache ( confreg_arcache ),
-    .s_arprot ( confreg_arprot ),
-    .s_arvalid ( confreg_arvalid ),
-    .s_rready ( confreg_rready ),
+confreg #(
+    .SIMULATION (SIMULATION)
+) u_confreg (
+    .aclk         ( sys_clk        ),
+    .aresetn      ( sys_resetn     ),
+    .cpu_clk      ( cpu_clk        ),
+    .cpu_resetn   ( cpu_resetn     ),
 
-    .s_awready ( confreg_awready ),
-    .s_wready ( confreg_wready ),
-    .s_bid ( confreg_bid ),
-    .s_bresp ( confreg_bresp ),
-    .s_bvalid ( confreg_bvalid ),
-    .s_arready ( confreg_arready ),
-    .s_rid ( confreg_rid ),
-    .s_rdata ( confreg_rdata ),
-    .s_rresp ( confreg_rresp ),
-    .s_rlast ( confreg_rlast ),
-    .s_rvalid ( confreg_rvalid ),
+    // AXI write address
+    .s_awid       ( confreg_awid   ),
+    .s_awaddr     ( confreg_awaddr ),
+    .s_awlen      ( confreg_awlen  ),
+    .s_awsize     ( confreg_awsize ),
+    .s_awburst    ( confreg_awburst),
+    .s_awlock     ( confreg_awlock ),
+    .s_awcache    ( confreg_awcache),
+    .s_awprot     ( confreg_awprot ),
+    .s_awvalid    ( confreg_awvalid),
+    .s_awready    ( confreg_awready),
 
-    .switch ( dip_sw ),
-    .touch_btn ( touch_btn ),
-    .led ( leds ),
-    .dpy0 ( dpy0 ),
-    .dpy1 ( dpy1 ),
-    .confreg_int ( cpu_int )
+    // AXI write data
+    .s_wid        ( confreg_wid    ),
+    .s_wdata      ( confreg_wdata  ),
+    .s_wstrb      ( confreg_wstrb  ),
+    .s_wlast      ( confreg_wlast  ),
+    .s_wvalid     ( confreg_wvalid ),
+    .s_wready     ( confreg_wready ),
+
+    // AXI write response
+    .s_bid        ( confreg_bid    ),
+    .s_bresp      ( confreg_bresp  ),
+    .s_bvalid     ( confreg_bvalid ),
+    .s_bready     ( confreg_bready ),
+
+    // AXI read address
+    .s_arid       ( confreg_arid   ),
+    .s_araddr     ( confreg_araddr ),
+    .s_arlen      ( confreg_arlen  ),
+    .s_arsize     ( confreg_arsize ),
+    .s_arburst    ( confreg_arburst),
+    .s_arlock     ( confreg_arlock ),
+    .s_arcache    ( confreg_arcache),
+    .s_arprot     ( confreg_arprot ),
+    .s_arvalid    ( confreg_arvalid),
+    .s_arready    ( confreg_arready),
+
+    // AXI read data
+    .s_rid        ( confreg_rid    ),
+    .s_rdata      ( confreg_rdata  ),
+    .s_rresp      ( confreg_rresp  ),
+    .s_rlast      ( confreg_rlast  ),
+    .s_rvalid     ( confreg_rvalid ),
+    .s_rready     ( confreg_rready ),
+
+    // External I/O
+    .switch       ( dip_sw         ),
+    .touch_btn    ( touch_btn      ),
+    .led          ( leds           ),
+    .dpy0         ( dpy0           ),
+    .dpy1         ( dpy1           ),
+
+    // 新增端口：DMA和FFT完成信号（当前未使用，接低电平）
+    .dma_finish   ( 1'b0           ),
+    .fft_finish   ( 1'b0           ),
+
+    // 中断输出
+    .confreg_int  ( cpu_int        )
+);
+
+// DVI 控制器实例化
+axi_dvi #(
+    .WIDTH  (12),          // 计数器位宽（足够覆盖 HMAX/VMAX）
+    .HSIZE  (800),
+    .HFP    (856),
+    .HSP    (976),
+    .HMAX   (1040),
+    .VSIZE  (600),
+    .VFP    (637),
+    .VSP    (643),
+    .VMAX   (666),
+    .HSPP   (1),
+    .VSPP   (1)
+) u_axi_dvi (
+    // AXI 从接口
+    .s_awvalid (dvi_awvalid),
+    .s_awready (dvi_awready),
+    .s_awaddr  (dvi_awaddr),
+    .s_awid    (dvi_awid[3:0]),   // 注意：dvi_awid 是5位，模块期望4位，取低4位
+    .s_awlen   (dvi_awlen),
+    .s_awsize  (dvi_awsize),
+    .s_awburst (dvi_awburst),
+    .s_awlock  (dvi_awlock),
+    .s_awcache (dvi_awcache),
+    .s_awprot  (dvi_awprot),
+
+    .s_wvalid  (dvi_wvalid),
+    .s_wready  (dvi_wready),
+    .s_wdata   (dvi_wdata),
+    .s_wstrb   (dvi_wstrb),
+    .s_wlast   (dvi_wlast),
+
+    .s_bvalid  (dvi_bvalid),
+    .s_bready  (dvi_bready),
+    .s_bid     (dvi_bid[3:0]),    // 模块输出4位，连接到交叉开关5位的高位补0
+    .s_bresp   (dvi_bresp),
+
+    .s_arvalid (dvi_arvalid),
+    .s_arready (dvi_arready),
+    .s_araddr  (dvi_araddr),
+    .s_arid    (dvi_arid[3:0]),
+    .s_arlen   (dvi_arlen),
+    .s_arsize  (dvi_arsize),
+    .s_arburst (dvi_arburst),
+    .s_arlock  (dvi_arlock),
+    .s_arcache (dvi_arcache),
+    .s_arprot  (dvi_arprot),
+
+    .s_rvalid  (dvi_rvalid),
+    .s_rready  (dvi_rready),
+    .s_rdata   (dvi_rdata),
+    .s_rid     (dvi_rid[3:0]),
+    .s_rresp   (dvi_rresp),
+    .s_rlast   (dvi_rlast),
+
+    // 视频输出
+    .video_clk   (video_clk),
+    .hsync       (video_hsync),
+    .vsync       (video_vsync),
+    .data_enable (video_de),
+    .video_red   (video_red),
+    .video_green (video_green),
+    .video_blue  (video_blue),
+
+    // 时钟与复位
+    .aclk    (sys_clk),
+    .aresetn (sys_resetn)
 );
 
 endmodule
