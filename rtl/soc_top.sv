@@ -37,7 +37,6 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 module soc_top #(parameter SIMULATION=1'b0)
 (
-    output [2:0]    video_red,          //红色像素，3位
     input           clk,                //50MHz ????
     input           reset,              //BTN6???????????????????1
 
