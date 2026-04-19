@@ -30,14 +30,13 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --------------------------------------------------------------------------------
 ------------------------------------------------------------------------------*/
-`define CONFREG_INT_ADDR    16'hf000 //1f20_f000 软件中是虚拟地址，高几位与此可能不同
+`define CONFREG_INT_ADDR    16'hf000 //1f20_f000
 `define TIMER_ADDR          16'hf100 //1f20_f100
 `define DIGITAL_ADDR        16'hf200 //1f20_f200
 `define LED_ADDR            16'hf300 //1f20_f300
 `define SWITCH_ADDR         16'hf400 //1f20_f400
 `define SIMU_FLAG_ADDR      16'hf500 //1f20_f500 
 
-// 可以把ip需要的其他寄存器都写到confreg里，confreg产生的控制信号连接到ip
 module confreg #(
     parameter   SIMULATION=1'b0
 )
@@ -58,19 +57,16 @@ module confreg #(
     input  [2 :0]   s_awprot,
     input           s_awvalid,
     output          s_awready,
-
     input  [4 :0]   s_wid,
     input  [31:0]   s_wdata,
     input  [3 :0]   s_wstrb,
     input           s_wlast,
     input           s_wvalid,
     output reg      s_wready,
-
     output [4 :0]   s_bid,
     output [1 :0]   s_bresp,
     output reg      s_bvalid,
     input           s_bready,
-
     input  [4 :0]   s_arid,
     input  [31:0]   s_araddr,
     input  [7 :0]   s_arlen,
@@ -81,7 +77,6 @@ module confreg #(
     input  [2 :0]   s_arprot,
     input           s_arvalid,
     output          s_arready,
-    
     output [4 :0]   s_rid,
     output reg [31:0]   s_rdata,
     output [1 :0]   s_rresp,
@@ -94,6 +89,8 @@ module confreg #(
     output      [7:0] dpy1,
     input      [31:0] switch,
     input      [3 :0] touch_btn,
+    input             dma_finish,
+    input             fft_finish,
     output            confreg_int
 );
 
@@ -102,7 +99,6 @@ reg  [31:0] led_data;
 wire [31:0] switch_data;
 reg  [31:0] simu_flag;
 
-// 2.2外部中断控制
 reg [31:0] confreg_int_en,confreg_int_edge,confreg_int_pol,confreg_int_clr,confreg_int_set;
 wire [31:0] confreg_int_state;
 
@@ -173,8 +169,7 @@ always@(posedge aclk)
     if(~aresetn) s_wready <= 1'b0;
     else if(aw_enter) s_wready <= 1'b1;
     else if(w_enter & s_wlast) s_wready <= 1'b0;
-// 这里实现了2.2读的功能
-// 修改这个让处理器核能读到寄存器
+
 wire [31:0] rdata_d =   buf_addr[15:0] == (`CONFREG_INT_ADDR + 16'h0)     ? confreg_int_en        : 
                         buf_addr[15:0] == (`CONFREG_INT_ADDR + 16'h4)     ? confreg_int_edge      : 
                         buf_addr[15:0] == (`CONFREG_INT_ADDR + 16'h8)     ? confreg_int_pol       : 
@@ -221,6 +216,20 @@ assign s_rresp = 2'b0;
 
 //-------------------------------{touch_btn}begin----------------------------//
 assign touch_btn_data = touch_btn;
+
+    // genvar i;
+    // generate for(i=0;i<4;i=i+1) begin: generate_btn_debounce
+    //     key_debounce u_key_debounce(
+    //         .sys_clk(aclk),
+    //         .key(touch_btn[i]),
+    //         .key_out(touch_btn_data[i])
+    //     );
+    // end
+    // endgenerate
+
+
+
+
 
 //--------------------------------{touch_btn}end-----------------------------//
 
@@ -293,7 +302,6 @@ assign switch_data = switch;
 
 
 //---------------------------{digital number}begin-----------------------//
-// 复制这个到todo，在此基础上修改实现2.2写的功能
 wire write_digital_ctrl   = w_enter & (buf_addr[15:0]==`DIGITAL_ADDR + 16'h0);
 wire write_digital_data   = w_enter & (buf_addr[15:0]==`DIGITAL_ADDR + 16'h4);
 
@@ -342,8 +350,7 @@ end
 //---------------------------{simulation flag}end------------------------//
 
 //-------------------------------{int_ctrl}begin----------------------------//
-//TODO: add your code
-// 这里实现了2.2写的使能功能（write_confreg_int_en）
+//add your code
 wire [31:0] write_confreg_int_en  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h0);
 wire [31:0] write_confreg_int_edge = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h4);
 wire [31:0] write_confreg_int_pol  = w_enter & (buf_addr[15:0]==`CONFREG_INT_ADDR + 16'h8);
@@ -383,12 +390,10 @@ my_int_ctrl #(.N(32)) u_my_int_ctrl (
     .int_out       (confreg_int) // 中断输出
 );
 
-// 以上是视频代码
 //--------------------------------{int_ctrl}end-----------------------------//
 
 endmodule
 
-//TODO: add your module
 // 实现一个bit中断处理
 // 输出中断状态
 module my_int_ctrl_one(
