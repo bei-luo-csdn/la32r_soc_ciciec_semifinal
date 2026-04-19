@@ -1,5 +1,5 @@
 module key_debounce(
-    input sys_clk, //外部时钟
+    input sys_clk, //外部时钟20MHz
 
     input key, //外部按键输入
 
