@@ -72,7 +72,7 @@ module soc_top #(parameter SIMULATION=1'b0)
 
     //------uart-------
     inout           UART_RX,            //串口RX接收
-    inout           UART_TX,             //串口TX发送
+    inout           UART_TX             //串口TX发送
 );
 
 wire cpu_clk;
@@ -170,10 +170,6 @@ endgenerate
     wire [4:0] debug_wb_rf_wnum;
     wire [31:0] debug_wb_rf_wdata;
     wire cpu_int;
-
-//TODO: add your code
-//依次例化core_top、Axi_CDC、AxiCrossbar_1x4、axi_wrap_ram、axi_uart_controller、confreg
-
 
 //实例化core_top
 core_top u_cpu(
