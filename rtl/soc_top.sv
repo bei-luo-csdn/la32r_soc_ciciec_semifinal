@@ -73,14 +73,10 @@ module soc_top #(parameter SIMULATION=1'b0)
 
     //------uart-------
     inout           UART_RX,            //??RX??
-    inout           UART_TX,             //??TX??
-    output          clk_o           //XTALO    //???????
+    inout           UART_TX             //??TX??
+    
 );
 
-
-// ?? clk_i ??
-wire clk_i;  // PX3W ?? IOPAD ???????
-PX3W PAD_CLK_IN (.XIN(clk), .XOUT(clk_o), .XC(clk_i));
 `IPADU_GEN_SIMPLE(reset)  
 `IPAD_GEN_VEC_SIMPLE(touch_btn)  
 `IPAD_GEN_VEC_SIMPLE(dip_sw)  
