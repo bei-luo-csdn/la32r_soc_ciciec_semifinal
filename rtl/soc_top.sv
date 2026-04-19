@@ -33,47 +33,76 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 `include "config.h"
+`include "iopad.svh"
 
 module soc_top #(parameter SIMULATION=1'b0)
 (
-    input           clk,                //50MHz 时钟输入
-    input           reset,              //BTN6手动复位按钮开关，带消抖电路，按下时为1
-
-    //图像输出信号
     output [2:0]    video_red,          //红色像素，3位
-    output [2:0]    video_green,        //绿色像素，3位
-    output [1:0]    video_blue,         //蓝色像素，2位
-    output          video_hsync,        //行同步（水平同步）信号
-    output          video_vsync,        //场同步（垂直同步）信号
-    output          video_clk,          //像素时钟输出
-    output          video_de,           //行数据有效信号，用于区分消隐区
+    input           clk,                //50MHz ????
+    input           reset,              //BTN6???????????????????1
 
-    input           clock_btn,          //BTN5手动时钟按钮开关，带消抖电路，按下时为1  
-    input  [3:0]    touch_btn,          //BTN1~BTN4，按钮开关，按下时为1
-    input  [31:0]   dip_sw,             //32位拨码开关，拨到“ON”时为1
-    output [15:0]   leds,               //16位LED，输出时1点亮
-    output [7:0]    dpy0,               //数码管低位信号，包括小数点，输出1点亮
-    output [7:0]    dpy1,               //数码管高位信号，包括小数点，输出1点亮
+    //??????
+    output [2:0]    video_red,          //?????3?
+    output [2:0]    video_green,        //?????3?
+    output [1:0]    video_blue,         //?????2?
+    output          video_hsync,        //???????????
+    output          video_vsync,        //???????????
+    output          video_clk,          //??????
+    output          video_de,           //???????????????
 
-    //BaseRAM信号
-    inout  [31:0]   base_ram_data,      //BaseRAM数据，低8位与CPLD串口控制器共享
-    output [19:0]   base_ram_addr,      //BaseRAM地址
-    output [ 3:0]   base_ram_be_n,      //BaseRAM字节使能，低有效。如果不使用字节使能，请保持为0
-    output          base_ram_ce_n,      //BaseRAM片选，低有效
-    output          base_ram_oe_n,      //BaseRAM读使能，低有效
-    output          base_ram_we_n,      //BaseRAM写使能，低有效
-    //ExtRAM信号
-    inout  [31:0]   ext_ram_data,       //ExtRAM数据
-    output [19:0]   ext_ram_addr,       //ExtRAM地址
-    output [ 3:0]   ext_ram_be_n,       //ExtRAM字节使能，低有效。如果不使用字节使能，请保持为0
-    output          ext_ram_ce_n,       //ExtRAM片选，低有效
-    output          ext_ram_oe_n,       //ExtRAM读使能，低有效
-    output          ext_ram_we_n,       //ExtRAM写使能，低有效
+    input           clock_btn,          //BTN5???????????????????1  
+    input  [3:0]    touch_btn,          //BTN1~BTN4??????????1
+    input  [31:0]   dip_sw,             //32?????????ON???1
+    output [15:0]   leds,               //16?LED????1??
+    output [7:0]    dpy0,               //????????????????1??
+    output [7:0]    dpy1,               //????????????????1??
+
+    //BaseRAM??
+    inout  [31:0]   base_ram_data,      //BaseRAM????8??CPLD???????
+    output [19:0]   base_ram_addr,      //BaseRAM??
+    output [ 3:0]   base_ram_be_n,      //BaseRAM???????????????????????0
+    output          base_ram_ce_n,      //BaseRAM??????
+    output          base_ram_oe_n,      //BaseRAM???????
+    output          base_ram_we_n,      //BaseRAM???????
+    //ExtRAM??
+    inout  [31:0]   ext_ram_data,       //ExtRAM??
+    output [19:0]   ext_ram_addr,       //ExtRAM??
+    output [ 3:0]   ext_ram_be_n,       //ExtRAM???????????????????????0
+    output          ext_ram_ce_n,       //ExtRAM??????
+    output          ext_ram_oe_n,       //ExtRAM???????
+    output          ext_ram_we_n,       //ExtRAM???????
 
     //------uart-------
-    inout           UART_RX,            //串口RX接收
-    inout           UART_TX             //串口TX发送
+    inout           UART_RX,            //??RX??
+    inout           UART_TX,             //??TX??
+    output          clk_o           //XTALO    //???????
 );
+
+
+// ?? clk_i ??
+wire clk_i;  // PX3W ?? IOPAD ???????
+PX3W PAD_CLK_IN (.XIN(clk), .XOUT(clk_o), .XC(clk_i));
+`IPADU_GEN_SIMPLE(reset)  
+`IPAD_GEN_VEC_SIMPLE(touch_btn)  
+`IPAD_GEN_VEC_SIMPLE(dip_sw)  
+`OPAD_GEN_VEC_SIMPLE(leds)  
+`OPAD_GEN_VEC_SIMPLE(dpy0)  
+`OPAD_GEN_VEC_SIMPLE(dpy1)  
+`IOPAD_GEN_VEC_SIMPLE(base_ram_data)  
+`OPAD_GEN_VEC_SIMPLE(base_ram_addr)  
+`OPAD_GEN_VEC_SIMPLE(base_ram_be_n)  
+`OPAD_GEN_SIMPLE(base_ram_ce_n)  
+`OPAD_GEN_SIMPLE(base_ram_oe_n)  
+`OPAD_GEN_SIMPLE(base_ram_we_n)  
+`IOPAD_GEN_VEC_SIMPLE(ext_ram_data)  
+`OPAD_GEN_VEC_SIMPLE(ext_ram_addr)  
+`OPAD_GEN_VEC_SIMPLE(ext_ram_be_n)  
+`OPAD_GEN_SIMPLE(ext_ram_ce_n)  
+`OPAD_GEN_SIMPLE(ext_ram_oe_n)  
+`OPAD_GEN_SIMPLE(ext_ram_we_n)  
+`IOPAD_GEN_SIMPLE(UART_RX)  
+`IOPAD_GEN_SIMPLE(UART_TX)  
+
 
 wire cpu_clk;
 wire cpu_resetn;
@@ -122,7 +151,7 @@ else begin: pll_clk
 end
 endgenerate
 
-//cpu中的wire
+//cpu??wire
     //read request
     wire [3:0] cpu_arid;
     wire [31:0] cpu_araddr;
@@ -171,16 +200,16 @@ endgenerate
     wire [31:0] debug_wb_rf_wdata;
     wire cpu_int;
 
-//实例化core_top
+//???core_top
 core_top u_cpu(
 
-    //外部中断信号
-    .intrpt({7'h0,cpu_int}), //confreg中的中断信号,先别连cpu_int，不然hello world给你干不跑了
+    //??????
+    .intrpt({7'h0,cpu_int}), //confreg??????,???cpu_int???hello world??????
     //high active
     .aclk (cpu_clk),
     .aresetn (cpu_resetn),
 
-    //读地址通道
+    //?????
     .arid (cpu_arid),
     .araddr (cpu_araddr ),
     .arlen (cpu_arlen),
@@ -192,14 +221,14 @@ core_top u_cpu(
     .arprot (cpu_arprot ),
     .arvalid (cpu_arvalid ),
     .arready (cpu_arready ),
-    //读数据通道
+    //?????
     .rid (cpu_rid ),
     .rdata (cpu_rdata ),
     .rresp (cpu_rresp ),
     .rlast (cpu_rlast ),
     .rvalid (cpu_rvalid ),
     .rready (cpu_rready ),
-    //写地址通道
+    //?????
     .awid (cpu_awid ),
     .awaddr (cpu_awaddr ),
     .awlen (cpu_awlen ),
@@ -210,27 +239,27 @@ core_top u_cpu(
     .awprot (cpu_awprot ),
     .awvalid (cpu_awvalid ),
     .awready (cpu_awready ),
-    //写数据通道
+    //?????
     .wid (cpu_wid ),
     .wdata (cpu_wdata ),
     .wstrb (cpu_wstrb ),
     .wlast (cpu_wlast ),
     .wvalid (cpu_wvalid ),
     .wready (cpu_wready ),
-    //写响应通道
+    //?????
     .bid (cpu_bid ),
     .bresp (cpu_bresp ),
     .bvalid (cpu_bvalid ),
     .bready (cpu_bready ),
     
-    //已弃用
+    //???
     .break_point (1'b0 ),
     .infor_flag (1'b0 ),
     .reg_num (5'b0 ),
     .ws_valid ( ),
     .rf_rdata ( ),
     
-    //写回阶段提供的调试信息
+    //???????????
     .debug0_wb_pc (debug_wb_pc ),
     .debug0_wb_inst (debug_wb_inst ),
     .debug0_wb_rf_wen (debug_wb_rf_wen ),
@@ -239,7 +268,7 @@ core_top u_cpu(
 );
 
 
-//AXI_CDC中的wire
+//AXI_CDC??wire
     wire cpu_sync_awvalid ;
     wire cpu_sync_awready ;
     wire [31:0] cpu_sync_awaddr ;
@@ -280,7 +309,7 @@ core_top u_cpu(
     wire [1:0] cpu_sync_rresp ;
     wire cpu_sync_rlast ;//5
 
-//实例化AXI_CDC
+//???AXI_CDC
 Axi_CDC u_axi_cdc(
     .axiInClk(cpu_clk),
     .axiInRst(cpu_resetn),
@@ -362,7 +391,7 @@ Axi_CDC u_axi_cdc(
     .axiOut_rlast( cpu_sync_rlast)
 );
 
-//axi_wrap_ram中的wire
+//axi_wrap_ram??wire
     //
     wire [4:0] ram_arid;
     wire [31:0] ram_araddr;
@@ -405,7 +434,7 @@ Axi_CDC u_axi_cdc(
     wire ram_bvalid;
     wire ram_bready;
 
-//axi_uart_controller中的wire
+//axi_uart_controller??wire
     wire [4:0] uart_awid;
     wire [31:0] uart_awaddr;
     wire [7:0] uart_awlen;
@@ -444,7 +473,7 @@ Axi_CDC u_axi_cdc(
     wire uart_rready;
 //
 
-//confreg中的wire
+//confreg??wire
     wire [4:0] confreg_awid;
     wire [31:0] confreg_awaddr;
     wire [7:0] confreg_awlen;
@@ -482,7 +511,7 @@ Axi_CDC u_axi_cdc(
     wire confreg_rvalid;
     wire confreg_rready;
 
-// DVI AXI 接口信号 (从设备3)
+// DVI AXI ???? (???3)
     wire [4:0]  dvi_awid;
     wire [31:0] dvi_awaddr;
     wire [7:0]  dvi_awlen;
@@ -536,23 +565,23 @@ Axi_CDC u_axi_cdc(
     wire axiOut_2_bresp;
     wire axiOut_2_bvalid;
 //--------------------------------------------------------------------------
-// AxiCrossbar_2x8 实例化（地址映射依据实际硬件设计）
-// 主设备0: CPU (经 CDC)
-// 主设备1: 未使用
-// 从设备0: SRAM      (0x1c000000 - 0x1c7fffff) → ram
-// 从设备1: reserved  (0x00000000 - 0x007fffff) → 未使用
-// 从设备2: UART      (0x1f000000 - 0x1f0fffff) → uart
-// 从设备3: DVI       (0x1f100000 - 0x1f1fffff) → 未使用
-// 从设备4: Confreg   (0x1f200000 - 0x1f2fffff) → confreg
-// 从设备5: DMA       (0x1f300000 - 0x1f3fffff) → 未使用
-// 从设备6: FFT       (0x1f400000 - 0x1f4fffff) → 未使用
-// 从设备7: reserved  (0x1f500000 - 0x1f5fffff) → 未使用
+// AxiCrossbar_2x8 ?????????????????
+// ???0: CPU (? CDC)
+// ???1: ???
+// ???0: SRAM      (0x1c000000 - 0x1c7fffff) ? ram
+// ???1: reserved  (0x00000000 - 0x007fffff) ? ???
+// ???2: UART      (0x1f000000 - 0x1f0fffff) ? uart
+// ???3: DVI       (0x1f100000 - 0x1f1fffff) ? ???
+// ???4: Confreg   (0x1f200000 - 0x1f2fffff) ? confreg
+// ???5: DMA       (0x1f300000 - 0x1f3fffff) ? ???
+// ???6: FFT       (0x1f400000 - 0x1f4fffff) ? ???
+// ???7: reserved  (0x1f500000 - 0x1f5fffff) ? ???
 //--------------------------------------------------------------------------
 AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .clk        (sys_clk),
     .resetn     (sys_resetn),
 
-    // ================= 主设备 0 : CPU =================
+    // ================= ??? 0 : CPU =================
     .axiIn_0_awvalid (cpu_sync_awvalid),
     .axiIn_0_awready (cpu_sync_awready),
     .axiIn_0_awaddr  (cpu_sync_awaddr),
@@ -593,7 +622,7 @@ AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .axiIn_0_rresp   (cpu_sync_rresp),
     .axiIn_0_rlast   (cpu_sync_rlast),
 
-    // ================= 主设备 1 : 未使用 =================
+    // ================= ??? 1 : ??? =================
     .axiIn_1_awvalid (1'b0),
     .axiIn_1_awready (),
     .axiIn_1_awaddr  (32'h0),
@@ -634,7 +663,7 @@ AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .axiIn_1_rresp   (),
     .axiIn_1_rlast   (),
 
-    // ================= 从设备 0 : SRAM =================
+    // ================= ??? 0 : SRAM =================
     .axiOut_0_awvalid (ram_awvalid),
     .axiOut_0_awready (ram_awready),
     .axiOut_0_awaddr  (ram_awaddr),
@@ -675,7 +704,7 @@ AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .axiOut_0_rresp   (ram_rresp),
     .axiOut_0_rlast   (ram_rlast),
 
-    // ================= 从设备 1 : reserved (未使用) =================
+    // ================= ??? 1 : reserved (???) =================
     .axiOut_1_awvalid (),
     .axiOut_1_awready (1'b1),
     .axiOut_1_awaddr  (),
@@ -712,7 +741,7 @@ AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .axiOut_1_rresp   (2'h0),
     .axiOut_1_rlast   (1'b0),
 
-    // ================= 从设备 2 : UART =================
+    // ================= ??? 2 : UART =================
     .axiOut_2_awvalid (uart_awvalid),
     .axiOut_2_awready (uart_awready),
     .axiOut_2_awaddr  (uart_awaddr),
@@ -753,7 +782,7 @@ AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .axiOut_2_rresp   (uart_rresp),
     .axiOut_2_rlast   (uart_rlast),
 
-    // ================= 从设备 3 : DVI =================
+    // ================= ??? 3 : DVI =================
     .axiOut_3_awvalid (dvi_awvalid),
     .axiOut_3_awready (dvi_awready),
     .axiOut_3_awaddr  (dvi_awaddr),
@@ -790,7 +819,7 @@ AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .axiOut_3_rresp   (dvi_rresp),
     .axiOut_3_rlast   (dvi_rlast),                                              
 
-    // ================= 从设备 4 : Confreg =================
+    // ================= ??? 4 : Confreg =================
     .axiOut_4_awvalid (confreg_awvalid),
     .axiOut_4_awready (confreg_awready),
     .axiOut_4_awaddr  (confreg_awaddr),
@@ -831,7 +860,7 @@ AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .axiOut_4_rresp   (confreg_rresp),
     .axiOut_4_rlast   (confreg_rlast),
 
-    // ================= 从设备 5 : DMA (未使用) =================
+    // ================= ??? 5 : DMA (???) =================
     .axiOut_5_awvalid (),
     .axiOut_5_awready (1'b1),
     .axiOut_5_awaddr  (),
@@ -868,7 +897,7 @@ AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .axiOut_5_rresp   (2'h0),
     .axiOut_5_rlast   (1'b0),
 
-    // ================= 从设备 6 : FFT (未使用) =================
+    // ================= ??? 6 : FFT (???) =================
     .axiOut_6_awvalid (),
     .axiOut_6_awready (1'b1),
     .axiOut_6_awaddr  (),
@@ -905,7 +934,7 @@ AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .axiOut_6_rresp   (2'h0),
     .axiOut_6_rlast   (1'b0),
 
-    // ================= 从设备 7 : reserved (未使用) =================
+    // ================= ??? 7 : reserved (???) =================
     .axiOut_7_awvalid (),
     .axiOut_7_awready (1'b1),
     .axiOut_7_awaddr  (),
@@ -943,7 +972,7 @@ AxiCrossbar_2x8 u_AxiCrossbar_2x8 (
     .axiOut_7_rlast   (1'b0)
 );
 
-//axi_wrap_ram的实例化
+//axi_wrap_ram????
 //axi ram  
 axi_wrap_ram_sp_ext u_axi_ram (  
     .aclk          ( sys_clk            ),  
@@ -1009,7 +1038,7 @@ axi_wrap_ram_sp_ext u_axi_ram (
 
 );
 
-//axi_uart_controller的实例化
+//axi_uart_controller????
 //uart
     wire UART_CTS, UART_RTS;
     wire UART_DTR, UART_DSR;
@@ -1114,7 +1143,7 @@ axi_uart_controller u_axi_uart_controller
     .uart0_int (uart0_int )
 );
 
-//confreg的实例化
+//confreg????
 confreg #(
     .SIMULATION (SIMULATION)
 ) u_confreg (
@@ -1176,17 +1205,17 @@ confreg #(
     .dpy0         ( dpy0           ),
     .dpy1         ( dpy1           ),
 
-    // 新增端口：DMA和FFT完成信号（当前未使用，接低电平）
+    // ?????DMA?FFT????????????????
     .dma_finish   ( 1'b0           ),
     .fft_finish   ( 1'b0           ),
 
-    // 中断输出
+    // ????
     .confreg_int  ( cpu_int        )
 );
 
-// DVI 控制器实例化
+// DVI ??????
 axi_dvi #(
-    .WIDTH  (12),          // 计数器位宽（足够覆盖 HMAX/VMAX）
+    .WIDTH  (12),          // ?????????? HMAX/VMAX?
     .HSIZE  (800),
     .HFP    (856),
     .HSP    (976),
@@ -1198,11 +1227,11 @@ axi_dvi #(
     .HSPP   (1),
     .VSPP   (1)
 ) u_axi_dvi (
-    // AXI 从接口
+    // AXI ???
     .s_awvalid (dvi_awvalid),
     .s_awready (dvi_awready),
     .s_awaddr  (dvi_awaddr),
-    .s_awid    (dvi_awid[3:0]),   // 注意：dvi_awid 是5位，模块期望4位，取低4位
+    .s_awid    (dvi_awid[3:0]),   // ???dvi_awid ?5??????4????4?
     .s_awlen   (dvi_awlen),
     .s_awsize  (dvi_awsize),
     .s_awburst (dvi_awburst),
@@ -1218,7 +1247,7 @@ axi_dvi #(
 
     .s_bvalid  (dvi_bvalid),
     .s_bready  (dvi_bready),
-    .s_bid     (dvi_bid[3:0]),    // 模块输出4位，连接到交叉开关5位的高位补0
+    .s_bid     (dvi_bid[3:0]),    // ????4?????????5?????0
     .s_bresp   (dvi_bresp),
 
     .s_arvalid (dvi_arvalid),
@@ -1239,7 +1268,7 @@ axi_dvi #(
     .s_rresp   (dvi_rresp),
     .s_rlast   (dvi_rlast),
 
-    // 视频输出
+    // ????
     .video_clk   (video_clk),
     .hsync       (video_hsync),
     .vsync       (video_vsync),
@@ -1248,7 +1277,7 @@ axi_dvi #(
     .video_green (video_green),
     .video_blue  (video_blue),
 
-    // 时钟与复位
+    // ?????
     .aclk    (sys_clk),
     .aresetn (sys_resetn)
 );
