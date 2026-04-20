@@ -382,10 +382,10 @@ my_int_ctrl #(.N(32)) u_my_int_ctrl (
     .cpu_clk       ( cpu_clk       ),
     .cpu_resetn    ( cpu_resetn    ),
 
-    .int_en        (confreg_int_en[31:0]), // 中断使能寄存器
-    .int_edge      ({27'd0,4'b1111,1'b0}), // 中断边沿触发寄存器 1:边沿触发 0:电平触发
+    .int_en        ({27'd0,5'b11111}), // 中断使能寄存器
+    .int_edge      ({27'd0,1'b0,4'b1111}), // 中断边沿触发寄存器 1:边沿触发 0:电平触发
     .int_pol       (32'hffffffff), // 中断极性寄存器 1:高电平/上升沿触发 0:低电平/下降沿触发
-    .int_in        ({ 27'd0, touch_btn_data[3:0], timer_int}),
+    .int_in        ({27'd0, timer_int, touch_btn_data[3:0]}),//[3:0]接touch_btn_data，[4]接timer_int
     .int_state     (confreg_int_state[31:0]), // 中断状态输出
     .int_out_or_sync(confreg_int) // 中断输出
 );
