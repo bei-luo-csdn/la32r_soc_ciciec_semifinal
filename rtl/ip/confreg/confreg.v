@@ -91,6 +91,7 @@ module confreg #(
     input      [3 :0] touch_btn,
     input             dma_finish,
     input             fft_finish,
+    output    [31:0]  debug_int_state,// 中断状态输出，用于测试
     output  [31:0]    confreg_int
 );
 
@@ -383,13 +384,13 @@ my_int_ctrl #(.N(32)) u_my_int_ctrl (
     .cpu_resetn    ( cpu_resetn    ),
 
     .int_en        ({27'd0,5'b11111}), // 中断使能寄存器
-    .int_edge      ({27'd0,1'b0,4'b1111}), // 中断边沿触发寄存器 1:边沿触发 0:电平触发
+    .int_edge      ({27'd0,1'b0,4'h0}), // 中断边沿触发寄存器 1:边沿触发 0:电平触发
     .int_pol       (32'hffffffff), // 中断极性寄存器 1:高电平/上升沿触发 0:低电平/下降沿触发
     .int_in        ({27'd0, timer_int, touch_btn_data[3:0]}),//[3:0]接touch_btn_data，[4]接timer_int
     .int_state     (confreg_int_state[31:0]), // 中断状态输出
     .int_out_or_sync(confreg_int) // 中断输出
 );
-
+assign debug_int_state = confreg_int_state[31:0];
 //--------------------------------{int_ctrl}end-----------------------------//
 
 endmodule
@@ -446,8 +447,7 @@ module my_int_ctrl_one(
             else if (int_clr)          // 软件清除
                 int_req <= 1'b0;
             else if (int_edge) begin
-                if (edge_detected)
-                    int_req <= 1'b1;   // 边沿触发锁存
+                int_req <= edge_detected;   // 边沿触发锁存
             end else begin
                 int_req <= level_active; // 电平触发直接跟随
             end

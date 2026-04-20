@@ -92,22 +92,22 @@ initial begin
 
     #100000
     touch_btn = 4'b0001;
-    #50
+    #30000
     touch_btn = 4'b0000;
 
     #100000
     touch_btn = 4'b0010;
-    #50
+    #30000
     touch_btn = 4'b0000;
 
     #100000
     touch_btn = 4'b0100;
-    #50
+    #30000
     touch_btn = 4'b0000;
 
     #100000
     touch_btn = 4'b1000;
-    #50
+    #30000
     touch_btn = 4'b0000;
 
 end
