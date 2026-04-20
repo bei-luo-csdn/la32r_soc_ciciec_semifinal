@@ -91,7 +91,7 @@ module confreg #(
     input      [3 :0] touch_btn,
     input             dma_finish,
     input             fft_finish,
-    output            confreg_int
+    output  [31:0]    confreg_int
 );
 
 wire [3:0] touch_btn_data;//按键中断信号，上升沿触发
@@ -385,7 +385,7 @@ my_int_ctrl #(.N(32)) u_my_int_ctrl (
     .int_en        (confreg_int_en[31:0]), // 这里是中断使能
     .int_edge      (32'h0), // 这里是中断边沿触发
     .int_pol       (32'h0), // 这里是中断极性
-    .int_in        ({timer_int, 4'h0}),// 4'h0本来是touch_btn_data，但目前只支持电平触发
+    .int_in        ({ 27'd0, touch_btn_data[3:0], timer_int}),// 4'h0本来是touch_btn_data，但目前只支持电平触发
     .int_state     (confreg_int_state), // 中断状态输出
     .int_out       (confreg_int) // 中断输出
 );
@@ -401,22 +401,61 @@ module my_int_ctrl_one(
     input resetn,
     
     input int_en, // 中断有效
-    input int_pol, // 中断极性(1:高电平/上升沿触发)
     input int_edge, // 中断边沿触发
+    input int_pol, // 中断极性(1:高电平/上升沿触发)
     input int_in,
-    output int_state// 为1表示对应位的中断有效
+    input int_clr,
+    input int_set,
+    output int_state,// 为1表示对应位的中断有效
+    output int_out
 );
-    reg int_in_r;
-    reg int_edge_detect; // 中断边沿检测
-    always@(posedge clk) begin
-        if(int_in_r!=int_in)begin 
-            int_edge_detect <=int_pol?int_in:!int_in;
-            int_in_r <=int_in;
-            end
-        else int_edge_detect <= 0;
+    // 同步 int_in 到 clk 域
+    reg int_in_sync1, int_in_sync2;
+    always @(posedge clk or negedge resetn) begin
+        if (!resetn) begin
+            int_in_sync1 <= 1'b0;
+            int_in_sync2 <= 1'b0;
+        end else begin
+            int_in_sync1 <= int_in;
+            int_in_sync2 <= int_in_sync1;
+        end
     end
-    assign int_state = int_en & (int_edge ? int_edge_detect : (int_pol ? int_in : !int_in));
+    wire int_in_sync = int_in_sync2;
 
+    // 边沿检测（寄存器上一拍）
+    reg int_in_r;
+    always @(posedge clk or negedge resetn) begin
+        if (!resetn) int_in_r <= 1'b0;
+        else int_in_r <= int_in_sync;
+    end
+    wire rise = int_in_sync && !int_in_r;
+    wire fall = !int_in_sync && int_in_r;
+    wire edge_detected = (int_pol ? rise : fall);
+
+    // 电平触发条件
+    wire level_active = (int_pol ? int_in_sync : !int_in_sync);
+
+    // 中断请求锁存
+    reg int_req;
+    always @(posedge clk or negedge resetn) begin
+        if (!resetn) begin
+            int_req <= 1'b0;
+        end else begin
+            if (int_set)               // 软件置位优先
+                int_req <= 1'b1;
+            else if (int_clr)          // 软件清除
+                int_req <= 1'b0;
+            else if (int_edge) begin
+                if (edge_detected)
+                    int_req <= 1'b1;   // 边沿触发锁存
+            end else begin
+                int_req <= level_active; // 电平触发直接跟随
+            end
+        end
+    end
+
+    assign int_state = int_req;
+    assign int_out   = int_req & int_en;
 endmodule
 //中断控制器
 module my_int_ctrl #(parameter N=32)(
@@ -430,43 +469,36 @@ module my_int_ctrl #(parameter N=32)(
     input [N-1:0] int_pol, // 中断极性
     input [N-1:0] int_in,
     input [N-1:0] int_clr, // 中断清除
+    input [N-1:0] int_set,          // 新增
     output [N-1:0] int_state,
-    output int_out
+    output [N-1:0] int_out,         // 新增：32位中断输出
+    output int_out_or_sync          // 新增：同步后的单比特中断
 );
     genvar i;
     generate for(i=0;i<N;i=i+1) begin: int_ctrl
         my_int_ctrl_one u_int_ctrl_one (
-            .clk(sys_clk),
-            .resetn(sys_resetn),
-            .int_en(int_en[i]),
-            .int_edge(int_edge[i]),
-            .int_pol(int_pol[i]),
-            .int_in(int_in[i]),
-            .int_state(int_state[i])
+            .clk      (sys_clk),
+            .resetn   (sys_resetn),
+            .int_en   (int_en[i]),
+            .int_edge (int_edge[i]),
+            .int_pol  (int_pol[i]),
+            .int_in   (int_in[i]),
+            .int_clr  (int_clr[i]),
+            .int_set  (int_set[i]),
+            .int_state(int_state[i]),
+            .int_out  (int_out[i])
         );
     end
     endgenerate
 
-    reg int_valid;
-    always @(posedge sys_clk or negedge sys_resetn) begin
-        if (~sys_resetn) begin
-            int_valid <= 1'b0;
-        end
-        else begin
-            int_valid <= |int_state;
-        end
-    end
-
-    // 又打了一拍
-    reg [1:0] int_valid_r;
+    // 或运算后同步到 cpu 时钟域
+    wire int_out_or = |int_out;
+    reg [1:0] int_out_or_sync_r;
     always @(posedge cpu_clk or negedge cpu_resetn) begin
-        if (~cpu_resetn) begin
-            int_valid_r <= 2'b0;
-        end
-        else begin
-            int_valid_r <= {int_valid_r[0], int_valid};
-        end
+        if (!cpu_resetn)
+            int_out_or_sync_r <= 2'b0;
+        else
+            int_out_or_sync_r <= {int_out_or_sync_r[0], int_out_or};
     end
-
-   assign int_out = int_valid_r[1];
+    assign int_out_or_sync = int_out_or_sync_r[1];
 endmodule

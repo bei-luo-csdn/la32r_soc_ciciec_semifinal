@@ -502,6 +502,7 @@ Axi_CDC u_axi_cdc(
     wire [4:0] confreg_rid;
     wire [31:0] confreg_rdata;
     wire [1:0] confreg_rresp;
+    wire [31:0] confreg_int;
     wire confreg_rlast;
     wire confreg_rvalid;
     wire confreg_rready;
