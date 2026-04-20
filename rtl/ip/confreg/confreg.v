@@ -384,7 +384,10 @@ my_int_ctrl #(.N(32)) u_my_int_ctrl (
     .cpu_resetn    ( cpu_resetn    ),
 
     .int_en        ({27'd0,5'b11111}), // 中断使能寄存器
-    .int_edge      ({27'd0,1'b0,4'h0}), // 中断边沿触发寄存器 1:边沿触发 0:电平触发
+    //这个用来跑仿真
+    //.int_edge      ({27'd0,1'b0,4'h0}), // 中断边沿触发寄存器 1:边沿触发 0:电平触发
+    //这个用来跑bit流
+    .int_edge      ({27'd0,1'b0,4'hf}), // 中断边沿触发寄存器 1:边沿触发 0:电平触发
     .int_pol       (32'hffffffff), // 中断极性寄存器 1:高电平/上升沿触发 0:低电平/下降沿触发
     .int_in        ({27'd0, timer_int, touch_btn_data[3:0]}),//[3:0]接touch_btn_data，[4]接timer_int
     .int_state     (confreg_int_state[31:0]), // 中断状态输出
@@ -397,7 +400,9 @@ endmodule
 
 // 实现一个bit中断处理
 // 输出中断状态
-module my_int_ctrl_one(
+module my_int_ctrl_one #(
+    parameter EDGE_HOLD_CYCLES = 500 // 边沿触发后保持中断状态的周期数，防止过短的边沿被漏掉
+)(
     input clk,
     input resetn,
     
@@ -432,7 +437,25 @@ module my_int_ctrl_one(
     wire rise = int_in_sync && !int_in_r;
     wire fall = !int_in_sync && int_in_r;
     // 边沿触发条件
-    wire edge_detected = (int_pol ? rise : fall);
+    wire edge_detected_raw = (int_pol ? rise : fall);
+    reg [15:0] hold_cnt;
+    reg edge_detected;
+    always @(posedge clk or negedge resetn) begin
+        if (!resetn) begin
+            edge_detected <= 1'b0;
+            hold_cnt <= 0;
+        end else begin
+            if (edge_detected_raw) begin
+                edge_detected <= 1'b1;
+                hold_cnt <= 0;
+            end else if (edge_detected) begin
+                if (hold_cnt >= EDGE_HOLD_CYCLES - 1)
+                    edge_detected <= 1'b0;
+                else
+                    hold_cnt <= hold_cnt + 1;
+            end
+        end
+    end
     // 电平触发条件
     wire level_active = (int_pol ? int_in_sync : !int_in_sync);
 
