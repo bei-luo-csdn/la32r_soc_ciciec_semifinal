@@ -78,7 +78,7 @@ module confreg #(
     input           s_arvalid,
     output          s_arready,
     output [4 :0]   s_rid,
-    output reg [31:0]   s_rdata,
+    output reg [31:0]  s_rdata,
     output [1 :0]   s_rresp,
     output reg      s_rlast,
     output reg      s_rvalid,
@@ -382,12 +382,12 @@ my_int_ctrl #(.N(32)) u_my_int_ctrl (
     .cpu_clk       ( cpu_clk       ),
     .cpu_resetn    ( cpu_resetn    ),
 
-    .int_en        (confreg_int_en[31:0]), // 这里是中断使能
-    .int_edge      (32'h0), // 这里是中断边沿触发
-    .int_pol       (32'h0), // 这里是中断极性
-    .int_in        ({ 27'd0, touch_btn_data[3:0], timer_int}),// 4'h0本来是touch_btn_data，但目前只支持电平触发
-    .int_state     (confreg_int_state), // 中断状态输出
-    .int_out       (confreg_int) // 中断输出
+    .int_en        (confreg_int_en[31:0]), // 中断使能寄存器
+    .int_edge      ({27'd0,4'b1111,1'b0}), // 中断边沿触发寄存器 1:边沿触发 0:电平触发
+    .int_pol       (32'hffffffff), // 中断极性寄存器 1:高电平/上升沿触发 0:低电平/下降沿触发
+    .int_in        ({ 27'd0, touch_btn_data[3:0], timer_int}),
+    .int_state     (confreg_int_state[31:0]), // 中断状态输出
+    .int_out_or_sync(confreg_int) // 中断输出
 );
 
 //--------------------------------{int_ctrl}end-----------------------------//
@@ -430,8 +430,8 @@ module my_int_ctrl_one(
     end
     wire rise = int_in_sync && !int_in_r;
     wire fall = !int_in_sync && int_in_r;
+    // 边沿触发条件
     wire edge_detected = (int_pol ? rise : fall);
-
     // 电平触发条件
     wire level_active = (int_pol ? int_in_sync : !int_in_sync);
 
@@ -469,10 +469,10 @@ module my_int_ctrl #(parameter N=32)(
     input [N-1:0] int_pol, // 中断极性
     input [N-1:0] int_in,
     input [N-1:0] int_clr, // 中断清除
-    input [N-1:0] int_set,          // 新增
+    input [N-1:0] int_set,   
     output [N-1:0] int_state,
-    output [N-1:0] int_out,         // 新增：32位中断输出
-    output int_out_or_sync          // 新增：同步后的单比特中断
+    output [N-1:0] int_out,
+    output int_out_or_sync
 );
     genvar i;
     generate for(i=0;i<N;i=i+1) begin: int_ctrl
